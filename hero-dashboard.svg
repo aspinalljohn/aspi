@@ -14,28 +14,37 @@
     }
     .graph-line {
       stroke-dasharray: 1000;
-      animation: lineGrow 3s ease-out forwards;
+      animation: lineGrow 5s ease-out forwards;
     }
     .graph-fill {
-      animation: pulse 3s ease-in-out infinite;
+      animation: pulse 4s ease-in-out infinite;
     }
     .data-point {
-      animation: float 2s ease-in-out infinite;
+      animation: float 3s ease-in-out infinite;
     }
     .metric-card {
       transition: all 0.3s ease;
       cursor: pointer;
     }
     .metric-card:hover {
-      transform: translateY(-5px);
+      transform: translateY(-8px);
+    }
+    .metric-card rect {
+      transition: all 0.3s ease;
     }
     .metric-card:hover rect {
-      stroke: #9c30ff;
-      stroke-width: 3;
-      filter: drop-shadow(0 8px 16px rgba(156, 48, 255, 0.3));
+      stroke: #9c30ff !important;
+      stroke-width: 3 !important;
+      filter: drop-shadow(0 10px 20px rgba(156, 48, 255, 0.4));
+    }
+    .metric-value {
+      transition: fill 0.3s ease;
     }
     .metric-card:hover .metric-value {
-      fill: #9c30ff;
+      fill: #9c30ff !important;
+    }
+    .metric-card:hover .metric-label {
+      fill: #9c30ff !important;
     }
   </style>
 
@@ -59,26 +68,26 @@
   <!-- CTR Card -->
   <g class="metric-card">
     <rect x="30" y="110" width="170" height="100" rx="12" fill="#121212" stroke="#9c30ff" stroke-width="2"/>
-    <text x="50" y="135" font-family="Inter, sans-serif" font-size="12" font-weight="600" fill="#9c30ff">CTR INCREASE</text>
-    <text class="metric-value" x="50" y="165" font-family="Inter, sans-serif" font-size="36" font-weight="800" fill="#9c30ff">+187%</text>
-    <!-- Moved line down for better spacing -->
-    <path d="M50 193 L65 183 L80 188 L95 178 L110 183 L125 173 L140 178 L155 168" stroke="#9c30ff" stroke-width="2" fill="none"/>
+    <text class="metric-label" x="50" y="135" font-family="Inter, sans-serif" font-size="11" font-weight="600" fill="#9c30ff" letter-spacing="0.5">CTR INCREASE</text>
+    <text class="metric-value" x="50" y="170" font-family="Inter, sans-serif" font-size="36" font-weight="800" fill="#9c30ff">+187%</text>
+    <!-- Trend line positioned with proper spacing -->
+    <path d="M50 195 L65 185 L80 190 L95 180 L110 185 L125 175 L140 180 L155 170" stroke="#9c30ff" stroke-width="2" fill="none"/>
   </g>
 
   <!-- CVR Card -->
   <g class="metric-card">
     <rect x="215" y="110" width="170" height="100" rx="12" fill="#121212" stroke="#2a2a2a" stroke-width="2"/>
-    <text x="235" y="135" font-family="Inter, sans-serif" font-size="12" font-weight="600" fill="#b8b8b8">CVR IMPROVEMENT</text>
-    <text class="metric-value" x="235" y="165" font-family="Inter, sans-serif" font-size="36" font-weight="800" fill="#ffffff">+64%</text>
-    <path d="M235 193 L250 188 L265 186 L280 181 L295 183 L310 178 L325 180 L340 176" stroke="#ffffff" stroke-width="2" fill="none" opacity="0.5"/>
+    <text class="metric-label" x="235" y="135" font-family="Inter, sans-serif" font-size="11" font-weight="600" fill="#b8b8b8" letter-spacing="0.5">CVR IMPROVEMENT</text>
+    <text class="metric-value" x="235" y="170" font-family="Inter, sans-serif" font-size="36" font-weight="800" fill="#ffffff">+64%</text>
+    <path d="M235 195 L250 190 L265 188 L280 183 L295 185 L310 180 L325 182 L340 178" stroke="#ffffff" stroke-width="2" fill="none" opacity="0.5"/>
   </g>
 
   <!-- ACOS Card -->
   <g class="metric-card">
     <rect x="400" y="110" width="170" height="100" rx="12" fill="#121212" stroke="#2a2a2a" stroke-width="2"/>
-    <text x="420" y="135" font-family="Inter, sans-serif" font-size="12" font-weight="600" fill="#b8b8b8">ACOS REDUCTION</text>
-    <text class="metric-value" x="420" y="165" font-family="Inter, sans-serif" font-size="36" font-weight="800" fill="#ffffff">-42%</text>
-    <path d="M420 188 L435 193 L450 191 L465 196 L480 194 L495 198 L510 196 L525 200" stroke="#ffffff" stroke-width="2" fill="none" opacity="0.5"/>
+    <text class="metric-label" x="420" y="135" font-family="Inter, sans-serif" font-size="11" font-weight="600" fill="#b8b8b8" letter-spacing="0.5">ACOS REDUCTION</text>
+    <text class="metric-value" x="420" y="170" font-family="Inter, sans-serif" font-size="36" font-weight="800" fill="#ffffff">-42%</text>
+    <path d="M420 195 L435 190 L450 188 L465 193 L480 191 L495 195 L510 193 L525 197" stroke="#ffffff" stroke-width="2" fill="none" opacity="0.5"/>
   </g>
 
   <!-- Large Graph Area -->
@@ -102,13 +111,13 @@
         stroke="url(#gradient)" stroke-width="3" fill="none" stroke-linecap="round"/>
 
   <!-- Animated Data Points -->
-  <circle class="data-point" cx="50" cy="380" r="4" fill="#9c30ff" style="animation-delay: 0s"/>
-  <circle class="data-point" cx="130" cy="370" r="4" fill="#9c30ff" style="animation-delay: 0.3s"/>
-  <circle class="data-point" cx="210" cy="355" r="4" fill="#9c30ff" style="animation-delay: 0.6s"/>
-  <circle class="data-point" cx="290" cy="330" r="4" fill="#9c30ff" style="animation-delay: 0.9s"/>
-  <circle class="data-point" cx="370" cy="305" r="4" fill="#9c30ff" style="animation-delay: 1.2s"/>
-  <circle class="data-point" cx="450" cy="285" r="4" fill="#9c30ff" style="animation-delay: 1.5s"/>
-  <circle class="data-point" cx="530" cy="265" r="5" fill="#9c30ff" stroke="#9c30ff" stroke-width="6" opacity="0.3" style="animation-delay: 1.8s"/>
+  <circle class="data-point" cx="50" cy="380" r="5" fill="#9c30ff" style="animation-delay: 0s"/>
+  <circle class="data-point" cx="130" cy="370" r="5" fill="#9c30ff" style="animation-delay: 0.7s"/>
+  <circle class="data-point" cx="210" cy="355" r="5" fill="#9c30ff" style="animation-delay: 1.4s"/>
+  <circle class="data-point" cx="290" cy="330" r="5" fill="#9c30ff" style="animation-delay: 2.1s"/>
+  <circle class="data-point" cx="370" cy="305" r="5" fill="#9c30ff" style="animation-delay: 2.8s"/>
+  <circle class="data-point" cx="450" cy="285" r="5" fill="#9c30ff" style="animation-delay: 3.5s"/>
+  <circle class="data-point" cx="530" cy="265" r="6" fill="#9c30ff" stroke="#9c30ff" stroke-width="8" opacity="0.3" style="animation-delay: 4.2s"/>
 
   <!-- X-axis Labels -->
   <text x="45" y="405" font-family="Inter, sans-serif" font-size="10" fill="#666666">Week 1</text>
