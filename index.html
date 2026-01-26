@@ -450,13 +450,13 @@
             enabled: true,
 
             // Your event message
-            message: "I will be speaking LIVE at ASGTG on 3/5/26 in Brooklyn. Come hang out! 🪿",
+            message: "LIVE NOW: Join me for the Amazon Creative Strategy Workshop — Starting in 15 minutes!",
 
             // Optional: Add a link (leave empty "" for no link)
-            link: "www.eventbrite.com/e/1500246320129/?discount=asgtg26_JohnAspinall",
+            link: "https://cal.com/aspi-creatives/aspi-strategy",
 
             // Link button text (only shows if link is provided)
-            linkText: "Get your tickets"
+            linkText: "Register Now"
         };
 
         // Ticker animation and behavior
@@ -471,7 +471,18 @@
 
             // Set message
             if (TICKER_CONFIG.link) {
-                messageEl.innerHTML = `${TICKER_CONFIG.message} <a href="${TICKER_CONFIG.link}" class="ticker-link" target="_blank">${TICKER_CONFIG.linkText}</a>`;
+                // Create elements safely to avoid encoding issues
+                const textNode = document.createTextNode(TICKER_CONFIG.message + ' ');
+                const linkEl = document.createElement('a');
+                linkEl.href = TICKER_CONFIG.link;
+                linkEl.className = 'ticker-link';
+                linkEl.target = '_blank';
+                linkEl.rel = 'noopener noreferrer';
+                linkEl.textContent = TICKER_CONFIG.linkText;
+
+                messageEl.innerHTML = '';
+                messageEl.appendChild(textNode);
+                messageEl.appendChild(linkEl);
             } else {
                 messageEl.textContent = TICKER_CONFIG.message;
             }
