@@ -31,9 +31,14 @@
 <body>
     <!-- Event Ticker -->
     <div id="event-ticker" class="event-ticker">
-        <div class="ticker-content">
-            <span class="ticker-icon">🔴</span>
-            <span id="ticker-message" class="ticker-message"></span>
+        <div class="ticker-wrapper">
+            <span class="ticker-icon">📢</span>
+            <div class="ticker-scroll-container">
+                <div id="ticker-scroll" class="ticker-scroll">
+                    <span id="ticker-message" class="ticker-message"></span>
+                    <span id="ticker-message-clone" class="ticker-message"></span>
+                </div>
+            </div>
             <button class="ticker-close" onclick="closeTicker()">&times;</button>
         </div>
     </div>
@@ -450,29 +455,47 @@
             enabled: true,
 
             // Your event message
-            message: "BIG NEWS: I will be speaking LIVE on stage at ASGTG in Brooklyn - 3/5/26. Come hang out!",
+            message: "BIG NEWS: I will be speaking LIVE at the Amazon Creative Summit — March 15th, 2026",
 
             // Optional: Add a link (leave empty "" for no link)
-            link: "https://www.eventbrite.com/e/1500246320129/?discount=asgtg26_JohnAspinall",
+            link: "https://cal.com/aspi-creatives/aspi-strategy",
 
             // Link button text (only shows if link is provided)
-            linkText: "Get Your Ticket!"
+            linkText: "Register Now",
+
+            // Icon options: "📢" (megaphone), "🔴" (red dot), "⚡" (lightning), "🎯" (target), "✨" (sparkles), "🚀" (rocket), "💥" (boom), "🎪" (circus tent)
+            icon: "📢"
         };
 
         // Ticker animation and behavior
         function initTicker() {
             const ticker = document.getElementById('event-ticker');
             const messageEl = document.getElementById('ticker-message');
+            const messageClone = document.getElementById('ticker-message-clone');
+            const iconEl = document.querySelector('.ticker-icon');
 
             if (!TICKER_CONFIG.enabled || !TICKER_CONFIG.message) {
                 ticker.style.display = 'none';
                 return;
             }
 
-            // Set message
+            // Set icon
+            if (TICKER_CONFIG.icon) {
+                iconEl.textContent = TICKER_CONFIG.icon;
+            }
+
+            // Build message content
+            let messageContent = TICKER_CONFIG.message;
             if (TICKER_CONFIG.link) {
-                // Create elements safely to avoid encoding issues
-                const textNode = document.createTextNode(TICKER_CONFIG.message + ' ');
+                messageContent += ' • ';
+            }
+
+            // Set message (with extra spacing for scrolling effect)
+            const fullMessage = messageContent + '   '.repeat(10);
+
+            if (TICKER_CONFIG.link) {
+                // Create message with link
+                const textNode = document.createTextNode(fullMessage);
                 const linkEl = document.createElement('a');
                 linkEl.href = TICKER_CONFIG.link;
                 linkEl.className = 'ticker-link';
@@ -483,8 +506,16 @@
                 messageEl.innerHTML = '';
                 messageEl.appendChild(textNode);
                 messageEl.appendChild(linkEl);
+
+                // Clone for seamless loop
+                messageClone.innerHTML = '';
+                const textNodeClone = document.createTextNode(fullMessage);
+                const linkElClone = linkEl.cloneNode(true);
+                messageClone.appendChild(textNodeClone);
+                messageClone.appendChild(linkElClone);
             } else {
-                messageEl.textContent = TICKER_CONFIG.message;
+                messageEl.textContent = fullMessage;
+                messageClone.textContent = fullMessage;
             }
 
             // Slide down animation
