@@ -39,7 +39,7 @@
                     <span id="ticker-message-clone" class="ticker-message"></span>
                 </div>
             </div>
-            <button class="ticker-close" onclick="closeTicker()">&times;</button>
+            <button class="ticker-close" onclick="closeTicker()" aria-label="Close announcement">&times;</button>
         </div>
     </div>
 
@@ -50,7 +50,12 @@
                 <a href="#" class="logo">
                     <img src="aspi-logo.png" alt="Aspi" style="height: 50px; width: auto;">
                 </a>
-                <div class="nav-links">
+                <button class="mobile-menu-toggle" aria-label="Open navigation menu" aria-expanded="false" aria-controls="nav-links">
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                </button>
+                <div class="nav-links" id="nav-links" role="navigation">
                     <a href="#services">Services</a>
                     <a href="#results">Results</a>
                     <a href="#pricing">Pricing</a>
@@ -357,28 +362,28 @@
         <div class="container">
             <h2 class="section-headline center">Common questions</h2>
             <div class="faq-grid-2">
-                <div class="faq-item-modern" onclick="this.classList.toggle('active')">
-                    <h3 class="faq-question-modern"><span class="faq-icon">+</span>How long until I see results?</h3>
+                <div class="faq-item-modern" role="button" tabindex="0" aria-expanded="false">
+                    <h3 class="faq-question-modern"><span class="faq-icon" aria-hidden="true">+</span>How long until I see results?</h3>
                     <p class="faq-answer-modern">Most clients see CTR improvements within 2-3 weeks of implementing new hero images. Meaningful CVR lift typically shows in 30-60 days as we optimize the full visual experience and build trust through the image stack.</p>
                 </div>
-                <div class="faq-item-modern" onclick="this.classList.toggle('active')">
-                    <h3 class="faq-question-modern"><span class="faq-icon">+</span>What if the creative doesn't match my brand?</h3>
+                <div class="faq-item-modern" role="button" tabindex="0" aria-expanded="false">
+                    <h3 class="faq-question-modern"><span class="faq-icon" aria-hidden="true">+</span>What if the creative doesn't match my brand?</h3>
                     <p class="faq-answer-modern">We build a custom brand guide through interviews and visual analysis. You get unlimited revisions until it aligns perfectly with your brand identity. Brand consistency is non-negotiable.</p>
                 </div>
-                <div class="faq-item-modern" onclick="this.classList.toggle('active')">
-                    <h3 class="faq-question-modern"><span class="faq-icon">+</span>How much input do I need to give?</h3>
+                <div class="faq-item-modern" role="button" tabindex="0" aria-expanded="false">
+                    <h3 class="faq-question-modern"><span class="faq-icon" aria-hidden="true">+</span>How much input do I need to give?</h3>
                     <p class="faq-answer-modern">Initial setup requires 2-3 hours. After that, 30-60 minutes per week for feedback and approvals. We handle strategy, design, optimization, and performance tracking.</p>
                 </div>
-                <div class="faq-item-modern" onclick="this.classList.toggle('active')">
-                    <h3 class="faq-question-modern"><span class="faq-icon">+</span>Can I pause or cancel?</h3>
+                <div class="faq-item-modern" role="button" tabindex="0" aria-expanded="false">
+                    <h3 class="faq-question-modern"><span class="faq-icon" aria-hidden="true">+</span>Can I pause or cancel?</h3>
                     <p class="faq-answer-modern">Yes. Monthly plans can be paused or cancelled with 30 days notice. We recommend a minimum 90-day commitment to see compounding performance results from creative optimization.</p>
                 </div>
-                <div class="faq-item-modern" onclick="this.classList.toggle('active')">
-                    <h3 class="faq-question-modern"><span class="faq-icon">+</span>What's the turnaround time?</h3>
+                <div class="faq-item-modern" role="button" tabindex="0" aria-expanded="false">
+                    <h3 class="faq-question-modern"><span class="faq-icon" aria-hidden="true">+</span>What's the turnaround time?</h3>
                     <p class="faq-answer-modern">Creative deliverables are delivered 5-7 business days before scheduled launch date. Rush requests available on Consulting and Deliverables plans with advance notice.</p>
                 </div>
-                <div class="faq-item-modern" onclick="this.classList.toggle('active')">
-                    <h3 class="faq-question-modern"><span class="faq-icon">+</span>Do you work with brands outside marketplaces?</h3>
+                <div class="faq-item-modern" role="button" tabindex="0" aria-expanded="false">
+                    <h3 class="faq-question-modern"><span class="faq-icon" aria-hidden="true">+</span>Do you work with brands outside marketplaces?</h3>
                     <p class="faq-answer-modern">No. We only work with Amazon, Walmart, TikTok Shop, Target, and other marketplace sellers. This specialization is why the creative works and the strategy converts.</p>
                 </div>
             </div>
@@ -446,9 +451,9 @@
     </footer>
 
     <!-- Lightbox Modal -->
-    <div id="lightbox" class="lightbox" onclick="closeLightbox()">
-        <span class="lightbox-close">&times;</span>
-        <img class="lightbox-content" id="lightbox-img">
+    <div id="lightbox" class="lightbox" role="dialog" aria-modal="true" aria-label="Image preview" onclick="closeLightbox()">
+        <button class="lightbox-close" aria-label="Close image preview">&times;</button>
+        <img class="lightbox-content" id="lightbox-img" alt="Enlarged image preview">
     </div>
 
     <script>
@@ -547,6 +552,44 @@
 
         // Initialize ticker when page loads
         document.addEventListener('DOMContentLoaded', initTicker);
+
+        // Mobile menu
+        document.addEventListener('DOMContentLoaded', function() {
+            var toggle = document.querySelector('.mobile-menu-toggle');
+            var navLinks = document.getElementById('nav-links');
+            if (toggle && navLinks) {
+                toggle.addEventListener('click', function() {
+                    var isOpen = navLinks.classList.toggle('nav-open');
+                    toggle.classList.toggle('active');
+                    toggle.setAttribute('aria-expanded', isOpen);
+                    toggle.setAttribute('aria-label', isOpen ? 'Close navigation menu' : 'Open navigation menu');
+                });
+                // Close menu when a nav link is clicked
+                navLinks.querySelectorAll('a').forEach(function(link) {
+                    link.addEventListener('click', function() {
+                        navLinks.classList.remove('nav-open');
+                        toggle.classList.remove('active');
+                        toggle.setAttribute('aria-expanded', 'false');
+                        toggle.setAttribute('aria-label', 'Open navigation menu');
+                    });
+                });
+            }
+
+            // FAQ keyboard accessibility
+            document.querySelectorAll('.faq-item-modern').forEach(function(item) {
+                function toggleFaq() {
+                    var isActive = item.classList.toggle('active');
+                    item.setAttribute('aria-expanded', isActive);
+                }
+                item.addEventListener('click', toggleFaq);
+                item.addEventListener('keydown', function(e) {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        toggleFaq();
+                    }
+                });
+            });
+        });
 
         // Lightbox functions
         function openLightbox(imageSrc) {
