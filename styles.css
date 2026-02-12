@@ -388,14 +388,6 @@ strong {
     gap: 0.5rem;
 }
 
-.ghost-icon {
-    font-size: 1.5rem;
-}
-
-.logo-text {
-    font-weight: 800;
-}
-
 .nav-links {
     display: flex;
     gap: 2rem;
@@ -470,52 +462,6 @@ strong {
     display: flex;
     justify-content: center;
     align-items: center;
-}
-
-.macbook-mockup {
-    position: relative;
-    width: 100%;
-    max-width: 600px;
-    margin: 0 auto;
-}
-
-.macbook-screen {
-    background: #1a1a1a;
-    border-radius: 12px 12px 0 0;
-    padding: 12px 12px 0 12px;
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
-    border: 2px solid #333;
-}
-
-.screen-content {
-    width: 100%;
-    height: auto;
-    display: block;
-    border-radius: 6px;
-    background: #000;
-}
-
-.macbook-bottom {
-    height: 8px;
-    background: linear-gradient(to bottom, #2a2a2a 0%, #1a1a1a 100%);
-    border-radius: 0 0 12px 12px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-}
-
-.macbook-base {
-    height: 4px;
-    background: linear-gradient(to right, transparent 0%, #2a2a2a 10%, #2a2a2a 90%, transparent 100%);
-    margin: 0 auto;
-    width: 120%;
-    position: relative;
-    left: -10%;
-    border-radius: 0 0 100px 100px;
-}
-
-.metric-label {
-    font-size: 0.9rem;
-    font-weight: 600;
-    color: var(--text-dark);
 }
 
 /* ===========================
@@ -706,111 +652,6 @@ strong {
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.5px;
-}
-
-/* ===========================
-   Testimonials Section
-   =========================== */
-
-.testimonials-section {
-    background-color: var(--dark-bg-alt);
-}
-
-.testimonials-grid-3 {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2rem;
-    margin-top: 3rem;
-}
-
-.testimonial-card-modern {
-    background-color: var(--dark-bg-card);
-    padding: 2.5rem;
-    border-radius: 12px;
-    border: 2px solid var(--border-light);
-    transition: all 0.3s ease;
-    position: relative;
-}
-
-.testimonial-card-modern:hover {
-    border-color: var(--purple-primary);
-    transform: translateY(-4px);
-    box-shadow: 0 8px 24px rgba(156, 48, 255, 0.2);
-}
-
-.quote-icon {
-    font-size: 4rem;
-    color: var(--purple-primary);
-    opacity: 0.3;
-    line-height: 1;
-    font-family: Georgia, serif;
-    margin-bottom: 1rem;
-}
-
-.testimonial-text {
-    color: var(--light-gray);
-    font-size: 1.05rem;
-    line-height: 1.7;
-    margin-bottom: 2rem;
-}
-
-.testimonial-author-modern {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    padding-top: 1.5rem;
-    border-top: 1px solid var(--border-light);
-}
-
-.author-avatar {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, var(--purple-primary) 0%, var(--purple-accent) 100%);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: 700;
-    color: var(--white);
-}
-
-.author-avatar-img {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 3px solid var(--purple-primary);
-}
-
-.author-info {
-    flex: 1;
-}
-
-.author-name {
-    font-weight: 700;
-    color: var(--white);
-    margin-bottom: 0.25rem;
-}
-
-.author-title {
-    font-size: 0.9rem;
-    color: var(--text-gray);
-}
-
-.testimonial-proof {
-    width: 100%;
-    margin-top: 1.5rem;
-    border-radius: 8px;
-    border: 2px solid var(--purple-primary);
-    cursor: pointer;
-    transition: all 0.3s ease;
-    display: block;
-}
-
-.testimonial-proof:hover {
-    transform: scale(1.02);
-    box-shadow: 0 8px 24px rgba(156, 48, 255, 0.3);
-    border-color: var(--purple-hover);
 }
 
 /* ===========================
@@ -1059,13 +900,6 @@ strong {
     align-items: start;
 }
 
-.process-arrow {
-    width: 100px;
-    height: 100px;
-    align-self: flex-start;
-    margin-top: 0;
-}
-
 .process-step-modern {
     text-align: center;
 }
@@ -1149,25 +983,6 @@ strong {
     border: 4px solid var(--purple-primary);
     object-fit: cover;
     object-position: center top;
-}
-
-.about-placeholder {
-    background: linear-gradient(135deg, var(--dark-bg-card) 0%, var(--dark-gray) 100%);
-    border: 2px solid var(--border-light);
-    border-radius: 16px;
-    padding: 4rem 2rem;
-    text-align: center;
-    width: 100%;
-}
-
-.placeholder-icon {
-    font-size: 4rem;
-    margin-bottom: 1rem;
-}
-
-.placeholder-text {
-    color: var(--text-gray);
-    font-size: 0.95rem;
 }
 
 /* ===========================
@@ -1260,14 +1075,6 @@ strong {
     margin-bottom: 2.5rem;
 }
 
-.cta-note {
-    margin-top: 1.5rem;
-    color: var(--white);
-    font-size: 0.95rem;
-    font-weight: 500;
-    opacity: 0.9;
-}
-
 /* ===========================
    Footer
    =========================== */
@@ -1339,10 +1146,6 @@ strong {
     color: rgba(255, 255, 255, 0.5);
     font-size: 0.9rem;
     margin: 0.5rem 0;
-}
-
-.aspi-company {
-    margin-top: 0.5rem !important;
 }
 
 /* ===========================
@@ -1489,7 +1292,6 @@ strong {
 
     .services-grid-4,
     .metrics-grid,
-    .testimonials-grid-3,
     .pricing-grid-3,
     .faq-grid-2 {
         grid-template-columns: 1fr;
@@ -1499,10 +1301,6 @@ strong {
     .process-grid-3 {
         grid-template-columns: 1fr;
         gap: 1.5rem;
-    }
-
-    .process-arrow {
-        display: none;
     }
 
     .logo-scroll {
@@ -1546,13 +1344,5 @@ strong {
 
     .metric-number {
         font-size: 2.5rem;
-    }
-
-    .macbook-mockup {
-        max-width: 450px;
-    }
-
-    .macbook-screen {
-        padding: 8px 8px 0 8px;
     }
 }
