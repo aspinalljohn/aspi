@@ -7,7 +7,7 @@
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="favicon.png">
 
-    <!-- Page Title --
+    <!-- Page Title -->
     <title>Aspi - Marketplace Creative Strategy That Increases CTR and Conversions</title>
 
     <!-- SEO Meta Tags -->
@@ -27,6 +27,13 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Preload critical assets -->
+    <link rel="preload" href="hero-dashboard.svg" as="image" type="image/svg+xml">
+    <link rel="preload" href="aspi-logo.png" as="image">
+
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="manifest.json">
 
     <!-- Stylesheet -->
     <link rel="stylesheet" href="styles.css">
@@ -211,7 +218,7 @@
         <div class="container">
             <div class="nav-content">
                 <a href="#" class="logo">
-                    <img src="aspi-logo.png" alt="Aspi" style="height: 50px; width: auto;">
+                    <img src="aspi-logo.png" alt="Aspi" width="120" height="50">
                 </a>
                 <button class="mobile-menu-toggle" aria-label="Open navigation menu" aria-expanded="false" aria-controls="nav-links">
                     <span class="hamburger-line"></span>
@@ -248,7 +255,7 @@
                     <p class="hero-supporting">For Amazon, TikTok Shop, Walmart & marketplace sellers who are tired of paying for clicks that don't convert.</p>
                 </div>
                 <div class="hero-image">
-                    <img src="hero-dashboard.svg" alt="Marketplace Performance Dashboard" style="width: 100%; max-width: 600px; height: auto;">
+                    <img src="hero-dashboard.svg" alt="Marketplace Performance Dashboard" width="600" height="400">
                 </div>
             </div>
         </div>
@@ -260,25 +267,25 @@
             <p class="social-proof-label">Trusted by sellers on these marketplaces:</p>
             <div class="logo-scroll-container">
                 <div class="logo-scroll">
-                    <div class="logo-item"><img src="logo-amazon.png" alt="Amazon" class="platform-logo"></div>
-                    <div class="logo-item"><img src="logo-walmart.png" alt="Walmart" class="platform-logo"></div>
-                    <div class="logo-item"><img src="logo-tiktok.png" alt="TikTok Shop" class="platform-logo"></div>
-                    <div class="logo-item"><img src="logo-target.png" alt="Target" class="platform-logo"></div>
-                    <div class="logo-item"><img src="logo-homedepot.png" alt="Home Depot" class="platform-logo"></div>
-                    <div class="logo-item"><img src="logo-instacart.png" alt="Instacart" class="platform-logo"></div>
-                    <div class="logo-item"><img src="logo-doordash.png" alt="DoorDash" class="platform-logo"></div>
-                    <div class="logo-item"><img src="logo-ubereats.png" alt="Uber Eats" class="platform-logo"></div>
-                    <div class="logo-item"><img src="logo-shopify.png" alt="Shopify" class="platform-logo"></div>
+                    <div class="logo-item"><picture><source srcset="logo-amazon.webp" type="image/webp"><img src="logo-amazon.png" alt="Amazon" class="platform-logo" loading="lazy" width="120" height="40"></picture></div>
+                    <div class="logo-item"><picture><source srcset="logo-walmart.webp" type="image/webp"><img src="logo-walmart.png" alt="Walmart" class="platform-logo" loading="lazy" width="120" height="40"></picture></div>
+                    <div class="logo-item"><picture><source srcset="logo-tiktok.webp" type="image/webp"><img src="logo-tiktok.png" alt="TikTok Shop" class="platform-logo" loading="lazy" width="120" height="40"></picture></div>
+                    <div class="logo-item"><picture><source srcset="logo-target.webp" type="image/webp"><img src="logo-target.png" alt="Target" class="platform-logo" loading="lazy" width="120" height="40"></picture></div>
+                    <div class="logo-item"><picture><source srcset="logo-homedepot.webp" type="image/webp"><img src="logo-homedepot.png" alt="Home Depot" class="platform-logo" loading="lazy" width="120" height="40"></picture></div>
+                    <div class="logo-item"><picture><source srcset="logo-instacart.webp" type="image/webp"><img src="logo-instacart.png" alt="Instacart" class="platform-logo" loading="lazy" width="120" height="40"></picture></div>
+                    <div class="logo-item"><picture><source srcset="logo-doordash.webp" type="image/webp"><img src="logo-doordash.png" alt="DoorDash" class="platform-logo" loading="lazy" width="120" height="40"></picture></div>
+                    <div class="logo-item"><picture><source srcset="logo-ubereats.webp" type="image/webp"><img src="logo-ubereats.png" alt="Uber Eats" class="platform-logo" loading="lazy" width="120" height="40"></picture></div>
+                    <div class="logo-item"><picture><source srcset="logo-shopify.webp" type="image/webp"><img src="logo-shopify.png" alt="Shopify" class="platform-logo" loading="lazy" width="120" height="40"></picture></div>
                     <!-- Duplicate for seamless loop -->
-                    <div class="logo-item"><img src="logo-amazon.png" alt="Amazon" class="platform-logo"></div>
-                    <div class="logo-item"><img src="logo-walmart.png" alt="Walmart" class="platform-logo"></div>
-                    <div class="logo-item"><img src="logo-tiktok.png" alt="TikTok Shop" class="platform-logo"></div>
-                    <div class="logo-item"><img src="logo-target.png" alt="Target" class="platform-logo"></div>
-                    <div class="logo-item"><img src="logo-homedepot.png" alt="Home Depot" class="platform-logo"></div>
-                    <div class="logo-item"><img src="logo-instacart.png" alt="Instacart" class="platform-logo"></div>
-                    <div class="logo-item"><img src="logo-doordash.png" alt="DoorDash" class="platform-logo"></div>
-                    <div class="logo-item"><img src="logo-ubereats.png" alt="Uber Eats" class="platform-logo"></div>
-                    <div class="logo-item"><img src="logo-shopify.png" alt="Shopify" class="platform-logo"></div>
+                    <div class="logo-item"><picture><source srcset="logo-amazon.webp" type="image/webp"><img src="logo-amazon.png" alt="Amazon" class="platform-logo" loading="lazy" width="120" height="40"></picture></div>
+                    <div class="logo-item"><picture><source srcset="logo-walmart.webp" type="image/webp"><img src="logo-walmart.png" alt="Walmart" class="platform-logo" loading="lazy" width="120" height="40"></picture></div>
+                    <div class="logo-item"><picture><source srcset="logo-tiktok.webp" type="image/webp"><img src="logo-tiktok.png" alt="TikTok Shop" class="platform-logo" loading="lazy" width="120" height="40"></picture></div>
+                    <div class="logo-item"><picture><source srcset="logo-target.webp" type="image/webp"><img src="logo-target.png" alt="Target" class="platform-logo" loading="lazy" width="120" height="40"></picture></div>
+                    <div class="logo-item"><picture><source srcset="logo-homedepot.webp" type="image/webp"><img src="logo-homedepot.png" alt="Home Depot" class="platform-logo" loading="lazy" width="120" height="40"></picture></div>
+                    <div class="logo-item"><picture><source srcset="logo-instacart.webp" type="image/webp"><img src="logo-instacart.png" alt="Instacart" class="platform-logo" loading="lazy" width="120" height="40"></picture></div>
+                    <div class="logo-item"><picture><source srcset="logo-doordash.webp" type="image/webp"><img src="logo-doordash.png" alt="DoorDash" class="platform-logo" loading="lazy" width="120" height="40"></picture></div>
+                    <div class="logo-item"><picture><source srcset="logo-ubereats.webp" type="image/webp"><img src="logo-ubereats.png" alt="Uber Eats" class="platform-logo" loading="lazy" width="120" height="40"></picture></div>
+                    <div class="logo-item"><picture><source srcset="logo-shopify.webp" type="image/webp"><img src="logo-shopify.png" alt="Shopify" class="platform-logo" loading="lazy" width="120" height="40"></picture></div>
                 </div>
             </div>
         </div>
@@ -313,7 +320,7 @@
             <div class="services-grid-4">
                 <div class="service-card-icon">
                     <div class="service-icon-large">
-                        <img src="icon-hero-image.svg" alt="Hero Image Optimization" loading="lazy" style="width: 100%; height: auto;">
+                        <img src="icon-hero-image.svg" alt="Hero Image Optimization" loading="lazy" width="400" height="300">
                     </div>
                     <h3>Hero Image<br>Optimization</h3>
                     <p>Your main image is the single biggest lever for click-through rate. We redesign hero images using visual hierarchy principles tested across 14,000+ listings — so your product gets clicked, not scrolled past.</p>
@@ -321,7 +328,7 @@
                 </div>
                 <div class="service-card-icon">
                     <div class="service-icon-large">
-                        <img src="icon-image-stack.svg" alt="Image Stack Strategy" loading="lazy" style="width: 100%; height: auto;">
+                        <img src="icon-image-stack.svg" alt="Image Stack Strategy" loading="lazy" width="400" height="300">
                     </div>
                     <h3>Image Stack<br>Strategy</h3>
                     <p>87% of Amazon buyers scroll through images before reading a word of copy. We sequence your image stack to answer their objections in order — size, quality, use case, social proof — so they buy instead of bouncing.</p>
@@ -329,7 +336,7 @@
                 </div>
                 <div class="service-card-icon">
                     <div class="service-icon-large">
-                        <img src="icon-aplus-content.svg" alt="A+ Content & Brand Story" loading="lazy" style="width: 100%; height: auto;">
+                        <img src="icon-aplus-content.svg" alt="A+ Content &amp; Brand Story" loading="lazy" width="400" height="300">
                     </div>
                     <h3>A+ Content &<br>Brand Story</h3>
                     <p>A+ content that actually lifts conversion rates — not just fills space below the fold. We build brand story modules that establish authority and give hesitant buyers the confidence to add to cart.</p>
@@ -337,7 +344,7 @@
                 </div>
                 <div class="service-card-icon">
                     <div class="service-icon-large">
-                        <img src="icon-performance-analysis.svg" alt="Performance Analysis" loading="lazy" style="width: 100%; height: auto;">
+                        <img src="icon-performance-analysis.svg" alt="Performance Analysis" loading="lazy" width="400" height="300">
                     </div>
                     <h3>Performance<br>Analysis</h3>
                     <p>Every creative change we make gets measured. You see exactly how much your CTR and conversion rate improved — in real numbers, not subjective opinions. If a change doesn't perform, we replace it.</p>
@@ -418,7 +425,7 @@
                         <h3 class="plan-name">Aspi Deliverables</h3>
                         <div class="plan-price">
                             <span class="price-currency"></span>
-                            <span class="price-amount" style="font-size: 2.5rem;">Contact Us</span>
+                            <span class="price-amount price-amount-contact">Contact Us</span>
                             <span class="price-period"></span>
                         </div>
                     </div>
@@ -495,9 +502,18 @@
                     <p class="emphasis-text">If your marketplace listings don't reflect how good your product actually is, that's the problem we solve.</p>
                 </div>
                 <div class="about-image">
-                    <img src="john-aspinall.jpg" alt="John Aspinall, founder of Aspi" loading="lazy" class="about-headshot">
-                    <img src="about-image-2.jpg" alt="John Aspinall speaking at an e-commerce event" loading="lazy" class="about-headshot">
-                    <img src="about-image-3.jpg" alt="John Aspinall consulting with marketplace sellers" loading="lazy" class="about-headshot">
+                    <picture>
+                        <source srcset="john-aspinall.webp" type="image/webp">
+                        <img src="john-aspinall.jpg" alt="John Aspinall, founder of Aspi" loading="lazy" class="about-headshot" width="576" height="632">
+                    </picture>
+                    <picture>
+                        <source srcset="about-image-2.webp" type="image/webp">
+                        <img src="about-image-2.jpg" alt="John Aspinall speaking at an e-commerce event" loading="lazy" class="about-headshot" width="500" height="400">
+                    </picture>
+                    <picture>
+                        <source srcset="about-image-3.webp" type="image/webp">
+                        <img src="about-image-3.jpg" alt="John Aspinall consulting with marketplace sellers" loading="lazy" class="about-headshot" width="500" height="400">
+                    </picture>
                 </div>
             </div>
         </div>
@@ -553,7 +569,7 @@
             <div class="footer-grid">
                 <div class="footer-brand">
                     <div class="footer-logo">
-                        <img src="aspi-logo.png" alt="Aspi" loading="lazy" style="height: 50px; width: auto;">
+                        <img src="aspi-logo.png" alt="Aspi" loading="lazy" width="120" height="50">
                     </div>
                     <p class="footer-tagline">14,000+ hero images optimized. 50,000+ listings reviewed. Marketplace creative strategy that shows up in your revenue, not just your portfolio.</p>
                 </div>
@@ -602,220 +618,6 @@
         <img class="lightbox-content" id="lightbox-img" alt="Enlarged image preview">
     </div>
 
-    <script>
-        // ===========================
-        // EVENT TICKER CONFIGURATION
-        // ===========================
-        // Edit the settings below to update your event ticker
-
-        const TICKER_CONFIG = {
-            // Set to true to show the ticker, false to hide it completely
-            enabled: true,
-
-            // Your event message
-                message: "I will be FILMING LIVE at Prosper Show 2026 in Las Vegas from 3/10 to 3/12!",
-
-            // Optional: Add a link (leave empty "" for no link)
-            link: "https://www.linkedin.com/in/jaspinall/",
-
-            // Link button text (only shows if link is provided)
-            linkText: "Click to find me!",
-
-            // Icon options: "📢" (megaphone), "🔴" (red dot), "⚡" (lightning), "🎯" (target), "✨" (sparkles), "🚀" (rocket), "💥" (boom), "🎪" (circus tent)
-            icon: "📢"
-        };
-
-        // Ticker animation and behavior
-        function initTicker() {
-            const ticker = document.getElementById('event-ticker');
-            const messageEl = document.getElementById('ticker-message');
-            const messageClone = document.getElementById('ticker-message-clone');
-            const iconEl = document.querySelector('.ticker-icon');
-
-            if (!TICKER_CONFIG.enabled || !TICKER_CONFIG.message) {
-                ticker.style.display = 'none';
-                return;
-            }
-
-            // Set icon
-            if (TICKER_CONFIG.icon) {
-                iconEl.textContent = TICKER_CONFIG.icon;
-            }
-
-            // Build message content
-            let messageContent = TICKER_CONFIG.message;
-            if (TICKER_CONFIG.link) {
-                messageContent += ' • ';
-            }
-
-            // Set message (with extra spacing for scrolling effect)
-            const fullMessage = messageContent + '   '.repeat(10);
-
-            if (TICKER_CONFIG.link) {
-                // Create message with link
-                const textNode = document.createTextNode(fullMessage);
-                const linkEl = document.createElement('a');
-                linkEl.href = TICKER_CONFIG.link;
-                linkEl.className = 'ticker-link';
-                linkEl.target = '_blank';
-                linkEl.rel = 'noopener noreferrer';
-                linkEl.textContent = TICKER_CONFIG.linkText;
-
-                messageEl.innerHTML = '';
-                messageEl.appendChild(textNode);
-                messageEl.appendChild(linkEl);
-
-                // Clone for seamless loop
-                messageClone.innerHTML = '';
-                const textNodeClone = document.createTextNode(fullMessage);
-                const linkElClone = linkEl.cloneNode(true);
-                messageClone.appendChild(textNodeClone);
-                messageClone.appendChild(linkElClone);
-            } else {
-                messageEl.textContent = fullMessage;
-                messageClone.textContent = fullMessage;
-            }
-
-            // Slide down animation
-            setTimeout(() => {
-                ticker.classList.add('ticker-visible');
-            }, 500);
-
-            // Hide on scroll
-            let hasScrolled = false;
-            window.addEventListener('scroll', () => {
-                if (!hasScrolled && window.scrollY > 100) {
-                    hasScrolled = true;
-                    ticker.classList.remove('ticker-visible');
-                }
-            });
-        }
-
-        function closeTicker() {
-            const ticker = document.getElementById('event-ticker');
-            ticker.classList.remove('ticker-visible');
-        }
-
-        // Initialize ticker when page loads
-        document.addEventListener('DOMContentLoaded', initTicker);
-
-        // Mobile menu
-        document.addEventListener('DOMContentLoaded', function() {
-            var toggle = document.querySelector('.mobile-menu-toggle');
-            var navLinks = document.getElementById('nav-links');
-            if (toggle && navLinks) {
-                toggle.addEventListener('click', function() {
-                    var isOpen = navLinks.classList.toggle('nav-open');
-                    toggle.classList.toggle('active');
-                    toggle.setAttribute('aria-expanded', isOpen);
-                    toggle.setAttribute('aria-label', isOpen ? 'Close navigation menu' : 'Open navigation menu');
-                });
-                // Close menu when a nav link is clicked
-                navLinks.querySelectorAll('a').forEach(function(link) {
-                    link.addEventListener('click', function() {
-                        navLinks.classList.remove('nav-open');
-                        toggle.classList.remove('active');
-                        toggle.setAttribute('aria-expanded', 'false');
-                        toggle.setAttribute('aria-label', 'Open navigation menu');
-                    });
-                });
-            }
-
-            // FAQ keyboard accessibility
-            document.querySelectorAll('.faq-item-modern').forEach(function(item) {
-                function toggleFaq() {
-                    var isActive = item.classList.toggle('active');
-                    item.setAttribute('aria-expanded', isActive);
-                }
-                item.addEventListener('click', toggleFaq);
-                item.addEventListener('keydown', function(e) {
-                    if (e.key === 'Enter' || e.key === ' ') {
-                        e.preventDefault();
-                        toggleFaq();
-                    }
-                });
-            });
-        });
-
-        // Lightbox functions
-        function openLightbox(imageSrc) {
-            const lightbox = document.getElementById('lightbox');
-            const lightboxImg = document.getElementById('lightbox-img');
-            lightbox.style.display = 'flex';
-            setTimeout(() => {
-                lightbox.classList.add('active');
-                lightboxImg.src = imageSrc;
-            }, 10);
-        }
-
-        function closeLightbox() {
-            const lightbox = document.getElementById('lightbox');
-            lightbox.classList.remove('active');
-            setTimeout(() => {
-                lightbox.style.display = 'none';
-            }, 300);
-        }
-
-        // Close on Escape key
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape') {
-                closeLightbox();
-            }
-        });
-    </script>
-
-    <script>
-        // Animated counter for metrics
-        function animateCounter(element) {
-            const target = parseFloat(element.getAttribute('data-target'));
-            const isDecimal = target % 1 !== 0;
-            const suffix = element.textContent.slice(-1);
-            const duration = 2000;
-            const start = 0;
-            const increment = target / (duration / 16);
-            let current = start;
-
-            const timer = setInterval(() => {
-                current += increment;
-                if (current >= target) {
-                    current = target;
-                    clearInterval(timer);
-                }
-
-                if (isDecimal) {
-                    element.textContent = current.toFixed(1) + suffix;
-                } else if (target >= 1000) {
-                    element.textContent = Math.floor(current).toLocaleString() + suffix;
-                } else {
-                    element.textContent = Math.floor(current) + suffix;
-                }
-            }, 16);
-        }
-
-        // Intersection Observer for metrics animation
-        const observerOptions = {
-            threshold: 0.3,
-            rootMargin: '-100px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const counters = entry.target.querySelectorAll('.metric-number[data-target]');
-                    counters.forEach(counter => {
-                        animateCounter(counter);
-                        counter.removeAttribute('data-target'); // Animate only once
-                    });
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, observerOptions);
-
-        // Observe metrics section
-        const metricsSection = document.querySelector('.metrics-section');
-        if (metricsSection) {
-            observer.observe(metricsSection);
-        }
-    </script>
+    <script src="main.js" defer></script>
 </body>
 </html>

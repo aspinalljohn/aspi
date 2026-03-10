@@ -388,6 +388,16 @@ strong {
     gap: 0.5rem;
 }
 
+.logo img {
+    height: 50px;
+    width: auto;
+}
+
+.footer-logo img {
+    height: 50px;
+    width: auto;
+}
+
 .nav-links {
     display: flex;
     gap: 2rem;
@@ -462,6 +472,12 @@ strong {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.hero-image img {
+    width: 100%;
+    max-width: 600px;
+    height: auto;
 }
 
 /* ===========================
@@ -584,6 +600,11 @@ strong {
 .service-icon-large {
     font-size: 3rem;
     margin-bottom: 1rem;
+}
+
+.service-icon-large img {
+    width: 100%;
+    height: auto;
 }
 
 .service-card-icon h3 {
@@ -807,6 +828,10 @@ strong {
     font-weight: 800;
     color: var(--white);
     line-height: 1;
+}
+
+.price-amount-contact {
+    font-size: 2.5rem;
 }
 
 .price-period {

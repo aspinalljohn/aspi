@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://goaspi.com/sitemap.xml

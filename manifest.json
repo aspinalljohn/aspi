@@ -1,0 +1,15 @@
+{
+  "name": "Aspi - Marketplace Creative Strategy",
+  "short_name": "Aspi",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0a0a0a",
+  "theme_color": "#000000",
+  "icons": [
+    {
+      "src": "favicon.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    }
+  ]
+}
