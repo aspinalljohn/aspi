@@ -3,7 +3,6 @@ title: "Why Your Marketplace Listings Get Impressions But No Clicks"
 description: "If your Amazon or Walmart listings are getting impressions but your CTR is below category average, the problem is almost always visual. Here's what's actually happening and how to fix it."
 date: 2026-03-16
 author: "John Aspinall"
-featuredImage: "/img/blog/impressions-no-clicks.jpg"
 keywords: "Amazon CTR, marketplace impressions, low click-through rate, Amazon listing clicks, Walmart listing optimization, marketplace creative strategy, hero image optimization, Amazon search results"
 ---
 
