@@ -55,6 +55,48 @@
     <!-- Stylesheet -->
     <link rel="stylesheet" href="/styles.css">
 
+    <!-- Organization Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "ProfessionalService",
+        "@id": "{{ site.url }}/#organization",
+        "name": "{{ site.name }}",
+        "url": "{{ site.url }}",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "{{ site.logo }}"
+        },
+        "description": "{{ site.description }}",
+        "founder": {
+            "@type": "Person",
+            "@id": "{{ site.url }}/#founder",
+            "name": "{{ site.author }}",
+            "url": "https://www.linkedin.com/in/jaspinall/"
+        },
+        "sameAs": [
+            "https://www.linkedin.com/company/goaspi/",
+            "https://www.linkedin.com/in/jaspinall/",
+            "https://www.youtube.com/@johnaspinallctr",
+            "https://johnaspinallsr.substack.com/"
+        ]
+    }
+    </script>
+
+    <!-- WebSite Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "@id": "{{ site.url }}/#website",
+        "name": "{{ site.name }}",
+        "url": "{{ site.url }}",
+        "publisher": {
+            "@id": "{{ site.url }}/#organization"
+        }
+    }
+    </script>
+
     {% block head %}{% endblock %}
 </head>
 <body>
