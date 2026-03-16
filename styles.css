@@ -161,6 +161,8 @@ body {
     --purple-primary: #9c30ff;
     --purple-hover: #b14dff;
     --purple-accent: #a742ff;
+    --accent-warm: #F0B429;
+    --accent-warm-hover: #F7C948;
     --dark-bg: #0a0a0a;
     --dark-bg-alt: #0f0f0f;
     --dark-bg-card: #121212;
@@ -174,6 +176,8 @@ body {
     --text-dark: #1a1a1a;
     --border-light: #2a2a2a;
     --border-dark: #333333;
+    --font-heading: 'Bricolage Grotesque', Georgia, serif;
+    --font-body: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 }
 
 * {
@@ -187,7 +191,7 @@ html {
 }
 
 body {
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    font-family: var(--font-body);
     background-color: var(--dark-bg);
     color: var(--text-light);
     line-height: 1.6;
@@ -201,6 +205,7 @@ body {
    =========================== */
 
 h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
     font-weight: 700;
     line-height: 1.2;
     color: var(--white);
@@ -1058,9 +1063,20 @@ strong {
    CTA Section
    =========================== */
 
-.cta-section-yellow {
-    background: linear-gradient(135deg, var(--purple-primary) 0%, var(--purple-hover) 100%);
+.cta-section-contrast {
+    background: var(--white);
     padding: 6rem 0;
+    position: relative;
+}
+
+.cta-section-contrast::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--purple-primary), var(--accent-warm), var(--purple-primary));
 }
 
 .cta-content-center {
@@ -1069,10 +1085,38 @@ strong {
     text-align: center;
 }
 
-.cta-subtitle-dark {
+.cta-headline {
+    color: var(--text-dark) !important;
+}
+
+.cta-subtitle {
     font-size: 1.25rem;
-    color: var(--white);
+    color: #555;
     margin-bottom: 2.5rem;
+}
+
+.btn-cta-accent {
+    display: inline-block;
+    padding: 1.2rem 3rem;
+    font-size: 1.1rem;
+    font-weight: 700;
+    font-family: var(--font-heading);
+    border-radius: 50px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    border: 2px solid var(--text-dark);
+    text-align: center;
+    background-color: var(--text-dark);
+    color: var(--white);
+    letter-spacing: 0.01em;
+}
+
+.btn-cta-accent:hover {
+    background-color: var(--purple-primary);
+    border-color: var(--purple-primary);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(156, 48, 255, 0.35);
+    color: var(--white);
 }
 
 /* ===========================
@@ -1344,5 +1388,98 @@ strong {
 
     .metric-number {
         font-size: 2.5rem;
+    }
+}
+
+/* ===========================
+   Scroll Reveal Animations
+   =========================== */
+
+.reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.reveal.revealed {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ===========================
+   Hero Entrance Animation
+   =========================== */
+
+.hero-animate .hero-headline {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.hero-animate .hero-subheadline {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.7s ease 0.15s, transform 0.7s ease 0.15s;
+}
+
+.hero-animate .hero-ctas {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.7s ease 0.3s, transform 0.7s ease 0.3s;
+}
+
+.hero-animate .hero-supporting {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.7s ease 0.4s, transform 0.7s ease 0.4s;
+}
+
+.hero-animate .hero-image {
+    opacity: 0;
+    transform: translateX(40px);
+    transition: opacity 0.8s ease 0.3s, transform 0.8s ease 0.3s;
+}
+
+.hero-animate.hero-visible .hero-headline,
+.hero-animate.hero-visible .hero-subheadline,
+.hero-animate.hero-visible .hero-ctas,
+.hero-animate.hero-visible .hero-supporting {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.hero-animate.hero-visible .hero-image {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* ===========================
+   Accent Color Highlights
+   =========================== */
+
+.btn-nav {
+    background-color: var(--accent-warm) !important;
+    border-color: var(--accent-warm) !important;
+    color: var(--text-dark) !important;
+    font-weight: 700 !important;
+}
+
+.btn-nav:hover {
+    background-color: var(--accent-warm-hover) !important;
+    border-color: var(--accent-warm-hover) !important;
+    color: var(--text-dark) !important;
+}
+
+/* Reduce motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+    .reveal,
+    .hero-animate .hero-headline,
+    .hero-animate .hero-subheadline,
+    .hero-animate .hero-ctas,
+    .hero-animate .hero-supporting,
+    .hero-animate .hero-image {
+        opacity: 1;
+        transform: none;
+        transition: none;
     }
 }

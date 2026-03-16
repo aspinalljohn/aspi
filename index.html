@@ -26,7 +26,8 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700;12..96,800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap">
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700;12..96,800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 
     <!-- Stylesheet -->
     <link rel="stylesheet" href="styles.css">
@@ -231,7 +232,7 @@
     </nav>
 
     <!-- Hero Section -->
-    <section class="hero">
+    <section class="hero hero-animate">
         <div class="container">
             <div class="hero-grid">
                 <div class="hero-content">
@@ -285,7 +286,7 @@
     </section>
 
     <!-- Problem Section -->
-    <section class="section problem-section">
+    <section class="section problem-section reveal">
         <div class="container">
             <div class="content-narrow">
                 <h2 class="section-headline center">
@@ -307,7 +308,7 @@
     </section>
 
     <!-- Services Section -->
-    <section id="services" class="section services-section">
+    <section id="services" class="section services-section reveal">
         <div class="container">
             <h2 class="section-headline center white">Four ways we increase your marketplace revenue</h2>
             <div class="services-grid-4">
@@ -348,19 +349,19 @@
     </section>
 
     <!-- Metrics Section -->
-    <section id="results" class="metrics-section">
+    <section id="results" class="metrics-section reveal">
         <div class="container">
             <div class="metrics-grid">
                 <div class="metric-card">
-                    <div class="metric-number" data-target="50000">0+</div>
+                    <div class="metric-number" data-target="50000" data-suffix="+">0+</div>
                     <div class="metric-label">Marketplace listings reviewed and audited for performance gaps</div>
                 </div>
                 <div class="metric-card">
-                    <div class="metric-number" data-target="14000">0+</div>
+                    <div class="metric-number" data-target="14000" data-suffix="+">0+</div>
                     <div class="metric-label">Hero images redesigned using conversion-tested frameworks</div>
                 </div>
                 <div class="metric-card">
-                    <div class="metric-number" data-target="200">0%+</div>
+                    <div class="metric-number" data-target="25" data-suffix="%+">0%+</div>
                     <div class="metric-label">Average CTR increase measured across client listings</div>
                 </div>
             </div>
@@ -368,7 +369,7 @@
     </section>
 
     <!-- Pricing Section -->
-    <section id="pricing" class="section pricing-section">
+    <section id="pricing" class="section pricing-section reveal">
         <div class="container">
             <h2 class="section-headline center">Three ways to work with us — starting at $399/mo</h2>
             <p class="pricing-subtitle">No long-term contracts. Pause or cancel with 30 days notice. Most clients stay because the numbers speak for themselves.</p>
@@ -438,7 +439,7 @@
     </section>
 
     <!-- Process Section -->
-    <section id="process" class="section process-section-dark">
+    <section id="process" class="section process-section-dark reveal">
         <div class="container">
             <h2 class="section-headline center white">From audit to measurable results in three steps</h2>
             <div class="process-grid-3">
@@ -465,7 +466,7 @@
     </section>
 
     <!-- About Section -->
-    <section id="about" class="section about-section">
+    <section id="about" class="section about-section reveal">
         <div class="container">
             <div class="about-grid">
                 <div class="about-content">
@@ -504,7 +505,7 @@
     </section>
 
     <!-- FAQ Section -->
-    <section class="section faq-section">
+    <section class="section faq-section reveal">
         <div class="container">
             <h2 class="section-headline center">Questions we hear from marketplace sellers</h2>
             <div class="faq-grid-2">
@@ -537,12 +538,12 @@
     </section>
 
     <!-- Final CTA Section -->
-    <section id="contact" class="section cta-section-yellow">
+    <section id="contact" class="section cta-section-contrast reveal">
         <div class="container">
             <div class="cta-content-center">
-                <h2 class="section-headline-dark center">Your competitors are optimizing their creative right now. Are you?</h2>
-                <p class="cta-subtitle-dark">Book a free visual strategy audit. We'll show you the specific changes your listings need — and what they're costing you today.</p>
-                <a href="https://cal.com/aspi-creatives/aspi-strategy?overlayCalendar=true" class="btn-primary-dark" target="_blank">Get Your Free Audit</a>
+                <h2 class="section-headline center cta-headline">Your competitors are optimizing their creative right now. Are you?</h2>
+                <p class="cta-subtitle">Book a free visual strategy audit. We'll show you the specific changes your listings need — and what they're costing you today.</p>
+                <a href="https://cal.com/aspi-creatives/aspi-strategy?overlayCalendar=true" class="btn-cta-accent" target="_blank">Get Your Free Audit</a>
             </div>
         </div>
     </section>
@@ -768,8 +769,8 @@
         // Animated counter for metrics
         function animateCounter(element) {
             const target = parseFloat(element.getAttribute('data-target'));
+            const suffix = element.getAttribute('data-suffix') || '+';
             const isDecimal = target % 1 !== 0;
-            const suffix = element.textContent.slice(-1);
             const duration = 2000;
             const start = 0;
             const increment = target / (duration / 16);
@@ -793,28 +794,46 @@
         }
 
         // Intersection Observer for metrics animation
-        const observerOptions = {
+        const metricsObserverOptions = {
             threshold: 0.3,
             rootMargin: '-100px'
         };
 
-        const observer = new IntersectionObserver((entries) => {
+        const metricsObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     const counters = entry.target.querySelectorAll('.metric-number[data-target]');
                     counters.forEach(counter => {
                         animateCounter(counter);
-                        counter.removeAttribute('data-target'); // Animate only once
+                        counter.removeAttribute('data-target');
                     });
-                    observer.unobserve(entry.target);
+                    metricsObserver.unobserve(entry.target);
                 }
             });
-        }, observerOptions);
+        }, metricsObserverOptions);
 
         // Observe metrics section
         const metricsSection = document.querySelector('.metrics-section');
         if (metricsSection) {
-            observer.observe(metricsSection);
+            metricsObserver.observe(metricsSection);
+        }
+
+        // Scroll reveal animations
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('revealed');
+                    revealObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1, rootMargin: '-50px' });
+
+        document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+        // Hero entrance animation
+        const hero = document.querySelector('.hero-animate');
+        if (hero) {
+            setTimeout(() => hero.classList.add('hero-visible'), 200);
         }
     </script>
 </body>
