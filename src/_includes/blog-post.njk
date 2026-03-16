@@ -1,0 +1,96 @@
+---
+ogType: article
+---
+{% extends "base.njk" %}
+
+{% block head %}
+    <!-- Structured Data: Article -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "{{ title }}",
+        "description": "{{ description }}",
+        "author": {
+            "@type": "Person",
+            "@id": "https://goaspi.com/#founder",
+            "name": "{{ author | default(site.author) }}"
+        },
+        "publisher": {
+            "@type": "ProfessionalService",
+            "@id": "https://goaspi.com/#organization",
+            "name": "Aspi",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "{{ site.logo }}"
+            }
+        },
+        "datePublished": "{{ date | isoDate }}",
+        "dateModified": "{{ date | isoDate }}",
+        {% if featuredImage %}"image": "{{ site.url }}{{ featuredImage }}",{% endif %}
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "{{ site.url }}{{ page.url }}"
+        }
+    }
+    </script>
+{% endblock %}
+
+{% block content %}
+    <article class="blog-post">
+        <div class="container">
+            <div class="blog-post-header">
+                <a href="/blog/" class="blog-back-link">&larr; Back to Blog</a>
+                <h1 class="blog-post-title">{{ title }}</h1>
+                <div class="blog-meta">
+                    <span class="blog-meta-author">{{ author | default(site.author) }}</span>
+                    <span class="blog-meta-separator">&middot;</span>
+                    <time class="blog-meta-date" datetime="{{ date | isoDate }}">{{ date | dateFormat }}</time>
+                    <span class="blog-meta-separator">&middot;</span>
+                    <span class="blog-meta-reading">{{ content | readingTime }}</span>
+                </div>
+            </div>
+
+            {% if featuredImage %}
+            <div class="blog-featured-image">
+                <img src="{{ featuredImage }}" alt="{{ title }}" loading="lazy">
+            </div>
+            {% endif %}
+
+            <div class="blog-post-content">
+                {{ content | safe }}
+            </div>
+
+            <!-- Post Navigation -->
+            {% set previousPost = collections.posts | reverse %}
+            {% set currentIndex = -1 %}
+            {% for post in collections.posts %}
+                {% if post.url == page.url %}
+                    {% set currentIndex = loop.index0 %}
+                {% endif %}
+            {% endfor %}
+
+            <nav class="blog-nav" aria-label="Blog post navigation">
+                {% if collections.posts[currentIndex + 1] %}
+                <a href="{{ collections.posts[currentIndex + 1].url }}" class="blog-nav-link blog-nav-prev">
+                    <span class="blog-nav-label">&larr; Previous</span>
+                    <span class="blog-nav-title">{{ collections.posts[currentIndex + 1].data.title }}</span>
+                </a>
+                {% endif %}
+                {% if currentIndex > 0 %}
+                <a href="{{ collections.posts[currentIndex - 1].url }}" class="blog-nav-link blog-nav-next">
+                    <span class="blog-nav-label">Next &rarr;</span>
+                    <span class="blog-nav-title">{{ collections.posts[currentIndex - 1].data.title }}</span>
+                </a>
+                {% endif %}
+            </nav>
+
+            <!-- Blog CTA -->
+            <div class="blog-cta">
+                <h2>Want results like these for your listings?</h2>
+                <p>Book a free visual strategy audit and see exactly what changes your marketplace listings need.</p>
+                <a href="https://cal.com/aspi-creatives/aspi-strategy?overlayCalendar=true" class="btn-primary" target="_blank">Get Your Free Audit</a>
+            </div>
+        </div>
+    </article>
+{% endblock %}
