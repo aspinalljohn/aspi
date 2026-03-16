@@ -4,6 +4,7 @@ description: "If your Amazon or Walmart listings are getting impressions but you
 date: 2026-03-16
 author: "John Aspinall"
 keywords: "Amazon CTR, marketplace impressions, low click-through rate, Amazon listing clicks, Walmart listing optimization, marketplace creative strategy, hero image optimization, Amazon search results"
+permalink: /blog/marketplace-impressions-no-clicks/
 ---
 
 You're spending money on ads. Your listings are showing up in search. You can see the impressions climbing in your dashboard. But the clicks? They're not keeping up.
@@ -32,7 +33,7 @@ Most categories have a "default look" — similar angles, similar backgrounds, s
 
 Differentiation in the search grid is the primary job of your hero image. Not looking professional. Not matching your brand guidelines perfectly. Standing out.
 
-We covered this in depth in our post on [Amazon hero image mistakes](/blog/5-amazon-hero-image-mistakes-that-are-killing-your-click-through-rate/) — mistake #5 specifically addresses the trap of copying competitor creative.
+We covered this in depth in our post on [Amazon hero image mistakes](/blog/amazon-hero-image-mistakes/) — mistake #5 specifically addresses the trap of copying competitor creative.
 
 ### 2. Your product is too small in the frame
 

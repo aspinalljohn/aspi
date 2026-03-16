@@ -4,6 +4,7 @@ description: "Most Amazon hero images look professional but don't convert. Here 
 date: 2026-03-10
 author: "John Aspinall"
 keywords: "Amazon hero image, Amazon CTR optimization, hero image mistakes, Amazon listing optimization, click-through rate, Amazon product photography, Amazon main image, Amazon search results"
+permalink: /blog/amazon-hero-image-mistakes/
 ---
 
 Your hero image is the single most important creative asset on your Amazon listing. It's the first thing shoppers see in search results, and it determines whether they click — or scroll past.
