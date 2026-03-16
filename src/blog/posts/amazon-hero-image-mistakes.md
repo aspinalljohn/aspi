@@ -3,7 +3,6 @@ title: "5 Amazon Hero Image Mistakes That Are Killing Your Click-Through Rate"
 description: "Most Amazon hero images look professional but don't convert. Here are the 5 most common mistakes we see after optimizing 14,000+ hero images — and how to fix each one."
 date: 2026-03-10
 author: "John Aspinall"
-featuredImage: "/img/blog/hero-image-mistakes.jpg"
 keywords: "Amazon hero image, Amazon CTR optimization, hero image mistakes, Amazon listing optimization, click-through rate, Amazon product photography, Amazon main image, Amazon search results"
 ---
 
