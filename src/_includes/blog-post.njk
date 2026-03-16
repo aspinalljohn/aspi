@@ -4,6 +4,9 @@ ogType: article
 {% extends "base.njk" %}
 
 {% block head %}
+    <meta property="article:published_time" content="{{ date | isoDate }}">
+    <meta property="article:author" content="{{ author | default(site.author) }}">
+
     <!-- Structured Data: Article -->
     <script type="application/ld+json">
     {
@@ -14,7 +17,8 @@ ogType: article
         "author": {
             "@type": "Person",
             "@id": "https://goaspi.com/#founder",
-            "name": "{{ author | default(site.author) }}"
+            "name": "{{ author | default(site.author) }}",
+            "url": "https://www.linkedin.com/in/jaspinall/"
         },
         "publisher": {
             "@type": "ProfessionalService",
@@ -28,10 +32,41 @@ ogType: article
         "datePublished": "{{ date | isoDate }}",
         "dateModified": "{{ date | isoDate }}",
         {% if featuredImage %}"image": "{{ site.url }}{{ featuredImage }}",{% endif %}
+        {% if keywords %}"keywords": "{{ keywords }}",{% endif %}
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "{{ site.url }}{{ page.url }}"
-        }
+        },
+        "wordCount": "{{ content | striptags | wordcount }}",
+        "inLanguage": "en-US"
+    }
+    </script>
+
+    <!-- Structured Data: BreadcrumbList -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "{{ site.url }}/"
+            },
+            {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Blog",
+                "item": "{{ site.url }}/blog/"
+            },
+            {
+                "@type": "ListItem",
+                "position": 3,
+                "name": "{{ title }}",
+                "item": "{{ site.url }}{{ page.url }}"
+            }
+        ]
     }
     </script>
 {% endblock %}

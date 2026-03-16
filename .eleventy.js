@@ -27,6 +27,18 @@ module.exports = function(eleventyConfig) {
     return new Date(date).toISOString().split("T")[0];
   });
 
+  // Strip HTML tags from content
+  eleventyConfig.addFilter("striptags", function(content) {
+    if (!content) return "";
+    return content.replace(/<[^>]*>/g, "");
+  });
+
+  // Word count filter
+  eleventyConfig.addFilter("wordcount", function(content) {
+    if (!content) return 0;
+    return content.replace(/<[^>]*>/g, "").split(/\s+/).filter(w => w.length > 0).length;
+  });
+
   // Collection: blog posts sorted by date descending
   eleventyConfig.addCollection("posts", function(collectionApi) {
     return collectionApi.getFilteredByTag("posts").sort((a, b) => {
