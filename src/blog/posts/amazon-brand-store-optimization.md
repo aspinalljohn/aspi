@@ -232,6 +232,6 @@ Three things to do this week:
 
 3. **Check your Store Insights.** Look at sales per visitor and pages per visit. These two numbers tell you whether your Store is converting or just existing.
 
-Your Brand Store is one of the few places on Amazon where you control the entire brand experience. Your [hero image](/blog/amazon-hero-image-mistakes/) wins the click. Your image stack tells the product story. Your A+ Content builds trust below the fold. And your Brand Store ties it all together into a cohesive, branded shopping experience that turns browsers into buyers.
+Your Brand Store is one of the few places on Amazon where you control the entire brand experience. Your [hero image](/blog/amazon-hero-image-mistakes/) wins the click. Your [image stack](/blog/amazon-image-stack-optimization/) tells the product story. Your [A+ Content](/blog/amazon-a-plus-content-design/) builds trust below the fold. And your Brand Store ties it all together into a cohesive, branded shopping experience that turns browsers into buyers.
 
 Stop treating it like a checkbox. Start treating it like a revenue channel.
