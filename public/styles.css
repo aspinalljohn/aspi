@@ -1537,31 +1537,64 @@ strong {
     justify-content: center;
 }
 
-/* AI logo badge */
-.logo-ai-badge {
-    display: inline-block;
-    font-family: var(--font-heading);
-    font-size: 1.3rem;
-    font-weight: 800;
-    letter-spacing: 0.05em;
-    color: var(--white);
-    background: linear-gradient(135deg, var(--purple-primary) 0%, #c76bff 50%, var(--purple-primary) 100%);
-    background-size: 200% 200%;
-    animation: ai-badge-shimmer 3s ease-in-out infinite;
-    padding: 0.2rem 0.6rem;
-    border-radius: 8px;
-    margin-left: 0.4rem;
+/* AI logo — superscript + circuit trace */
+.logo-ai-active {
     position: relative;
-    top: -1px;
 }
 
-@keyframes ai-badge-shimmer {
-    0%, 100% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
+.logo-ai-sup {
+    font-family: var(--font-heading);
+    font-size: 0.7rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    color: var(--purple-primary);
+    text-shadow: 0 0 8px rgba(156, 48, 255, 0.6), 0 0 20px rgba(156, 48, 255, 0.3);
+    margin-left: -2px;
+    vertical-align: super;
+    line-height: 1;
+    position: relative;
+    top: -12px;
+    animation: ai-sup-pulse 2.5s ease-in-out infinite;
+}
+
+@keyframes ai-sup-pulse {
+    0%, 100% { text-shadow: 0 0 8px rgba(156, 48, 255, 0.6), 0 0 20px rgba(156, 48, 255, 0.3); }
+    50% { text-shadow: 0 0 12px rgba(156, 48, 255, 0.9), 0 0 30px rgba(156, 48, 255, 0.5); }
+}
+
+.logo-ai-trace {
+    position: absolute;
+    bottom: 2px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent 0%, var(--purple-primary) 30%, var(--purple-primary) 70%, transparent 100%);
+    border-radius: 1px;
+    overflow: hidden;
+}
+
+.logo-ai-trace::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -20%;
+    width: 20%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.8), transparent);
+    animation: ai-trace-travel 2.5s ease-in-out infinite;
+}
+
+@keyframes ai-trace-travel {
+    0% { left: -20%; }
+    100% { left: 120%; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-    .logo-ai-badge {
+    .logo-ai-sup {
+        animation: none;
+        text-shadow: 0 0 8px rgba(156, 48, 255, 0.6);
+    }
+    .logo-ai-trace::after {
         animation: none;
     }
 }
