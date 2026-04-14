@@ -120,6 +120,7 @@
             <div class="nav-content">
                 <a href="/" class="logo">
                     <img src="/aspi-logo.png" alt="Aspi" style="height: 50px; width: auto;">
+                    {% if page.url == "/ai/" %}<span class="logo-ai-badge">AI</span>{% endif %}
                 </a>
                 <button class="mobile-menu-toggle" aria-label="Open navigation menu" aria-expanded="false" aria-controls="nav-links">
                     <span class="hamburger-line"></span>

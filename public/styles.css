@@ -1537,6 +1537,35 @@ strong {
     justify-content: center;
 }
 
+/* AI logo badge */
+.logo-ai-badge {
+    display: inline-block;
+    font-family: var(--font-heading);
+    font-size: 1.3rem;
+    font-weight: 800;
+    letter-spacing: 0.05em;
+    color: var(--white);
+    background: linear-gradient(135deg, var(--purple-primary) 0%, #c76bff 50%, var(--purple-primary) 100%);
+    background-size: 200% 200%;
+    animation: ai-badge-shimmer 3s ease-in-out infinite;
+    padding: 0.2rem 0.6rem;
+    border-radius: 8px;
+    margin-left: 0.4rem;
+    position: relative;
+    top: -1px;
+}
+
+@keyframes ai-badge-shimmer {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .logo-ai-badge {
+        animation: none;
+    }
+}
+
 /* AI icon animations */
 @keyframes ai-spin {
     from { transform: rotate(0deg); }
