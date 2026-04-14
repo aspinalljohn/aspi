@@ -1537,6 +1537,33 @@ strong {
     justify-content: center;
 }
 
+/* AI icon animations */
+@keyframes ai-spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+@keyframes ai-jiggle {
+    0%, 100% { transform: rotate(0deg); }
+    25% { transform: rotate(8deg); }
+    75% { transform: rotate(-8deg); }
+}
+
+.ai-icon-spin {
+    animation: ai-spin 12s linear infinite;
+}
+
+.ai-icon-jiggle {
+    animation: ai-jiggle 2s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .ai-icon-spin,
+    .ai-icon-jiggle {
+        animation: none;
+    }
+}
+
 .ai-problem-content .problem-content {
     text-align: left;
 }
