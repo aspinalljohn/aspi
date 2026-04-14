@@ -1537,6 +1537,10 @@ strong {
     justify-content: center;
 }
 
+.ai-problem-content .problem-content {
+    text-align: left;
+}
+
 .ai-use-cases-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
