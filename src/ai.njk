@@ -360,5 +360,56 @@ permalink: /ai/
         if (hero) {
             setTimeout(() => hero.classList.add('hero-visible'), 200);
         }
+
+        // --- Glow spotlight that follows cursor ---
+        (function() {
+            if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+            var glow = document.createElement('div');
+            glow.className = 'ai-cursor-glow';
+            document.body.appendChild(glow);
+
+            var glowVisible = false;
+            var rafId = null;
+            var mouseX = 0;
+            var mouseY = 0;
+
+            document.addEventListener('mousemove', function(e) {
+                mouseX = e.pageX;
+                mouseY = e.pageY;
+                if (!glowVisible) {
+                    glow.style.opacity = '1';
+                    glowVisible = true;
+                }
+                if (!rafId) {
+                    rafId = requestAnimationFrame(function() {
+                        glow.style.left = mouseX + 'px';
+                        glow.style.top = mouseY + 'px';
+                        rafId = null;
+                    });
+                }
+            });
+
+            document.addEventListener('mouseleave', function() {
+                glow.style.opacity = '0';
+                glowVisible = false;
+            });
+        })();
+
+        // --- Click ripple effect ---
+        (function() {
+            if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+            document.addEventListener('click', function(e) {
+                var ripple = document.createElement('div');
+                ripple.className = 'ai-click-ripple';
+                ripple.style.left = e.pageX + 'px';
+                ripple.style.top = e.pageY + 'px';
+                document.body.appendChild(ripple);
+                ripple.addEventListener('animationend', function() {
+                    ripple.remove();
+                });
+            });
+        })();
     </script>
 {% endblock %}
