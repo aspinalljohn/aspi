@@ -1549,7 +1549,7 @@ strong {
     letter-spacing: 0.08em;
     color: var(--purple-primary);
     text-shadow: 0 0 8px rgba(156, 48, 255, 0.6), 0 0 20px rgba(156, 48, 255, 0.3);
-    margin-left: -2px;
+    margin-left: -14px;
     vertical-align: super;
     line-height: 1;
     position: relative;
