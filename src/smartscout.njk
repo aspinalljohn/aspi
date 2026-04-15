@@ -232,6 +232,11 @@ permalink: /smartscout/
     text-transform: uppercase;
     letter-spacing: 0.05em;
 }
+.ss-header-buttons {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+}
 .ss-copy-btn {
     display: inline-flex;
     align-items: center;
@@ -373,10 +378,16 @@ permalink: /smartscout/
             <div class="ss-skill-block" id="skill-1">
                 <div class="ss-skill-header">
                     <span>wholesale-brand-filter.md</span>
-                    <button class="ss-copy-btn" onclick="copySkill('skill-1-code', this)">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
-                        Copy
-                    </button>
+                    <div class="ss-header-buttons">
+                        <button class="ss-copy-btn" onclick="copySkill('skill-1-code', this)">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+                            Copy
+                        </button>
+                        <button class="ss-copy-btn" onclick="downloadSkill('skill-1-code', 'wholesale-brand-filter.md')">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                            Download
+                        </button>
+                    </div>
                 </div>
                 <div class="ss-skill-code"><pre id="skill-1-code">---
 description: Filter SmartScout for wholesale-friendly Amazon brands with high revenue, low Amazon in-stock rate, and multiple sellers
@@ -472,10 +483,16 @@ Save to ~/Documents/.tmp/wholesale-brands-[YYYY-MM-DD].md</pre></div>
             <div class="ss-skill-block" id="skill-2">
                 <div class="ss-skill-header">
                     <span>bulk-supplier-scan.md</span>
-                    <button class="ss-copy-btn" onclick="copySkill('skill-2-code', this)">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
-                        Copy
-                    </button>
+                    <div class="ss-header-buttons">
+                        <button class="ss-copy-btn" onclick="copySkill('skill-2-code', this)">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+                            Copy
+                        </button>
+                        <button class="ss-copy-btn" onclick="downloadSkill('skill-2-code', 'bulk-supplier-scan.md')">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                            Download
+                        </button>
+                    </div>
                 </div>
                 <div class="ss-skill-code"><pre id="skill-2-code">---
 description: Cross-reference a supplier's product list against live Amazon data via SmartScout
@@ -593,10 +610,16 @@ Rank by: Net ROI, Monthly revenue, Low seller count, Low Amazon in-stock, Stable
             <div class="ss-skill-block" id="skill-3">
                 <div class="ss-skill-header">
                     <span>competitor-storefront-scan.md</span>
-                    <button class="ss-copy-btn" onclick="copySkill('skill-3-code', this)">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
-                        Copy
-                    </button>
+                    <div class="ss-header-buttons">
+                        <button class="ss-copy-btn" onclick="copySkill('skill-3-code', this)">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+                            Copy
+                        </button>
+                        <button class="ss-copy-btn" onclick="downloadSkill('skill-3-code', 'competitor-storefront-scan.md')">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                            Download
+                        </button>
+                    </div>
                 </div>
                 <div class="ss-skill-code"><pre id="skill-3-code">---
 description: Extract a competitor's full Amazon catalog and brand relationships from their Seller ID via SmartScout
@@ -696,10 +719,16 @@ Print two tables:
             <div class="ss-skill-block" id="skill-4">
                 <div class="ss-skill-header">
                     <span>local-seller-leads.md</span>
-                    <button class="ss-copy-btn" onclick="copySkill('skill-4-code', this)">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
-                        Copy
-                    </button>
+                    <div class="ss-header-buttons">
+                        <button class="ss-copy-btn" onclick="copySkill('skill-4-code', this)">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+                            Copy
+                        </button>
+                        <button class="ss-copy-btn" onclick="downloadSkill('skill-4-code', 'local-seller-leads.md')">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                            Download
+                        </button>
+                    </div>
                 </div>
                 <div class="ss-skill-code"><pre id="skill-4-code">---
 description: Find high-revenue Amazon sellers and brands in a specific geographic region using SmartScout
@@ -784,10 +813,16 @@ Print a table: Seller/Brand, Revenue, Location, Type, Products, Growth, Contact 
             <div class="ss-skill-block" id="skill-5">
                 <div class="ss-skill-header">
                     <span>buy-box-analysis.md</span>
-                    <button class="ss-copy-btn" onclick="copySkill('skill-5-code', this)">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
-                        Copy
-                    </button>
+                    <div class="ss-header-buttons">
+                        <button class="ss-copy-btn" onclick="copySkill('skill-5-code', this)">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+                            Copy
+                        </button>
+                        <button class="ss-copy-btn" onclick="downloadSkill('skill-5-code', 'buy-box-analysis.md')">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                            Download
+                        </button>
+                    </div>
                 </div>
                 <div class="ss-skill-code"><pre id="skill-5-code">---
 description: Analyze Buy Box dominance for a brand or ASIN — check if Amazon 1P or a single seller monopolizes it
@@ -865,10 +900,16 @@ For each product, determine:
             <div class="ss-skill-block" id="skill-6">
                 <div class="ss-skill-header">
                     <span>resell-eligibility-check.md</span>
-                    <button class="ss-copy-btn" onclick="copySkill('skill-6-code', this)">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
-                        Copy
-                    </button>
+                    <div class="ss-header-buttons">
+                        <button class="ss-copy-btn" onclick="copySkill('skill-6-code', this)">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+                            Copy
+                        </button>
+                        <button class="ss-copy-btn" onclick="downloadSkill('skill-6-code', 'resell-eligibility-check.md')">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                            Download
+                        </button>
+                    </div>
                 </div>
                 <div class="ss-skill-code"><pre id="skill-6-code">---
 description: Check resell eligibility, gating status, and restrictions for Amazon ASINs using SmartScout data
@@ -944,10 +985,16 @@ Note: This skill provides data-driven signals. Confirm actual gating status in S
             <div class="ss-skill-block" id="skill-7">
                 <div class="ss-skill-header">
                     <span>fba-margin-calculator.md</span>
-                    <button class="ss-copy-btn" onclick="copySkill('skill-7-code', this)">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
-                        Copy
-                    </button>
+                    <div class="ss-header-buttons">
+                        <button class="ss-copy-btn" onclick="copySkill('skill-7-code', this)">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+                            Copy
+                        </button>
+                        <button class="ss-copy-btn" onclick="downloadSkill('skill-7-code', 'fba-margin-calculator.md')">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                            Download
+                        </button>
+                    </div>
                 </div>
                 <div class="ss-skill-code"><pre id="skill-7-code">---
 description: Calculate precise FBA margins and ROI for Amazon products using SmartScout data and FBA fee estimates
@@ -1040,10 +1087,16 @@ roi = (net_profit / unit_cost) * 100
             <div class="ss-skill-block" id="skill-8">
                 <div class="ss-skill-header">
                     <span>subcategory-market-share.md</span>
-                    <button class="ss-copy-btn" onclick="copySkill('skill-8-code', this)">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
-                        Copy
-                    </button>
+                    <div class="ss-header-buttons">
+                        <button class="ss-copy-btn" onclick="copySkill('skill-8-code', this)">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+                            Copy
+                        </button>
+                        <button class="ss-copy-btn" onclick="downloadSkill('skill-8-code', 'subcategory-market-share.md')">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                            Download
+                        </button>
+                    </div>
                 </div>
                 <div class="ss-skill-code"><pre id="skill-8-code">---
 description: Evaluate subcategory market fragmentation and revenue distribution to validate private label entry
@@ -1126,10 +1179,16 @@ for brand in records[:10]:
             <div class="ss-skill-block" id="skill-9">
                 <div class="ss-skill-header">
                     <span>traffic-bundle-finder.md</span>
-                    <button class="ss-copy-btn" onclick="copySkill('skill-9-code', this)">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
-                        Copy
-                    </button>
+                    <div class="ss-header-buttons">
+                        <button class="ss-copy-btn" onclick="copySkill('skill-9-code', this)">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+                            Copy
+                        </button>
+                        <button class="ss-copy-btn" onclick="downloadSkill('skill-9-code', 'traffic-bundle-finder.md')">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                            Download
+                        </button>
+                    </div>
                 </div>
                 <div class="ss-skill-code"><pre id="skill-9-code">---
 description: Map product traffic flow and frequently-bought-together relationships to find bundle opportunities
@@ -1212,10 +1271,16 @@ For each related product:
             <div class="ss-skill-block" id="skill-10">
                 <div class="ss-skill-header">
                     <span>seasonal-trend-spotter.md</span>
-                    <button class="ss-copy-btn" onclick="copySkill('skill-10-code', this)">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
-                        Copy
-                    </button>
+                    <div class="ss-header-buttons">
+                        <button class="ss-copy-btn" onclick="copySkill('skill-10-code', this)">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+                            Copy
+                        </button>
+                        <button class="ss-copy-btn" onclick="downloadSkill('skill-10-code', 'seasonal-trend-spotter.md')">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                            Download
+                        </button>
+                    </div>
                 </div>
                 <div class="ss-skill-code"><pre id="skill-10-code">---
 description: Track rising Amazon search terms and identify seasonal demand trends before competitors
@@ -1294,10 +1359,16 @@ For each search term:
             <div class="ss-skill-block" id="skill-11">
                 <div class="ss-skill-header">
                     <span>keyword-intent-validator.md</span>
-                    <button class="ss-copy-btn" onclick="copySkill('skill-11-code', this)">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
-                        Copy
-                    </button>
+                    <div class="ss-header-buttons">
+                        <button class="ss-copy-btn" onclick="copySkill('skill-11-code', this)">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+                            Copy
+                        </button>
+                        <button class="ss-copy-btn" onclick="downloadSkill('skill-11-code', 'keyword-intent-validator.md')">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                            Download
+                        </button>
+                    </div>
                 </div>
                 <div class="ss-skill-code"><pre id="skill-11-code">---
 description: Validate keyword intent and product-search alignment for Amazon product launches
@@ -1374,10 +1445,16 @@ For each keyword:
             <div class="ss-skill-block" id="skill-12">
                 <div class="ss-skill-header">
                     <span>price-stability-check.md</span>
-                    <button class="ss-copy-btn" onclick="copySkill('skill-12-code', this)">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
-                        Copy
-                    </button>
+                    <div class="ss-header-buttons">
+                        <button class="ss-copy-btn" onclick="copySkill('skill-12-code', this)">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+                            Copy
+                        </button>
+                        <button class="ss-copy-btn" onclick="downloadSkill('skill-12-code', 'price-stability-check.md')">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                            Download
+                        </button>
+                    </div>
                 </div>
                 <div class="ss-skill-code"><pre id="skill-12-code">---
 description: Analyze historical pricing and BSR stability for Amazon products to validate year-round demand
@@ -1447,10 +1524,16 @@ for asin in asins:
             <div class="ss-skill-block" id="skill-13">
                 <div class="ss-skill-header">
                     <span>size-tier-optimizer.md</span>
-                    <button class="ss-copy-btn" onclick="copySkill('skill-13-code', this)">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
-                        Copy
-                    </button>
+                    <div class="ss-header-buttons">
+                        <button class="ss-copy-btn" onclick="copySkill('skill-13-code', this)">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+                            Copy
+                        </button>
+                        <button class="ss-copy-btn" onclick="downloadSkill('skill-13-code', 'size-tier-optimizer.md')">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                            Download
+                        </button>
+                    </div>
                 </div>
                 <div class="ss-skill-code"><pre id="skill-13-code">---
 description: Calculate FBA size tier boundaries and identify packaging optimizations to reduce fulfillment fees
@@ -1524,10 +1607,16 @@ Calculate the gap between current dimensions and the next-lower tier boundary:
             <div class="ss-skill-block" id="skill-14">
                 <div class="ss-skill-header">
                     <span>competitor-ppc-spy.md</span>
-                    <button class="ss-copy-btn" onclick="copySkill('skill-14-code', this)">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
-                        Copy
-                    </button>
+                    <div class="ss-header-buttons">
+                        <button class="ss-copy-btn" onclick="copySkill('skill-14-code', this)">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+                            Copy
+                        </button>
+                        <button class="ss-copy-btn" onclick="downloadSkill('skill-14-code', 'competitor-ppc-spy.md')">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                            Download
+                        </button>
+                    </div>
                 </div>
                 <div class="ss-skill-code"><pre id="skill-14-code">---
 description: Reverse-engineer a competitor's Amazon PPC strategy — keywords, bids, organic ranks, and ad spend
@@ -1615,10 +1704,16 @@ For each keyword:
             <div class="ss-skill-block" id="skill-15">
                 <div class="ss-skill-header">
                     <span>sd-targeting-miner.md</span>
-                    <button class="ss-copy-btn" onclick="copySkill('skill-15-code', this)">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
-                        Copy
-                    </button>
+                    <div class="ss-header-buttons">
+                        <button class="ss-copy-btn" onclick="copySkill('skill-15-code', this)">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+                            Copy
+                        </button>
+                        <button class="ss-copy-btn" onclick="downloadSkill('skill-15-code', 'sd-targeting-miner.md')">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                            Download
+                        </button>
+                    </div>
                 </div>
                 <div class="ss-skill-code"><pre id="skill-15-code">---
 description: Build hyper-targeted Sponsored Display and SP ASIN targeting lists from SmartScout product relationships
@@ -1706,10 +1801,16 @@ complementary = client.search_products(
             <div class="ss-skill-block" id="skill-16">
                 <div class="ss-skill-header">
                     <span>search-real-estate-tracker.md</span>
-                    <button class="ss-copy-btn" onclick="copySkill('skill-16-code', this)">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
-                        Copy
-                    </button>
+                    <div class="ss-header-buttons">
+                        <button class="ss-copy-btn" onclick="copySkill('skill-16-code', this)">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+                            Copy
+                        </button>
+                        <button class="ss-copy-btn" onclick="downloadSkill('skill-16-code', 'search-real-estate-tracker.md')">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                            Download
+                        </button>
+                    </div>
                 </div>
                 <div class="ss-skill-code"><pre id="skill-16-code">---
 description: Track which brands dominate organic and sponsored placements for high-volume Amazon keywords
@@ -1795,10 +1896,16 @@ For each keyword, build a map of:
             <div class="ss-skill-block" id="skill-17">
                 <div class="ss-skill-header">
                     <span>seo-listing-builder.md</span>
-                    <button class="ss-copy-btn" onclick="copySkill('skill-17-code', this)">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
-                        Copy
-                    </button>
+                    <div class="ss-header-buttons">
+                        <button class="ss-copy-btn" onclick="copySkill('skill-17-code', this)">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+                            Copy
+                        </button>
+                        <button class="ss-copy-btn" onclick="downloadSkill('skill-17-code', 'seo-listing-builder.md')">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                            Download
+                        </button>
+                    </div>
                 </div>
                 <div class="ss-skill-code"><pre id="skill-17-code">---
 description: Generate SEO-optimized Amazon listing copy using SmartScout keyword data and competitor analysis
@@ -1880,10 +1987,16 @@ Select: 5-7 primary keywords for title, 15-20 secondary for bullets, remaining f
             <div class="ss-skill-block" id="skill-18">
                 <div class="ss-skill-header">
                     <span>review-sentiment-analyzer.md</span>
-                    <button class="ss-copy-btn" onclick="copySkill('skill-18-code', this)">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
-                        Copy
-                    </button>
+                    <div class="ss-header-buttons">
+                        <button class="ss-copy-btn" onclick="copySkill('skill-18-code', this)">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+                            Copy
+                        </button>
+                        <button class="ss-copy-btn" onclick="downloadSkill('skill-18-code', 'review-sentiment-analyzer.md')">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                            Download
+                        </button>
+                    </div>
                 </div>
                 <div class="ss-skill-code"><pre id="skill-18-code">---
 description: Analyze competitor review sentiment at scale to identify product improvement opportunities
@@ -1965,10 +2078,16 @@ For each competitor ASIN:
             <div class="ss-skill-block" id="skill-19">
                 <div class="ss-skill-header">
                     <span>brand-pitch-finder.md</span>
-                    <button class="ss-copy-btn" onclick="copySkill('skill-19-code', this)">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
-                        Copy
-                    </button>
+                    <div class="ss-header-buttons">
+                        <button class="ss-copy-btn" onclick="copySkill('skill-19-code', this)">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+                            Copy
+                        </button>
+                        <button class="ss-copy-btn" onclick="downloadSkill('skill-19-code', 'brand-pitch-finder.md')">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                            Download
+                        </button>
+                    </div>
                 </div>
                 <div class="ss-skill-code"><pre id="skill-19-code">---
 description: Find high-revenue Amazon brands with poor listing quality to pitch agency optimization services
@@ -2070,10 +2189,16 @@ For each top prospect:
             <div class="ss-skill-block" id="skill-20">
                 <div class="ss-skill-header">
                     <span>map-violation-monitor.md</span>
-                    <button class="ss-copy-btn" onclick="copySkill('skill-20-code', this)">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
-                        Copy
-                    </button>
+                    <div class="ss-header-buttons">
+                        <button class="ss-copy-btn" onclick="copySkill('skill-20-code', this)">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+                            Copy
+                        </button>
+                        <button class="ss-copy-btn" onclick="downloadSkill('skill-20-code', 'map-violation-monitor.md')">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                            Download
+                        </button>
+                    </div>
                 </div>
                 <div class="ss-skill-code"><pre id="skill-20-code">---
 description: Monitor Amazon listings for MAP (Minimum Advertised Price) violations and unauthorized sellers
@@ -2151,10 +2276,16 @@ For each product with MAP pricing defined:
             <div class="ss-skill-block" id="skill-21">
                 <div class="ss-skill-header">
                     <span>revenue-split-analyzer.md</span>
-                    <button class="ss-copy-btn" onclick="copySkill('skill-21-code', this)">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
-                        Copy
-                    </button>
+                    <div class="ss-header-buttons">
+                        <button class="ss-copy-btn" onclick="copySkill('skill-21-code', this)">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+                            Copy
+                        </button>
+                        <button class="ss-copy-btn" onclick="downloadSkill('skill-21-code', 'revenue-split-analyzer.md')">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                            Download
+                        </button>
+                    </div>
                 </div>
                 <div class="ss-skill-code"><pre id="skill-21-code">---
 description: Analyze 1P (Amazon Retail) vs 3P (third-party) revenue distribution for a brand
@@ -2230,10 +2361,16 @@ Track how the split has changed over time:
             <div class="ss-skill-block" id="skill-22">
                 <div class="ss-skill-header">
                     <span>competitor-intel-report.md</span>
-                    <button class="ss-copy-btn" onclick="copySkill('skill-22-code', this)">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
-                        Copy
-                    </button>
+                    <div class="ss-header-buttons">
+                        <button class="ss-copy-btn" onclick="copySkill('skill-22-code', this)">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+                            Copy
+                        </button>
+                        <button class="ss-copy-btn" onclick="downloadSkill('skill-22-code', 'competitor-intel-report.md')">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                            Download
+                        </button>
+                    </div>
                 </div>
                 <div class="ss-skill-code"><pre id="skill-22-code">---
 description: Generate a comprehensive competitor intelligence report with sales, catalog, and ranking data from SmartScout
@@ -2323,10 +2460,16 @@ Tip: Schedule this skill with Claude Code's /schedule command for weekly or mont
             <div class="ss-skill-block" id="skill-23">
                 <div class="ss-skill-header">
                     <span>custom-market-segment.md</span>
-                    <button class="ss-copy-btn" onclick="copySkill('skill-23-code', this)">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
-                        Copy
-                    </button>
+                    <div class="ss-header-buttons">
+                        <button class="ss-copy-btn" onclick="copySkill('skill-23-code', this)">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+                            Copy
+                        </button>
+                        <button class="ss-copy-btn" onclick="downloadSkill('skill-23-code', 'custom-market-segment.md')">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                            Download
+                        </button>
+                    </div>
                 </div>
                 <div class="ss-skill-code"><pre id="skill-23-code">---
 description: Build and analyze a custom market segment from specific ASINs, brands, or subcategories
@@ -2414,10 +2557,16 @@ for subcat in subcategories:
             <div class="ss-skill-block" id="skill-24">
                 <div class="ss-skill-header">
                     <span>buybox-logistics-optimizer.md</span>
-                    <button class="ss-copy-btn" onclick="copySkill('skill-24-code', this)">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
-                        Copy
-                    </button>
+                    <div class="ss-header-buttons">
+                        <button class="ss-copy-btn" onclick="copySkill('skill-24-code', this)">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+                            Copy
+                        </button>
+                        <button class="ss-copy-btn" onclick="downloadSkill('skill-24-code', 'buybox-logistics-optimizer.md')">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                            Download
+                        </button>
+                    </div>
                 </div>
                 <div class="ss-skill-code"><pre id="skill-24-code">---
 description: Analyze Buy Box win rates by geography and optimize FBA/3PL inventory distribution
@@ -2491,10 +2640,16 @@ Based on seller competition patterns:
             <div class="ss-skill-block" id="skill-25">
                 <div class="ss-skill-header">
                     <span>live-collection-manager.md</span>
-                    <button class="ss-copy-btn" onclick="copySkill('skill-25-code', this)">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
-                        Copy
-                    </button>
+                    <div class="ss-header-buttons">
+                        <button class="ss-copy-btn" onclick="copySkill('skill-25-code', this)">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+                            Copy
+                        </button>
+                        <button class="ss-copy-btn" onclick="downloadSkill('skill-25-code', 'live-collection-manager.md')">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                            Download
+                        </button>
+                    </div>
                 </div>
                 <div class="ss-skill-code"><pre id="skill-25-code">---
 description: Build and monitor a live product collection with real-time SmartScout data instead of static spreadsheets
@@ -2603,6 +2758,18 @@ function filterCategory(cat, btn) {
 function toggleSkill(btn) {
     btn.classList.toggle('open');
     btn.nextElementSibling.classList.toggle('open');
+}
+function downloadSkill(preId, filename) {
+    var text = document.getElementById(preId).textContent;
+    var blob = new Blob([text], { type: 'text/markdown' });
+    var url = URL.createObjectURL(blob);
+    var a = document.createElement('a');
+    a.href = url;
+    a.download = filename;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
 }
 function copySkill(preId, btn) {
     var text = document.getElementById(preId).textContent;
