@@ -1,0 +1,2619 @@
+---
+title: "SmartScout + Claude Code — 25 Amazon Seller Workflows Automated"
+description: "25 common SmartScout workflows for Amazon sellers — with ready-to-use Claude Code skills that connect directly to the SmartScout API. Copy, paste, run."
+keywords: "SmartScout, Claude Code, Amazon seller workflows, SmartScout API, Amazon automation, wholesale sourcing, private label research, PPC strategy"
+permalink: /smartscout/
+---
+{% extends "base.njk" %}
+
+{% block head %}
+<meta name="robots" content="noindex, nofollow">
+<style>
+.ss-hero {
+    padding: 10rem 0 4rem;
+    text-align: center;
+}
+.ss-hero h1 {
+    font-family: var(--font-heading);
+    font-size: 3.2rem;
+    font-weight: 800;
+    color: var(--white);
+    line-height: 1.15;
+    max-width: 800px;
+    margin: 0 auto 1.5rem;
+}
+.ss-hero h1 span {
+    background: linear-gradient(135deg, #9c30ff, #F0B429);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+.ss-hero-sub {
+    font-size: 1.15rem;
+    color: var(--light-gray);
+    max-width: 640px;
+    margin: 0 auto 2rem;
+    line-height: 1.7;
+}
+.ss-badges {
+    display: flex;
+    gap: 0.75rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 2rem;
+}
+.ss-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    background: var(--dark-bg-card);
+    border: 1px solid var(--border-light);
+    border-radius: 100px;
+    padding: 0.5rem 1rem;
+    font-size: 0.85rem;
+    color: var(--text-gray);
+}
+.ss-badge svg {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+}
+.ss-categories {
+    position: sticky;
+    top: 70px;
+    z-index: 50;
+    background: rgba(10,10,10,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border-light);
+    padding: 1rem 0;
+}
+.ss-cat-list {
+    display: flex;
+    gap: 0.5rem;
+    overflow-x: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    padding: 0 1rem;
+}
+.ss-cat-list::-webkit-scrollbar { display: none; }
+.ss-cat-btn {
+    flex-shrink: 0;
+    padding: 0.5rem 1.25rem;
+    border-radius: 100px;
+    border: 1px solid var(--border-light);
+    background: transparent;
+    color: var(--text-gray);
+    font-size: 0.85rem;
+    font-family: var(--font-body);
+    cursor: pointer;
+    transition: all 0.2s;
+    white-space: nowrap;
+}
+.ss-cat-btn:hover,
+.ss-cat-btn.active {
+    background: var(--purple-primary);
+    border-color: var(--purple-primary);
+    color: var(--white);
+}
+.ss-section {
+    padding: 4rem 0 2rem;
+}
+.ss-section-title {
+    font-family: var(--font-heading);
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 0.5rem;
+}
+.ss-section-count {
+    font-size: 0.85rem;
+    color: var(--text-gray);
+    margin-bottom: 2rem;
+}
+.ss-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+}
+.ss-card {
+    background: var(--dark-bg-card);
+    border: 1px solid var(--border-light);
+    border-radius: 12px;
+    padding: 1.75rem;
+    transition: all 0.25s ease;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+.ss-card:hover {
+    border-color: var(--purple-primary);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 32px rgba(156, 48, 255, 0.1);
+}
+.ss-card-number {
+    position: absolute;
+    top: 1.25rem;
+    right: 1.25rem;
+    font-family: var(--font-heading);
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--purple-primary);
+    background: rgba(156, 48, 255, 0.1);
+    border-radius: 6px;
+    padding: 0.2rem 0.5rem;
+}
+.ss-card h3 {
+    font-family: var(--font-heading);
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 0.75rem;
+    padding-right: 2.5rem;
+    line-height: 1.3;
+}
+.ss-card p {
+    font-size: 0.92rem;
+    color: var(--light-gray);
+    line-height: 1.65;
+    flex: 1;
+}
+.ss-card-tags {
+    display: flex;
+    gap: 0.4rem;
+    flex-wrap: wrap;
+    margin-top: 1rem;
+}
+.ss-tag {
+    font-size: 0.72rem;
+    padding: 0.2rem 0.6rem;
+    border-radius: 4px;
+    background: rgba(156, 48, 255, 0.08);
+    color: var(--purple-accent);
+    border: 1px solid rgba(156, 48, 255, 0.15);
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    font-weight: 600;
+}
+.ss-tag-api {
+    background: rgba(240, 180, 41, 0.08);
+    color: var(--accent-warm);
+    border-color: rgba(240, 180, 41, 0.15);
+}
+.ss-skill-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    margin-top: 1rem;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    border: 1px solid var(--purple-primary);
+    background: rgba(156, 48, 255, 0.08);
+    color: var(--purple-primary);
+    font-size: 0.82rem;
+    font-weight: 600;
+    font-family: var(--font-body);
+    cursor: pointer;
+    transition: all 0.2s;
+}
+.ss-skill-toggle:hover {
+    background: rgba(156, 48, 255, 0.15);
+}
+.ss-skill-toggle svg {
+    width: 14px;
+    height: 14px;
+    transition: transform 0.2s;
+}
+.ss-skill-toggle.open svg {
+    transform: rotate(180deg);
+}
+.ss-skill-block {
+    display: none;
+    margin-top: 1rem;
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid var(--border-dark);
+}
+.ss-skill-block.open {
+    display: block;
+}
+.ss-skill-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #1a1a2e;
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid var(--border-dark);
+}
+.ss-skill-header span {
+    font-size: 0.78rem;
+    color: var(--text-gray);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+.ss-copy-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.35rem 0.75rem;
+    border-radius: 6px;
+    border: 1px solid var(--border-dark);
+    background: rgba(255,255,255,0.04);
+    color: var(--text-gray);
+    font-size: 0.75rem;
+    font-family: var(--font-body);
+    cursor: pointer;
+    transition: all 0.2s;
+}
+.ss-copy-btn:hover {
+    background: rgba(255,255,255,0.08);
+    color: var(--white);
+    border-color: var(--purple-primary);
+}
+.ss-copy-btn.copied {
+    color: #4ade80;
+    border-color: #4ade80;
+}
+.ss-copy-btn svg {
+    width: 13px;
+    height: 13px;
+}
+.ss-skill-code {
+    background: #0d0d1a;
+    padding: 1.25rem;
+    overflow-x: auto;
+    max-height: 500px;
+    overflow-y: auto;
+}
+.ss-skill-code pre {
+    margin: 0;
+    font-family: 'SF Mono', 'Fira Code', 'Cascadia Code', monospace;
+    font-size: 0.8rem;
+    line-height: 1.6;
+    color: #c9d1d9;
+    white-space: pre-wrap;
+    word-break: break-word;
+}
+.ss-cta {
+    text-align: center;
+    padding: 5rem 0;
+    border-top: 1px solid var(--border-light);
+}
+.ss-cta h2 {
+    font-family: var(--font-heading);
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 1rem;
+}
+.ss-cta p {
+    color: var(--light-gray);
+    font-size: 1.05rem;
+    max-width: 540px;
+    margin: 0 auto 2rem;
+    line-height: 1.6;
+}
+.ss-cta-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+@media (max-width: 768px) {
+    .ss-hero h1 { font-size: 2.2rem; }
+    .ss-grid { grid-template-columns: 1fr; }
+    .ss-hero { padding: 8rem 0 3rem; }
+}
+@media (max-width: 480px) {
+    .ss-hero h1 { font-size: 1.8rem; }
+    .ss-section-title { font-size: 1.3rem; }
+}
+</style>
+{% endblock %}
+
+{% block content %}
+
+<section class="ss-hero">
+    <div class="container">
+        <h1>25 Amazon Seller Workflows.<br><span>Automated with SmartScout + Claude Code.</span></h1>
+        <p class="ss-hero-sub">
+            SmartScout is the data layer. Claude Code is the execution layer. Together, they turn manual research into one-command workflows. Here are 25 of the most common things sellers do in SmartScout — with ready-to-use Claude Code skills for each.
+        </p>
+        <div class="ss-badges">
+            <span class="ss-badge">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+                25 Workflows
+            </span>
+            <span class="ss-badge">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+                Copy-Paste Skills
+            </span>
+            <span class="ss-badge">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                SmartScout API
+            </span>
+        </div>
+    </div>
+</section>
+
+<div class="ss-categories">
+    <div class="container">
+        <div class="ss-cat-list">
+            <button class="ss-cat-btn active" onclick="filterCategory('all', this)">All Workflows</button>
+            <button class="ss-cat-btn" onclick="filterCategory('wholesale', this)">Wholesale &amp; OA</button>
+            <button class="ss-cat-btn" onclick="filterCategory('private-label', this)">Private Label</button>
+            <button class="ss-cat-btn" onclick="filterCategory('ppc', this)">PPC &amp; Ads</button>
+            <button class="ss-cat-btn" onclick="filterCategory('listing', this)">Listing &amp; AI</button>
+            <button class="ss-cat-btn" onclick="filterCategory('brand', this)">Brand &amp; Agency</button>
+        </div>
+    </div>
+</div>
+
+<!-- ==================== WHOLESALE & ONLINE ARBITRAGE ==================== -->
+<section class="ss-section container" data-category="wholesale">
+    <h2 class="ss-section-title">Wholesale & Online Arbitrage</h2>
+    <p class="ss-section-count">7 workflows for product sourcing</p>
+    <div class="ss-grid">
+
+        <!-- #1 -->
+        <div class="ss-card">
+            <span class="ss-card-number">#1</span>
+            <h3>Filtering for Wholesale-Friendly Brands</h3>
+            <p>Using the Brands tool to filter for companies with high monthly revenue, a low Amazon in-stock rate (to avoid competing against Amazon Retail), and multiple active sellers to find lucrative wholesale supplier targets.</p>
+            <div class="ss-card-tags">
+                <span class="ss-tag">Brands Search</span>
+                <span class="ss-tag">Seller Coverage</span>
+                <span class="ss-tag-api ss-tag">API Ready</span>
+            </div>
+            <button class="ss-skill-toggle" onclick="toggleSkill(this)">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+                View Claude Code Skill
+            </button>
+            <div class="ss-skill-block" id="skill-1">
+                <div class="ss-skill-header">
+                    <span>wholesale-brand-filter.md</span>
+                    <button class="ss-copy-btn" onclick="copySkill('skill-1-code', this)">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+                        Copy
+                    </button>
+                </div>
+                <div class="ss-skill-code"><pre id="skill-1-code">---
+description: Filter SmartScout for wholesale-friendly Amazon brands with high revenue, low Amazon in-stock rate, and multiple sellers
+---
+
+# Wholesale Brand Filter
+
+Find wholesale-friendly brands on Amazon using SmartScout — brands with strong revenue where Amazon Retail is NOT the dominant seller and multiple 3P sellers already compete (indicating the brand is open to resellers).
+
+## Instructions
+
+The user will provide: $ARGUMENTS
+
+Parse:
+- **Category** (optional) — Amazon category to filter (default: all)
+- **Min revenue** (optional) — monthly revenue floor (default: $100K)
+- **Max Amazon in-stock** (optional) — Amazon Retail in-stock rate ceiling (default: 30%)
+- **Min sellers** (optional) — minimum active sellers (default: 3)
+- **Max sellers** (optional) — maximum active sellers (default: 20)
+- **Result count** (optional) — number of brands to return (default: 25)
+
+### Step 1: Run the Brand Search
+
+```python
+import sys, os, json
+sys.path.insert(0, os.path.expanduser("~/Documents/aspi/tools"))
+from smartscout.client import SmartScoutClient
+
+client = SmartScoutClient()
+
+results = client.search_brands(
+    category=category,          # user arg or None
+    revenue_min=100000,         # default $100K/month
+    has_storefront=None,        # wholesale = storefront not required
+    sort_by="monthlyRevenue",
+    sort_order="desc",
+    page_size=50                # fetch extra, filter down
+)
+```
+
+### Step 2: Apply Wholesale Filters
+
+For each brand returned, check:
+- **Amazon in-stock rate &lt; 30%** — low Amazon Retail presence means 3P sellers can win the Buy Box
+- **Seller count &gt;= 3** — multiple sellers = brand is wholesale-friendly, not gated
+- **Seller count &lt;= 20** — not oversaturated with competition
+- **Monthly revenue &gt;= threshold** — enough volume to justify wholesale account setup
+
+Pull seller data for top candidates:
+```python
+for brand in filtered_brands:
+    sellers = client.brand_sellers(brand["brandName"])
+    market_share = client.brand_market_share(brand["brandName"])
+```
+
+### Step 3: Score and Rank
+
+| Criteria | Weight | Ideal Range |
+|----------|--------|-------------|
+| Monthly revenue | High | $100K-$2M |
+| Amazon in-stock rate | High | &lt;30% |
+| Active seller count | Medium | 3-15 |
+| MoM growth | Medium | Positive |
+| Brand score | Low | Lower = margin opportunity |
+| Product count | Low | 10+ SKUs |
+
+### Step 4: Output Results
+
+Print a ranked table: Rank, Brand, Revenue, Amazon %, Sellers, Growth, Products, Score.
+
+For the top 5, include a wholesale viability note covering Amazon Retail presence, seller landscape, growth trajectory, and recommended next step.
+
+### Step 5: Save Output
+
+Save to ~/Documents/.tmp/wholesale-brands-[YYYY-MM-DD].md</pre></div>
+            </div>
+        </div>
+
+        <!-- #2 -->
+        <div class="ss-card">
+            <span class="ss-card-number">#2</span>
+            <h3>Bulk Processing Supplier Lists</h3>
+            <p>Uploading a distributor's spreadsheet into the UPC Scanner to rapidly cross-reference hundreds of items with live Amazon sales data and profitability metrics.</p>
+            <div class="ss-card-tags">
+                <span class="ss-tag">Product Search</span>
+                <span class="ss-tag">UPC Scanner</span>
+                <span class="ss-tag-api ss-tag">API Ready</span>
+            </div>
+            <button class="ss-skill-toggle" onclick="toggleSkill(this)">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+                View Claude Code Skill
+            </button>
+            <div class="ss-skill-block" id="skill-2">
+                <div class="ss-skill-header">
+                    <span>bulk-supplier-scan.md</span>
+                    <button class="ss-copy-btn" onclick="copySkill('skill-2-code', this)">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+                        Copy
+                    </button>
+                </div>
+                <div class="ss-skill-code"><pre id="skill-2-code">---
+description: Cross-reference a supplier's product list against live Amazon data via SmartScout
+---
+
+# Bulk Process Supplier List
+
+Cross-reference a distributor's spreadsheet of UPCs or ASINs against live Amazon sales data and profitability metrics using SmartScout.
+
+## Instructions
+
+The user will provide: $ARGUMENTS
+
+Parse:
+- **File path** (required) — path to CSV, TSV, or XLSX with supplier inventory
+- **Column name** (optional) — column containing UPC or ASIN (auto-detected if omitted)
+- **Min revenue** (optional) — monthly revenue floor (default: $0)
+- **Min ROI** (optional) — ROI threshold (default: 0%)
+- **Cost column** (optional) — column with wholesale cost for margin calc
+
+### Step 1: Load the Supplier File
+
+```python
+import csv, json, os, sys
+
+file_path = os.path.expanduser("&lt;USER_FILE_PATH&gt;")
+
+if file_path.endswith(".xlsx"):
+    import subprocess
+    subprocess.run(["pip", "install", "openpyxl", "-q"], check=True)
+    from openpyxl import load_workbook
+    wb = load_workbook(file_path)
+    ws = wb.active
+    headers = [c.value for c in ws[1]]
+    rows = [{headers[i]: cell.value for i, cell in enumerate(row)} for row in ws.iter_rows(min_row=2)]
+else:
+    with open(file_path) as f:
+        delimiter = "\t" if file_path.endswith(".tsv") else ","
+        reader = csv.DictReader(f, delimiter=delimiter)
+        headers = reader.fieldnames
+        rows = list(reader)
+```
+
+Auto-detect the identifier column by scanning headers for: UPC, GTIN, EAN, ASIN, Barcode, SKU. Prefer ASIN if present, then UPC.
+
+### Step 2: Look Up Each Product in SmartScout
+
+```python
+sys.path.insert(0, os.path.expanduser("~/Documents/aspi/tools"))
+from smartscout.client import SmartScoutClient
+
+client = SmartScoutClient()
+results = []
+
+for row in rows:
+    identifier = row[id_column]
+    if not identifier:
+        continue
+    try:
+        if id_column.upper() == "ASIN":
+            products = client.search_products(asin=str(identifier), page_size=1)
+        else:
+            products = client.search_products(title=str(identifier), page_size=1)
+
+        records = products.get("data", products.get("records", []))
+        if records:
+            product = records[0]
+            results.append({
+                "supplier_row": row,
+                "asin": product.get("asin"),
+                "title": product.get("title", "")[:80],
+                "brand": product.get("brandName"),
+                "monthly_revenue": product.get("monthlyRevenueEstimate"),
+                "price": product.get("buyBoxPrice"),
+                "bsr": product.get("salesRank"),
+                "review_count": product.get("reviewCount"),
+                "rating": product.get("reviewRating"),
+                "category": product.get("categoryName"),
+                "seller_count": product.get("sellerCount"),
+                "amazon_in_stock": product.get("amazonInStockRate"),
+            })
+    except Exception as e:
+        results.append({"supplier_row": row, "error": str(e)})
+```
+
+### Step 3: Calculate Margins (if cost column provided)
+
+- **Gross margin:** Buy Box Price - Wholesale Cost
+- **Estimated ROI:** (Gross Margin / Wholesale Cost) x 100
+- **FBA fee estimate:** ~15% referral + size-based fulfillment
+- **Net margin:** Gross Margin - Estimated FBA Fees
+
+### Step 4: Filter and Rank
+
+Rank by: Net ROI, Monthly revenue, Low seller count, Low Amazon in-stock, Stable BSR.
+
+### Step 5: Output ranked table and save to ~/Documents/.tmp/supplier-scan-[YYYY-MM-DD].md</pre></div>
+            </div>
+        </div>
+
+        <!-- #3 -->
+        <div class="ss-card">
+            <span class="ss-card-number">#3</span>
+            <h3>Reverse-Engineering Competitor Storefronts</h3>
+            <p>Plugging a successful competitor's Seller ID into the Seller Search tool to extract their entire catalog and uncover their most profitable brand relationships.</p>
+            <div class="ss-card-tags">
+                <span class="ss-tag">Seller Search</span>
+                <span class="ss-tag">Catalog Export</span>
+                <span class="ss-tag-api ss-tag">API Ready</span>
+            </div>
+            <button class="ss-skill-toggle" onclick="toggleSkill(this)">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+                View Claude Code Skill
+            </button>
+            <div class="ss-skill-block" id="skill-3">
+                <div class="ss-skill-header">
+                    <span>competitor-storefront-scan.md</span>
+                    <button class="ss-copy-btn" onclick="copySkill('skill-3-code', this)">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+                        Copy
+                    </button>
+                </div>
+                <div class="ss-skill-code"><pre id="skill-3-code">---
+description: Extract a competitor's full Amazon catalog and brand relationships from their Seller ID via SmartScout
+---
+
+# Reverse-Engineer Competitor Storefront
+
+Take a competitor's Amazon Seller ID and extract their entire catalog — brands they carry, top-performing ASINs, revenue estimates, and brand relationships.
+
+## Instructions
+
+The user will provide: $ARGUMENTS
+
+Parse:
+- **Seller ID** (required) — Amazon Seller ID (e.g., A1B2C3D4E5F6G7)
+- **Min revenue** (optional) — filter products below this monthly revenue (default: $0)
+- **Sort by** (optional) — revenue, rank, or reviews (default: revenue)
+
+### Step 1: Search for the Seller
+
+```python
+import sys, os, json
+sys.path.insert(0, os.path.expanduser("~/Documents/aspi/tools"))
+from smartscout.client import SmartScoutClient
+
+client = SmartScoutClient()
+
+# Search for products associated with this seller
+# Pull multiple pages to build full catalog
+all_products = []
+page_id = None
+for _ in range(10):  # up to 250 products
+    results = client.search_products(page_size=25, page_id=page_id)
+    records = results.get("data", results.get("records", []))
+    if not records:
+        break
+    all_products.extend(records)
+    page_id = results.get("nextPageId")
+    if not page_id:
+        break
+```
+
+### Step 2: Map Brand Relationships
+
+Group products by brand and calculate:
+- Number of ASINs per brand
+- Total estimated revenue per brand
+- Average review rating per brand
+- Brand's overall Amazon revenue (via brand search)
+
+```python
+from collections import defaultdict
+
+brand_map = defaultdict(list)
+for product in all_products:
+    brand_map[product.get("brandName", "Unknown")].append(product)
+
+# Enrich with brand-level data
+for brand_name in list(brand_map.keys())[:20]:
+    try:
+        brand_data = client.search_brands(brand_name=brand_name, page_size=1)
+        records = brand_data.get("data", brand_data.get("records", []))
+        if records:
+            brand_map[brand_name].append({"_brand_info": records[0]})
+    except:
+        pass
+```
+
+### Step 3: Identify Most Profitable Relationships
+
+Rank brands by: total revenue from this seller, number of ASINs, growth rate, and whether the seller has exclusive or near-exclusive coverage.
+
+### Step 4: Output
+
+Print two tables:
+1. **Brand Relationships** — Brand, ASINs, Revenue, Seller Share, Growth
+2. **Top Products** — ASIN, Title, Revenue, Price, BSR, Reviews
+
+### Step 5: Save to ~/Documents/.tmp/competitor-storefront-[SellerID]-[YYYY-MM-DD].md</pre></div>
+            </div>
+        </div>
+
+        <!-- #4 -->
+        <div class="ss-card">
+            <span class="ss-card-number">#4</span>
+            <h3>Sourcing Local Leads via the Seller Map</h3>
+            <p>Browsing the geographic Seller Map to find high-revenue Amazon sellers, brands, or distributors in a specific region for networking, acquisitions, or local liquidation sourcing.</p>
+            <div class="ss-card-tags">
+                <span class="ss-tag">Seller Map</span>
+                <span class="ss-tag">Geographic</span>
+                <span class="ss-tag-api ss-tag">API Ready</span>
+            </div>
+            <button class="ss-skill-toggle" onclick="toggleSkill(this)">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+                View Claude Code Skill
+            </button>
+            <div class="ss-skill-block" id="skill-4">
+                <div class="ss-skill-header">
+                    <span>local-seller-leads.md</span>
+                    <button class="ss-copy-btn" onclick="copySkill('skill-4-code', this)">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+                        Copy
+                    </button>
+                </div>
+                <div class="ss-skill-code"><pre id="skill-4-code">---
+description: Find high-revenue Amazon sellers and brands in a specific geographic region using SmartScout
+---
+
+# Local Seller Lead Finder
+
+Find Amazon sellers, brands, and potential distributors in a target geographic region for networking, acquisition, or sourcing opportunities.
+
+## Instructions
+
+The user will provide: $ARGUMENTS
+
+Parse:
+- **Region** (required) — state, city, or metro area (e.g., "Texas", "Nashville", "Pacific Northwest")
+- **Min revenue** (optional) — monthly revenue floor (default: $50K)
+- **Category** (optional) — Amazon category filter
+- **Purpose** (optional) — networking, acquisition, sourcing, or liquidation
+
+### Step 1: Search Brands by Region
+
+```python
+import sys, os, json
+sys.path.insert(0, os.path.expanduser("~/Documents/aspi/tools"))
+from smartscout.client import SmartScoutClient
+
+client = SmartScoutClient()
+
+# Search for brands — filter by category and revenue
+results = client.search_brands(
+    category=category,
+    revenue_min=50000,
+    has_storefront=True,  # storefront = identifiable brand owner
+    sort_by="monthlyRevenue",
+    sort_order="desc",
+    page_size=50
+)
+```
+
+### Step 2: Enrich with Seller Data
+
+For each brand found, pull seller details to identify location and business info:
+```python
+for brand in brands:
+    try:
+        sellers = client.brand_sellers(brand["brandName"])
+        # Check seller location against target region
+    except:
+        pass
+```
+
+### Step 3: Categorize Leads
+
+Group leads by type:
+- **Brand owners** — founders operating from the target region
+- **High-volume resellers** — established wholesale operations
+- **Emerging sellers** — high growth, smaller revenue (acquisition targets)
+- **Distributors** — sellers carrying many brands (potential sourcing partners)
+
+### Step 4: Output
+
+Print a table: Seller/Brand, Revenue, Location, Type, Products, Growth, Contact Angle.
+
+### Step 5: Save to ~/Documents/.tmp/local-leads-[Region]-[YYYY-MM-DD].md</pre></div>
+            </div>
+        </div>
+
+        <!-- #5 -->
+        <div class="ss-card">
+            <span class="ss-card-number">#5</span>
+            <h3>Analyzing Buy Box Dominance</h3>
+            <p>Checking the "Seller Coverage" view on a brand's profile to see if Amazon 1P or a single dominant third-party seller monopolizes the Buy Box, helping sellers avoid unwinnable listings.</p>
+            <div class="ss-card-tags">
+                <span class="ss-tag">Seller Coverage</span>
+                <span class="ss-tag">Buy Box</span>
+                <span class="ss-tag-api ss-tag">API Ready</span>
+            </div>
+            <button class="ss-skill-toggle" onclick="toggleSkill(this)">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+                View Claude Code Skill
+            </button>
+            <div class="ss-skill-block" id="skill-5">
+                <div class="ss-skill-header">
+                    <span>buy-box-analysis.md</span>
+                    <button class="ss-copy-btn" onclick="copySkill('skill-5-code', this)">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+                        Copy
+                    </button>
+                </div>
+                <div class="ss-skill-code"><pre id="skill-5-code">---
+description: Analyze Buy Box dominance for a brand or ASIN — check if Amazon 1P or a single seller monopolizes it
+---
+
+# Buy Box Dominance Analyzer
+
+Check whether Amazon Retail (1P) or a single dominant 3P seller controls the Buy Box for a brand or specific ASINs. Helps sellers avoid unwinnable listings.
+
+## Instructions
+
+The user will provide: $ARGUMENTS
+
+Parse:
+- **Brand name** or **ASIN(s)** (required) — the brand or products to analyze
+- **Threshold** (optional) — Buy Box share % that counts as "dominant" (default: 70%)
+
+### Step 1: Pull Brand and Seller Data
+
+```python
+import sys, os, json
+sys.path.insert(0, os.path.expanduser("~/Documents/aspi/tools"))
+from smartscout.client import SmartScoutClient
+
+client = SmartScoutClient()
+
+# Get brand overview
+brand_data = client.search_brands(brand_name=brand_name, page_size=1)
+sellers = client.brand_sellers(brand_name)
+market_share = client.brand_market_share(brand_name)
+
+# Get top products and their offers
+products = client.search_products(brand_name=brand_name, page_size=25)
+records = products.get("data", products.get("records", []))
+
+for product in records[:10]:
+    offers = client.product_offers(product["asin"])
+```
+
+### Step 2: Calculate Buy Box Distribution
+
+For each product, determine:
+- Who holds the Buy Box (Amazon, FBA seller, FBM seller)
+- Amazon in-stock rate across the brand
+- Number of competing offers per ASIN
+- Price spread between Buy Box winner and other offers
+
+### Step 3: Classify Brand
+
+- **Amazon Dominated** — Amazon 1P in-stock &gt; 70%. Avoid unless exclusive wholesale deal.
+- **Single Seller Lock** — One 3P seller holds &gt; 70% of listings. Hard to break in.
+- **Competitive** — 3-10 sellers, no single entity &gt; 40%. Fair Buy Box rotation.
+- **Wide Open** — Many sellers, fragmented share. Easy entry but watch margins.
+
+### Step 4: Output verdict with table: ASIN, Buy Box Holder, Amazon %, Seller Count, Price, Recommendation.
+
+### Step 5: Save to ~/Documents/.tmp/buybox-analysis-[brand]-[YYYY-MM-DD].md</pre></div>
+            </div>
+        </div>
+
+        <!-- #6 -->
+        <div class="ss-card">
+            <span class="ss-card-number">#6</span>
+            <h3>Verifying Resell Eligibility and Restrictions</h3>
+            <p>Activating the SmartScout Chrome Extension on a live Amazon listing to instantly see gate restrictions, HAZMAT status, or brand gating before purchasing inventory.</p>
+            <div class="ss-card-tags">
+                <span class="ss-tag">Chrome Extension</span>
+                <span class="ss-tag">Gating Check</span>
+                <span class="ss-tag-api ss-tag">API Ready</span>
+            </div>
+            <button class="ss-skill-toggle" onclick="toggleSkill(this)">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+                View Claude Code Skill
+            </button>
+            <div class="ss-skill-block" id="skill-6">
+                <div class="ss-skill-header">
+                    <span>resell-eligibility-check.md</span>
+                    <button class="ss-copy-btn" onclick="copySkill('skill-6-code', this)">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+                        Copy
+                    </button>
+                </div>
+                <div class="ss-skill-code"><pre id="skill-6-code">---
+description: Check resell eligibility, gating status, and restrictions for Amazon ASINs using SmartScout data
+---
+
+# Resell Eligibility Checker
+
+Pre-screen ASINs for resell viability — check seller count, brand gating signals, Amazon dominance, and category restrictions before committing to inventory.
+
+## Instructions
+
+The user will provide: $ARGUMENTS
+
+Parse:
+- **ASIN(s)** (required) — one or more ASINs to check
+- **Seller Central account** (optional) — note that full gating checks require Seller Central login
+
+### Step 1: Pull Product and Offer Data
+
+```python
+import sys, os, json
+sys.path.insert(0, os.path.expanduser("~/Documents/aspi/tools"))
+from smartscout.client import SmartScoutClient
+
+client = SmartScoutClient()
+
+for asin in asins:
+    product = client.search_products(asin=asin, page_size=1)
+    offers = client.product_offers(asin)
+    records = product.get("data", product.get("records", []))
+    if records:
+        p = records[0]
+        brand_sellers = client.brand_sellers(p.get("brandName", ""))
+```
+
+### Step 2: Evaluate Resell Signals
+
+For each ASIN, flag:
+- **Seller count** — 0-1 sellers = likely gated or restricted
+- **Amazon in-stock** — high % = Amazon Retail dominance, hard to win Buy Box
+- **Category** — flag known restricted categories (Grocery, Health, Beauty, Topicals)
+- **Brand exclusivity signals** — single seller + storefront = likely brand-gated
+- **Price stability** — volatile pricing = race-to-bottom risk
+
+### Step 3: Risk Classification
+
+- **GREEN** — Multiple sellers, no Amazon dominance, open category. Safe to list.
+- **YELLOW** — Some risk factors. Check Seller Central for gating before buying.
+- **RED** — Strong gating signals, Amazon dominated, or restricted category. Avoid.
+
+### Step 4: Output table: ASIN, Title, Risk Level, Sellers, Amazon %, Category, Flags.
+
+Note: This skill provides data-driven signals. Confirm actual gating status in Seller Central or via the SmartScout Chrome Extension on the live listing.
+
+### Step 5: Save to ~/Documents/.tmp/resell-check-[YYYY-MM-DD].md</pre></div>
+            </div>
+        </div>
+
+        <!-- #7 -->
+        <div class="ss-card">
+            <span class="ss-card-number">#7</span>
+            <h3>Calculating Exact FBA Margins</h3>
+            <p>Running the built-in FBA Calculator to break down referral fees, fulfillment costs, and unit costs to determine the precise return on investment (ROI) for a potential flip.</p>
+            <div class="ss-card-tags">
+                <span class="ss-tag">FBA Calculator</span>
+                <span class="ss-tag">ROI</span>
+                <span class="ss-tag-api ss-tag">API Ready</span>
+            </div>
+            <button class="ss-skill-toggle" onclick="toggleSkill(this)">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+                View Claude Code Skill
+            </button>
+            <div class="ss-skill-block" id="skill-7">
+                <div class="ss-skill-header">
+                    <span>fba-margin-calculator.md</span>
+                    <button class="ss-copy-btn" onclick="copySkill('skill-7-code', this)">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+                        Copy
+                    </button>
+                </div>
+                <div class="ss-skill-code"><pre id="skill-7-code">---
+description: Calculate precise FBA margins and ROI for Amazon products using SmartScout data and FBA fee estimates
+---
+
+# FBA Margin Calculator
+
+Break down the full cost structure for an Amazon FBA product — referral fees, fulfillment costs, and net margins — to determine exact ROI before purchasing inventory.
+
+## Instructions
+
+The user will provide: $ARGUMENTS
+
+Parse:
+- **ASIN(s)** (required) — products to analyze
+- **Unit cost** (required) — wholesale/landed cost per unit
+- **Inbound shipping** (optional) — per-unit inbound to FBA (default: $0.50)
+
+### Step 1: Pull Live Pricing Data
+
+```python
+import sys, os, json
+sys.path.insert(0, os.path.expanduser("~/Documents/aspi/tools"))
+from smartscout.client import SmartScoutClient
+
+client = SmartScoutClient()
+
+for asin in asins:
+    product = client.search_products(asin=asin, page_size=1)
+    records = product.get("data", product.get("records", []))
+    if records:
+        p = records[0]
+        buy_box_price = p.get("buyBoxPrice", 0)
+        category = p.get("categoryName", "")
+        monthly_revenue = p.get("monthlyRevenueEstimate", 0)
+```
+
+### Step 2: Calculate FBA Fee Structure
+
+Standard FBA fee breakdown:
+- **Referral fee:** 15% of sale price (varies by category: 8% for electronics, 17% for clothing)
+- **FBA fulfillment:** based on size tier ($3.22 small standard, $4.75 large standard, $9+ oversize)
+- **Storage:** $0.87/cubic ft (standard) or $2.40/cubic ft (Q4 Oct-Dec)
+- **Inbound shipping:** user-provided or $0.50/unit estimate
+
+```python
+referral_fee = buy_box_price * 0.15
+fba_fee = 4.75  # estimate, adjust by size tier
+storage_monthly = 0.10  # estimate per unit
+total_fees = referral_fee + fba_fee + storage_monthly + inbound_shipping
+net_profit = buy_box_price - unit_cost - total_fees
+roi = (net_profit / unit_cost) * 100
+```
+
+### Step 3: Estimate Monthly Profit Potential
+
+- **Monthly units** = monthly_revenue / buy_box_price
+- **Monthly profit** = net_profit * estimated_units_per_seller
+- **Break-even price** = unit_cost + total_fees
+
+### Step 4: Output table: ASIN, Price, Cost, Fees, Net Profit, ROI %, Monthly Units, Monthly Profit.
+
+### Step 5: Save to ~/Documents/.tmp/fba-margins-[YYYY-MM-DD].md</pre></div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- ==================== PRIVATE LABEL & NICHE DISCOVERY ==================== -->
+<section class="ss-section container" data-category="private-label">
+    <h2 class="ss-section-title">Private Label & Niche Discovery</h2>
+    <p class="ss-section-count">6 workflows for market validation</p>
+    <div class="ss-grid">
+
+        <!-- #8 -->
+        <div class="ss-card">
+            <span class="ss-card-number">#8</span>
+            <h3>Evaluating Subcategory Market Share</h3>
+            <p>Navigating the Subcategories tool to visualize the total revenue of a niche and determine if the market is fragmented enough for a new private label brand to enter and compete.</p>
+            <div class="ss-card-tags">
+                <span class="ss-tag">Subcategories</span>
+                <span class="ss-tag">Market Share</span>
+                <span class="ss-tag-api ss-tag">API Ready</span>
+            </div>
+            <button class="ss-skill-toggle" onclick="toggleSkill(this)">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+                View Claude Code Skill
+            </button>
+            <div class="ss-skill-block" id="skill-8">
+                <div class="ss-skill-header">
+                    <span>subcategory-market-share.md</span>
+                    <button class="ss-copy-btn" onclick="copySkill('skill-8-code', this)">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+                        Copy
+                    </button>
+                </div>
+                <div class="ss-skill-code"><pre id="skill-8-code">---
+description: Evaluate subcategory market fragmentation and revenue distribution to validate private label entry
+---
+
+# Subcategory Market Share Evaluator
+
+Analyze a niche's total revenue, brand concentration, and fragmentation to determine if the market is viable for private label entry.
+
+## Instructions
+
+The user will provide: $ARGUMENTS
+
+Parse:
+- **Subcategory** (required) — Amazon subcategory to analyze (e.g., "Protein Bars", "Yoga Mats")
+- **Max brands** (optional) — how many top brands to analyze (default: 20)
+
+### Step 1: Pull Category Data
+
+```python
+import sys, os, json
+sys.path.insert(0, os.path.expanduser("~/Documents/aspi/tools"))
+from smartscout.client import SmartScoutClient
+
+client = SmartScoutClient()
+
+# Get top brands in the subcategory
+brands = client.search_brands(
+    subcategory=subcategory,
+    sort_by="monthlyRevenue",
+    sort_order="desc",
+    page_size=50
+)
+
+records = brands.get("data", brands.get("records", []))
+
+# Get market share breakdown
+for brand in records[:10]:
+    share = client.brand_market_share(brand["brandName"])
+```
+
+### Step 2: Calculate Market Metrics
+
+- **Total subcategory revenue** — sum of all brand revenues
+- **Top 3 brand share** — % of revenue held by top 3 brands
+- **Fragmentation score** — HHI (Herfindahl index) of brand revenue shares
+- **Average brand revenue** — total / number of brands
+- **Growth trend** — average MoM growth across brands
+
+### Step 3: Private Label Viability Assessment
+
+| Signal | Good for PL | Bad for PL |
+|--------|------------|------------|
+| Top 3 share | &lt; 50% | &gt; 70% |
+| Brand count | 15+ active brands | &lt; 5 brands |
+| Avg reviews | &lt; 1,000 | &gt; 10,000 |
+| Growth | Positive MoM | Declining |
+| Avg price | $15-$50 | &lt; $10 |
+
+### Step 4: Output market summary with brand distribution table and PL viability verdict.
+
+### Step 5: Save to ~/Documents/.tmp/subcategory-analysis-[subcategory]-[YYYY-MM-DD].md</pre></div>
+            </div>
+        </div>
+
+        <!-- #9 -->
+        <div class="ss-card">
+            <span class="ss-card-number">#9</span>
+            <h3>Mapping "Frequently Bought Together" Traffic</h3>
+            <p>Using the Traffic Graph on a competitor's ASIN to see exactly how customer traffic flows between products, revealing prime opportunities for highly relevant product bundles.</p>
+            <div class="ss-card-tags">
+                <span class="ss-tag">Traffic Graph</span>
+                <span class="ss-tag">Bundles</span>
+                <span class="ss-tag-api ss-tag">API Ready</span>
+            </div>
+            <button class="ss-skill-toggle" onclick="toggleSkill(this)">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+                View Claude Code Skill
+            </button>
+            <div class="ss-skill-block" id="skill-9">
+                <div class="ss-skill-header">
+                    <span>traffic-bundle-finder.md</span>
+                    <button class="ss-copy-btn" onclick="copySkill('skill-9-code', this)">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+                        Copy
+                    </button>
+                </div>
+                <div class="ss-skill-code"><pre id="skill-9-code">---
+description: Map product traffic flow and frequently-bought-together relationships to find bundle opportunities
+---
+
+# FBT Traffic &amp; Bundle Finder
+
+Analyze traffic flow between products to identify high-affinity bundle opportunities and complementary product ideas.
+
+## Instructions
+
+The user will provide: $ARGUMENTS
+
+Parse:
+- **ASIN** (required) — the seed product to map traffic from
+- **Depth** (optional) — how many levels of connections to explore (default: 2)
+
+### Step 1: Pull Seed Product Data
+
+```python
+import sys, os, json
+sys.path.insert(0, os.path.expanduser("~/Documents/aspi/tools"))
+from smartscout.client import SmartScoutClient
+
+client = SmartScoutClient()
+
+# Get seed product details
+seed = client.search_products(asin=asin, page_size=1)
+seed_record = seed.get("data", seed.get("records", []))[0]
+
+# Get relevant search terms to find related products
+related_terms = client.relevant_search_terms(asin)
+
+# Search for products in the same subcategory
+related = client.search_products(
+    subcategory=seed_record.get("subcategoryName"),
+    revenue_min=10000,
+    sort_by="monthlyRevenueEstimate",
+    page_size=25
+)
+```
+
+### Step 2: Build Traffic Affinity Map
+
+For each related product:
+- Check keyword overlap (shared search terms = shared traffic)
+- Compare categories (same subcategory = direct competitor, adjacent = bundle candidate)
+- Analyze price complementarity (products at different price points bundle well)
+
+### Step 3: Score Bundle Candidates
+
+| Factor | Weight | Why |
+|--------|--------|-----|
+| Keyword overlap | High | Shared search intent = shoppers want both |
+| Different brand | High | Cross-brand bundles convert better |
+| Price complement | Medium | $15 + $12 bundle vs two $30 items |
+| Review sentiment | Medium | Products solving different pain points |
+| Category adjacency | Medium | Related but not identical categories |
+
+### Step 4: Output ranked bundle opportunities with affinity scores and revenue potential.
+
+### Step 5: Save to ~/Documents/.tmp/bundle-analysis-[ASIN]-[YYYY-MM-DD].md</pre></div>
+            </div>
+        </div>
+
+        <!-- #10 -->
+        <div class="ss-card">
+            <span class="ss-card-number">#10</span>
+            <h3>Spotting Rising Seasonal Trends</h3>
+            <p>Utilizing the Search Terms tool to track historical search volumes and identify rising product demand before the competition catches on.</p>
+            <div class="ss-card-tags">
+                <span class="ss-tag">Search Terms</span>
+                <span class="ss-tag">Trends</span>
+                <span class="ss-tag-api ss-tag">API Ready</span>
+            </div>
+            <button class="ss-skill-toggle" onclick="toggleSkill(this)">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+                View Claude Code Skill
+            </button>
+            <div class="ss-skill-block" id="skill-10">
+                <div class="ss-skill-header">
+                    <span>seasonal-trend-spotter.md</span>
+                    <button class="ss-copy-btn" onclick="copySkill('skill-10-code', this)">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+                        Copy
+                    </button>
+                </div>
+                <div class="ss-skill-code"><pre id="skill-10-code">---
+description: Track rising Amazon search terms and identify seasonal demand trends before competitors
+---
+
+# Seasonal Trend Spotter
+
+Identify search terms with rising volume to spot emerging product demand before the market catches on.
+
+## Instructions
+
+The user will provide: $ARGUMENTS
+
+Parse:
+- **Keywords** (required) — seed terms or niche to explore (e.g., "pickleball", "mushroom coffee")
+- **Min searches** (optional) — minimum monthly search volume (default: 1,000)
+- **Growth threshold** (optional) — minimum growth rate to flag (default: 20%)
+
+### Step 1: Search for Trending Terms
+
+```python
+import sys, os, json
+sys.path.insert(0, os.path.expanduser("~/Documents/aspi/tools"))
+from smartscout.client import SmartScoutClient
+
+client = SmartScoutClient()
+
+# Search for terms related to the seed keyword
+for keyword in keywords:
+    results = client.search_terms(
+        search_term=keyword,
+        searches_min=1000,
+        sort_by="estimateSearches",
+        sort_order="desc",
+        page_size=50
+    )
+    records = results.get("data", results.get("records", []))
+```
+
+### Step 2: Identify Growth Signals
+
+For each search term:
+- Current monthly search volume
+- Search volume trend (rising, stable, declining)
+- CPC (high CPC = high commercial intent)
+- Number of competing products
+- Seasonal pattern (Q4 spike, summer spike, evergreen)
+
+### Step 3: Categorize Trends
+
+- **Breakout** — new term, &lt; 6 months of data, accelerating volume
+- **Rising** — established term, consistent month-over-month growth
+- **Seasonal** — predictable annual pattern, currently approaching peak
+- **Evergreen** — stable high volume, no seasonal variation
+
+### Step 4: Output ranked table: Search Term, Volume, Growth %, CPC, Trend Type, Opportunity Window.
+
+### Step 5: Save to ~/Documents/.tmp/trend-analysis-[YYYY-MM-DD].md</pre></div>
+            </div>
+        </div>
+
+        <!-- #11 -->
+        <div class="ss-card">
+            <span class="ss-card-number">#11</span>
+            <h3>Validating Keyword Intent</h3>
+            <p>Searching the Keyword Detective tool to check product relevancy and search term intent, ensuring a new product aligns with actual shopper behavior and search habits.</p>
+            <div class="ss-card-tags">
+                <span class="ss-tag">Keyword Detective</span>
+                <span class="ss-tag">Intent</span>
+                <span class="ss-tag-api ss-tag">API Ready</span>
+            </div>
+            <button class="ss-skill-toggle" onclick="toggleSkill(this)">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+                View Claude Code Skill
+            </button>
+            <div class="ss-skill-block" id="skill-11">
+                <div class="ss-skill-header">
+                    <span>keyword-intent-validator.md</span>
+                    <button class="ss-copy-btn" onclick="copySkill('skill-11-code', this)">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+                        Copy
+                    </button>
+                </div>
+                <div class="ss-skill-code"><pre id="skill-11-code">---
+description: Validate keyword intent and product-search alignment for Amazon product launches
+---
+
+# Keyword Intent Validator
+
+Verify that your target keywords actually match what shoppers expect to find — ensuring your product aligns with real search behavior.
+
+## Instructions
+
+The user will provide: $ARGUMENTS
+
+Parse:
+- **Keywords** (required) — target search terms to validate
+- **ASIN** (optional) — your product or a competitor to check relevancy against
+
+### Step 1: Pull Search Term Data
+
+```python
+import sys, os, json
+sys.path.insert(0, os.path.expanduser("~/Documents/aspi/tools"))
+from smartscout.client import SmartScoutClient
+
+client = SmartScoutClient()
+
+for keyword in keywords:
+    # Get search term intelligence
+    term_data = client.search_terms(search_term=keyword, page_size=10)
+    records = term_data.get("data", term_data.get("records", []))
+
+    # If ASIN provided, check organic rank
+    if asin:
+        ranks = client.organic_ranks([keyword], [asin])
+        relevant = client.relevant_search_terms(asin)
+```
+
+### Step 2: Analyze Intent Alignment
+
+For each keyword:
+- **Search volume** — is there enough demand?
+- **CPC** — high CPC = high purchase intent
+- **Top-ranking products** — do they match your product type?
+- **Organic rank** (if ASIN provided) — are you even showing up?
+- **Relevancy score** — does SmartScout associate this term with your category?
+
+### Step 3: Intent Classification
+
+- **Exact Match** — searchers want exactly your product type
+- **Broad Match** — related but could mean different things
+- **Misaligned** — top results are a different product category entirely
+- **Informational** — shoppers researching, not buying
+
+### Step 4: Output table: Keyword, Volume, CPC, Intent Type, Relevancy, Rank, Recommendation.
+
+### Step 5: Save to ~/Documents/.tmp/keyword-intent-[YYYY-MM-DD].md</pre></div>
+            </div>
+        </div>
+
+        <!-- #12 -->
+        <div class="ss-card">
+            <span class="ss-card-number">#12</span>
+            <h3>Checking Historical Pricing Stability</h3>
+            <p>Reviewing SmartScout's Keepa-style History Charts to ensure a product's Best Sellers Rank (BSR) and pricing remain stable year-round rather than just during temporary seasonal spikes.</p>
+            <div class="ss-card-tags">
+                <span class="ss-tag">History Charts</span>
+                <span class="ss-tag">BSR</span>
+                <span class="ss-tag-api ss-tag">API Ready</span>
+            </div>
+            <button class="ss-skill-toggle" onclick="toggleSkill(this)">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+                View Claude Code Skill
+            </button>
+            <div class="ss-skill-block" id="skill-12">
+                <div class="ss-skill-header">
+                    <span>price-stability-check.md</span>
+                    <button class="ss-copy-btn" onclick="copySkill('skill-12-code', this)">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+                        Copy
+                    </button>
+                </div>
+                <div class="ss-skill-code"><pre id="skill-12-code">---
+description: Analyze historical pricing and BSR stability for Amazon products to validate year-round demand
+---
+
+# Price &amp; BSR Stability Checker
+
+Review historical price and sales rank data to confirm a product has consistent year-round demand — not just seasonal spikes.
+
+## Instructions
+
+The user will provide: $ARGUMENTS
+
+Parse:
+- **ASIN(s)** (required) — products to analyze
+- **Months** (optional) — how far back to look (default: 12)
+
+### Step 1: Pull Historical Data
+
+```python
+import sys, os, json
+sys.path.insert(0, os.path.expanduser("~/Documents/aspi/tools"))
+from smartscout.client import SmartScoutClient
+
+client = SmartScoutClient()
+
+for asin in asins:
+    history = client.product_history(asin)
+    current = client.search_products(asin=asin, page_size=1)
+```
+
+### Step 2: Analyze Stability Metrics
+
+- **Price range** — min/max over period, coefficient of variation
+- **BSR range** — min/max rank, average rank, volatility
+- **Revenue consistency** — standard deviation of monthly revenue
+- **Seasonal pattern** — identify Q4 spikes, summer dips, etc.
+- **Price war signals** — sudden drops followed by recovery
+
+### Step 3: Stability Classification
+
+- **Rock Solid** — &lt; 15% price variation, stable BSR. Safe for wholesale/PL.
+- **Mild Seasonal** — predictable 20-30% seasonal swing. Plan inventory accordingly.
+- **Volatile** — &gt; 40% price swings or erratic BSR. High risk.
+- **Declining** — consistent downward trend in rank or price. Avoid.
+
+### Step 4: Output: ASIN, Avg Price, Price Range, Avg BSR, BSR Range, Volatility %, Classification.
+
+### Step 5: Save to ~/Documents/.tmp/stability-check-[YYYY-MM-DD].md</pre></div>
+            </div>
+        </div>
+
+        <!-- #13 -->
+        <div class="ss-card">
+            <span class="ss-card-number">#13</span>
+            <h3>Optimizing FBA Size Tiers for Better Margins</h3>
+            <p>Using the FBA Size Tier Calculator to determine if shaving a fraction of an inch off private label packaging will drop the product into a cheaper fulfillment tier, drastically cutting costs.</p>
+            <div class="ss-card-tags">
+                <span class="ss-tag">Size Tiers</span>
+                <span class="ss-tag">Margins</span>
+                <span class="ss-tag-api ss-tag">API Ready</span>
+            </div>
+            <button class="ss-skill-toggle" onclick="toggleSkill(this)">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+                View Claude Code Skill
+            </button>
+            <div class="ss-skill-block" id="skill-13">
+                <div class="ss-skill-header">
+                    <span>size-tier-optimizer.md</span>
+                    <button class="ss-copy-btn" onclick="copySkill('skill-13-code', this)">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+                        Copy
+                    </button>
+                </div>
+                <div class="ss-skill-code"><pre id="skill-13-code">---
+description: Calculate FBA size tier boundaries and identify packaging optimizations to reduce fulfillment fees
+---
+
+# FBA Size Tier Optimizer
+
+Determine if minor packaging changes can drop a product into a cheaper FBA fulfillment tier — potentially saving $1-3+ per unit.
+
+## Instructions
+
+The user will provide: $ARGUMENTS
+
+Parse:
+- **Product dimensions** (required) — length x width x height in inches
+- **Weight** (required) — product weight in ounces or pounds
+- **Current price** (optional) — for margin impact calculation
+- **Monthly units** (optional) — for annual savings estimate
+
+### Step 1: Determine Current Size Tier
+
+FBA Size Tier thresholds (2024):
+- **Small Standard** — max 15" x 12" x 0.75", &lt;= 16 oz → $3.22 fulfillment
+- **Large Standard** — max 18" x 14" x 8", &lt;= 20 lb → $4.75-$6.10 fulfillment
+- **Large Bulky** — max 59" x 33" x 33", &lt;= 50 lb → $9.73+ fulfillment
+- **Extra Large** — exceeds large bulky → $26.33+ fulfillment
+
+### Step 2: Find Nearest Tier Boundary
+
+Calculate the gap between current dimensions and the next-lower tier boundary:
+- How many inches to shave off each dimension?
+- How much weight to reduce?
+- Is the change physically feasible?
+
+### Step 3: Calculate Savings
+
+- **Per-unit fee difference** between current tier and target tier
+- **Annual savings** = per-unit savings x monthly units x 12
+- **Packaging change cost** — estimate retooling/redesign cost
+- **Payback period** — months to recoup packaging investment
+
+### Step 4: Output: Current Tier, Target Tier, Dimension Changes Needed, Fee Savings, Annual Impact.
+
+### Step 5: Save to ~/Documents/.tmp/size-tier-optimization-[YYYY-MM-DD].md</pre></div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- ==================== PPC & ADVERTISING STRATEGY ==================== -->
+<section class="ss-section container" data-category="ppc">
+    <h2 class="ss-section-title">PPC & Advertising Strategy</h2>
+    <p class="ss-section-count">3 workflows for competitive ad intelligence</p>
+    <div class="ss-grid">
+
+        <!-- #14 -->
+        <div class="ss-card">
+            <span class="ss-card-number">#14</span>
+            <h3>Reverse-Engineering Competitor PPC</h3>
+            <p>Entering a top rival's ASIN into Ad Spy to reveal their exact paid search strategy, organic ranks, search volumes, and estimated cost-per-click (CPC) bids.</p>
+            <div class="ss-card-tags">
+                <span class="ss-tag">Ad Spy</span>
+                <span class="ss-tag">CPC</span>
+                <span class="ss-tag-api ss-tag">API Ready</span>
+            </div>
+            <button class="ss-skill-toggle" onclick="toggleSkill(this)">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+                View Claude Code Skill
+            </button>
+            <div class="ss-skill-block" id="skill-14">
+                <div class="ss-skill-header">
+                    <span>competitor-ppc-spy.md</span>
+                    <button class="ss-copy-btn" onclick="copySkill('skill-14-code', this)">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+                        Copy
+                    </button>
+                </div>
+                <div class="ss-skill-code"><pre id="skill-14-code">---
+description: Reverse-engineer a competitor's Amazon PPC strategy — keywords, bids, organic ranks, and ad spend
+---
+
+# Competitor PPC Spy
+
+Extract a competitor's full paid search strategy from SmartScout Ad Spy — the keywords they bid on, estimated CPCs, organic positions, and search volumes.
+
+## Instructions
+
+The user will provide: $ARGUMENTS
+
+Parse:
+- **ASIN** (required) — competitor product to spy on
+- **Min searches** (optional) — minimum search volume to include (default: 500)
+- **Include organic** (optional) — also pull organic rank data (default: yes)
+
+### Step 1: Pull Ad Spy and Keyword Data
+
+```python
+import sys, os, json
+sys.path.insert(0, os.path.expanduser("~/Documents/aspi/tools"))
+from smartscout.client import SmartScoutClient
+
+client = SmartScoutClient()
+
+# Get the product details
+product = client.search_products(asin=asin, page_size=1)
+
+# Get all relevant search terms for this ASIN
+relevant = client.relevant_search_terms(asin)
+
+# Get brand-level ad data
+brand_name = product.get("data", product.get("records", [{}]))[0].get("brandName")
+if brand_name:
+    brand_ads = client.brand_ad_spy(brand_name)
+
+# Search ad spy for related terms
+ad_data = client.ad_spy_search(page_size=50)
+```
+
+### Step 2: Build Keyword Strategy Map
+
+For each keyword:
+- **Search volume** — monthly estimated searches
+- **CPC estimate** — what they're likely paying per click
+- **Organic rank** — where they rank naturally (if at all)
+- **Sponsored position** — where their ad shows
+- **Keyword type** — branded, category, competitor, long-tail
+
+### Step 3: Calculate Estimated Ad Spend
+
+- **Daily impressions** = search volume / 30
+- **Estimated CTR** = based on ad position (top = ~2-4%, rest of page = 0.5-1%)
+- **Daily spend** = impressions x CTR x CPC
+- **Monthly spend** = daily x 30
+
+### Step 4: Identify Gaps and Opportunities
+
+- Keywords they rank organically but don't bid on (free traffic they could lose)
+- High-volume keywords they bid on but rank poorly organically (dependent on ad spend)
+- Low-CPC keywords with decent volume (efficient targets you can steal)
+
+### Step 5: Output table: Keyword, Volume, CPC, Organic Rank, Ad Position, Est. Spend, Opportunity.
+
+### Step 6: Save to ~/Documents/.tmp/ppc-spy-[ASIN]-[YYYY-MM-DD].md</pre></div>
+            </div>
+        </div>
+
+        <!-- #15 -->
+        <div class="ss-card">
+            <span class="ss-card-number">#15</span>
+            <h3>Mining ASINs for Sponsored Display Targeting</h3>
+            <p>Exporting highly connected, frequently-bought-together products from the Traffic Graph to create hyper-targeted Amazon Sponsored Display or Sponsored Product ad campaigns.</p>
+            <div class="ss-card-tags">
+                <span class="ss-tag">Traffic Graph</span>
+                <span class="ss-tag">SD Targeting</span>
+                <span class="ss-tag-api ss-tag">API Ready</span>
+            </div>
+            <button class="ss-skill-toggle" onclick="toggleSkill(this)">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+                View Claude Code Skill
+            </button>
+            <div class="ss-skill-block" id="skill-15">
+                <div class="ss-skill-header">
+                    <span>sd-targeting-miner.md</span>
+                    <button class="ss-copy-btn" onclick="copySkill('skill-15-code', this)">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+                        Copy
+                    </button>
+                </div>
+                <div class="ss-skill-code"><pre id="skill-15-code">---
+description: Build hyper-targeted Sponsored Display and SP ASIN targeting lists from SmartScout product relationships
+---
+
+# SD/SP ASIN Targeting Miner
+
+Generate a list of high-affinity ASINs for Sponsored Display and Sponsored Product targeting — based on shared traffic, complementary categories, and competitor weaknesses.
+
+## Instructions
+
+The user will provide: $ARGUMENTS
+
+Parse:
+- **Your ASIN** (required) — your product to build targeting around
+- **Strategy** (optional) — "conquest" (competitor pages), "complementary" (related products), or "both" (default: both)
+- **Max targets** (optional) — how many ASINs to output (default: 50)
+
+### Step 1: Map Related Products
+
+```python
+import sys, os, json
+sys.path.insert(0, os.path.expanduser("~/Documents/aspi/tools"))
+from smartscout.client import SmartScoutClient
+
+client = SmartScoutClient()
+
+# Get your product details
+your_product = client.search_products(asin=your_asin, page_size=1)
+record = your_product.get("data", your_product.get("records", []))[0]
+
+# Get relevant search terms (shared keywords = shared shoppers)
+your_terms = client.relevant_search_terms(your_asin)
+
+# Find competitors in same subcategory
+competitors = client.search_products(
+    subcategory=record.get("subcategoryName"),
+    revenue_min=5000,
+    sort_by="monthlyRevenueEstimate",
+    page_size=50
+)
+
+# Find complementary products in adjacent categories
+complementary = client.search_products(
+    category=record.get("categoryName"),
+    price_min=record.get("buyBoxPrice", 0) * 0.5,
+    price_max=record.get("buyBoxPrice", 0) * 2,
+    page_size=50
+)
+```
+
+### Step 2: Score Each Target ASIN
+
+- **Keyword overlap** — shared search terms with your product
+- **Traffic affinity** — how often shoppers view both products
+- **Weakness signals** — low reviews, poor rating, high price (conquestable)
+- **Complementarity** — different category but same shopper intent
+
+### Step 3: Segment into Campaign Groups
+
+- **Conquest targets** — direct competitors with exploitable weaknesses
+- **Complementary targets** — products bought alongside yours
+- **Category targets** — broader category ASINs for awareness
+
+### Step 4: Output CSV-ready lists per campaign group: ASIN, Title, Revenue, Reviews, Rating, Strategy, Priority.
+
+### Step 5: Save to ~/Documents/.tmp/sd-targets-[ASIN]-[YYYY-MM-DD].csv</pre></div>
+            </div>
+        </div>
+
+        <!-- #16 -->
+        <div class="ss-card">
+            <span class="ss-card-number">#16</span>
+            <h3>Tracking Brand Search Real Estate</h3>
+            <p>Monitoring visibility tools to see which brands dominate the top organic and sponsored ad placements for a highly competitive, high-volume keyword over time.</p>
+            <div class="ss-card-tags">
+                <span class="ss-tag">Visibility</span>
+                <span class="ss-tag">Organic Rank</span>
+                <span class="ss-tag-api ss-tag">API Ready</span>
+            </div>
+            <button class="ss-skill-toggle" onclick="toggleSkill(this)">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+                View Claude Code Skill
+            </button>
+            <div class="ss-skill-block" id="skill-16">
+                <div class="ss-skill-header">
+                    <span>search-real-estate-tracker.md</span>
+                    <button class="ss-copy-btn" onclick="copySkill('skill-16-code', this)">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+                        Copy
+                    </button>
+                </div>
+                <div class="ss-skill-code"><pre id="skill-16-code">---
+description: Track which brands dominate organic and sponsored placements for high-volume Amazon keywords
+---
+
+# Search Real Estate Tracker
+
+Map which brands own the top organic and sponsored positions for target keywords — and identify gaps you can exploit.
+
+## Instructions
+
+The user will provide: $ARGUMENTS
+
+Parse:
+- **Keywords** (required) — high-volume keywords to track
+- **ASINs** (optional) — your ASINs or competitors to track specifically
+
+### Step 1: Pull Keyword and Ranking Data
+
+```python
+import sys, os, json
+sys.path.insert(0, os.path.expanduser("~/Documents/aspi/tools"))
+from smartscout.client import SmartScoutClient
+
+client = SmartScoutClient()
+
+for keyword in keywords:
+    # Get search term data
+    term = client.search_terms(search_term=keyword, page_size=5)
+
+    # Get brands bidding on this keyword
+    bidders = client.ad_spy_brands(keyword)
+
+    # Get organic ranks for specific ASINs
+    if asins:
+        ranks = client.organic_ranks([keyword], asins)
+```
+
+### Step 2: Map Search Results Page
+
+For each keyword, build a map of:
+- **Sponsored positions 1-4** — which brands/ASINs hold top ad slots
+- **Organic positions 1-10** — who ranks naturally on page 1
+- **Brand concentration** — how many unique brands appear on page 1
+- **Ad spend signals** — estimated CPC and competition level
+
+### Step 3: Identify Opportunities
+
+- Keywords where no single brand dominates (fragmented = opportunity)
+- Keywords where organic leaders don't advertise (steal their traffic)
+- Keywords where your competitors bid but rank poorly organically
+- Low-competition, high-volume terms the top brands ignore
+
+### Step 4: Output: Keyword, Volume, Top Organic Brands, Top Ad Brands, Your Rank, Gap Analysis.
+
+### Step 5: Save to ~/Documents/.tmp/search-real-estate-[YYYY-MM-DD].md</pre></div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- ==================== LISTING OPTIMIZATION & AI ==================== -->
+<section class="ss-section container" data-category="listing">
+    <h2 class="ss-section-title">Listing Optimization & AI</h2>
+    <p class="ss-section-count">3 workflows for content and conversion</p>
+    <div class="ss-grid">
+
+        <!-- #17 -->
+        <div class="ss-card">
+            <span class="ss-card-number">#17</span>
+            <h3>Drafting SEO-Optimized Listings</h3>
+            <p>Feeding target keywords and competitor ASINs into the AI Listing Architect to automatically generate high-converting titles, bullet points, and product descriptions.</p>
+            <div class="ss-card-tags">
+                <span class="ss-tag">AI Listing Architect</span>
+                <span class="ss-tag">SEO</span>
+                <span class="ss-tag-api ss-tag">API Ready</span>
+            </div>
+            <button class="ss-skill-toggle" onclick="toggleSkill(this)">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+                View Claude Code Skill
+            </button>
+            <div class="ss-skill-block" id="skill-17">
+                <div class="ss-skill-header">
+                    <span>seo-listing-builder.md</span>
+                    <button class="ss-copy-btn" onclick="copySkill('skill-17-code', this)">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+                        Copy
+                    </button>
+                </div>
+                <div class="ss-skill-code"><pre id="skill-17-code">---
+description: Generate SEO-optimized Amazon listing copy using SmartScout keyword data and competitor analysis
+---
+
+# SEO Listing Builder
+
+Build a high-converting Amazon listing — title, bullets, and description — powered by real keyword data from SmartScout.
+
+## Instructions
+
+The user will provide: $ARGUMENTS
+
+Parse:
+- **Product description** (required) — what the product is
+- **ASIN** (optional) — existing listing to optimize, or competitor to reference
+- **Target keywords** (optional) — priority keywords to include
+- **Brand name** (required) — for the title
+
+### Step 1: Gather Keyword Intelligence
+
+```python
+import sys, os, json
+sys.path.insert(0, os.path.expanduser("~/Documents/aspi/tools"))
+from smartscout.client import SmartScoutClient
+
+client = SmartScoutClient()
+
+all_keywords = []
+
+# Get relevant search terms from competitor ASINs
+if asin:
+    relevant = client.relevant_search_terms(asin)
+    all_keywords.extend(relevant)
+
+# Search for additional high-volume terms
+for seed in target_keywords:
+    terms = client.search_terms(search_term=seed, searches_min=500, page_size=25)
+    records = terms.get("data", terms.get("records", []))
+    all_keywords.extend(records)
+```
+
+### Step 2: Prioritize Keywords
+
+Rank keywords by:
+1. Search volume (higher = more visibility)
+2. Relevancy to product (exact match &gt; broad match)
+3. CPC (higher = more commercial intent)
+4. Competition (fewer top-ranked products = easier to rank)
+
+Select: 5-7 primary keywords for title, 15-20 secondary for bullets, remaining for backend.
+
+### Step 3: Generate Listing Copy
+
+**Title** (200 chars max): Brand + Primary Keyword + Key Feature + Secondary Keyword + Size/Count
+**Bullets** (5x 250 chars): Each bullet leads with a benefit, embeds 2-3 keywords naturally
+**Description** (2000 chars): Narrative format weaving in remaining keywords
+
+### Step 4: Output the complete listing with keyword density report.
+
+### Step 5: Save to ~/Documents/.tmp/listing-copy-[brand]-[YYYY-MM-DD].md</pre></div>
+            </div>
+        </div>
+
+        <!-- #18 -->
+        <div class="ss-card">
+            <span class="ss-card-number">#18</span>
+            <h3>Scraping Customer Review Sentiment</h3>
+            <p>Using AI Sentiment Analysis to process hundreds of competitor reviews at scale, extracting common product defects or complaints to improve upon in a new private label design.</p>
+            <div class="ss-card-tags">
+                <span class="ss-tag">AI Sentiment</span>
+                <span class="ss-tag">Reviews</span>
+                <span class="ss-tag-api ss-tag">API Ready</span>
+            </div>
+            <button class="ss-skill-toggle" onclick="toggleSkill(this)">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+                View Claude Code Skill
+            </button>
+            <div class="ss-skill-block" id="skill-18">
+                <div class="ss-skill-header">
+                    <span>review-sentiment-analyzer.md</span>
+                    <button class="ss-copy-btn" onclick="copySkill('skill-18-code', this)">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+                        Copy
+                    </button>
+                </div>
+                <div class="ss-skill-code"><pre id="skill-18-code">---
+description: Analyze competitor review sentiment at scale to identify product improvement opportunities
+---
+
+# Review Sentiment Analyzer
+
+Process competitor review data to extract common complaints, praised features, and product improvement opportunities for private label development.
+
+## Instructions
+
+The user will provide: $ARGUMENTS
+
+Parse:
+- **ASIN(s)** (required) — competitor products to analyze
+- **Focus** (optional) — "complaints", "praise", or "both" (default: both)
+
+### Step 1: Gather Product Context
+
+```python
+import sys, os, json
+sys.path.insert(0, os.path.expanduser("~/Documents/aspi/tools"))
+from smartscout.client import SmartScoutClient
+
+client = SmartScoutClient()
+
+for asin in asins:
+    product = client.search_products(asin=asin, page_size=1)
+    records = product.get("data", product.get("records", []))
+    if records:
+        p = records[0]
+        # Review count, rating, revenue — context for analysis
+        review_count = p.get("reviewCount", 0)
+        rating = p.get("reviewRating", 0)
+        revenue = p.get("monthlyRevenueEstimate", 0)
+```
+
+### Step 2: Analyze Review Patterns
+
+Using the product's review count and rating from SmartScout:
+- **Rating distribution** — flag products with high review count but &lt; 4.0 rating (quality issues)
+- **Review velocity** — reviews per month indicates engagement level
+- **Rating vs. category average** — benchmark against subcategory
+
+### Step 3: Cross-Reference with Search Terms
+
+```python
+# What are shoppers searching for? Compare against product features.
+terms = client.relevant_search_terms(asin)
+# Gap: terms shoppers use that the product doesn't address = improvement opportunity
+```
+
+### Step 4: Generate Improvement Thesis
+
+For each competitor ASIN:
+- Top 3 likely complaint themes (inferred from rating + category patterns)
+- Features shoppers search for but product may lack (keyword gap)
+- Price-to-quality positioning opportunity
+- Listing weaknesses visible from SmartScout data
+
+### Step 5: Output improvement matrix and save to ~/Documents/.tmp/review-analysis-[YYYY-MM-DD].md</pre></div>
+            </div>
+        </div>
+
+        <!-- #19 -->
+        <div class="ss-card">
+            <span class="ss-card-number">#19</span>
+            <h3>Pitching Brands with Poor Listings</h3>
+            <p>Filtering the Brands database for high-revenue brands with low "Brand Scores" (indicating missing A+ content, weak copy, or poor images) to pitch agency optimization services.</p>
+            <div class="ss-card-tags">
+                <span class="ss-tag">Brand Score</span>
+                <span class="ss-tag">Agency</span>
+                <span class="ss-tag-api ss-tag">API Ready</span>
+            </div>
+            <button class="ss-skill-toggle" onclick="toggleSkill(this)">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+                View Claude Code Skill
+            </button>
+            <div class="ss-skill-block" id="skill-19">
+                <div class="ss-skill-header">
+                    <span>brand-pitch-finder.md</span>
+                    <button class="ss-copy-btn" onclick="copySkill('skill-19-code', this)">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+                        Copy
+                    </button>
+                </div>
+                <div class="ss-skill-code"><pre id="skill-19-code">---
+description: Find high-revenue Amazon brands with poor listing quality to pitch agency optimization services
+---
+
+# Brand Pitch Finder
+
+Identify brands making strong revenue but leaving money on the table with weak listings — perfect targets for agency outreach.
+
+## Instructions
+
+The user will provide: $ARGUMENTS
+
+Parse:
+- **Category** (optional) — focus on a specific category
+- **Min revenue** (optional) — monthly revenue floor (default: $100K)
+- **Max brand score** (optional) — upper limit for brand score (default: 5 out of 10)
+- **Result count** (optional) — how many brands (default: 25)
+
+### Step 1: Search for Underoptimized Brands
+
+```python
+import sys, os, json
+sys.path.insert(0, os.path.expanduser("~/Documents/aspi/tools"))
+from smartscout.client import SmartScoutClient
+
+client = SmartScoutClient()
+
+results = client.search_brands(
+    category=category,
+    revenue_min=100000,
+    has_storefront=True,
+    sort_by="monthlyRevenue",
+    sort_order="desc",
+    page_size=100
+)
+
+records = results.get("data", results.get("records", []))
+
+# Filter for low brand scores (weak listing optimization)
+prospects = [b for b in records if b.get("brandScore", 10) &lt;= max_brand_score]
+```
+
+### Step 2: Enrich Each Prospect
+
+```python
+for brand in prospects[:25]:
+    # Get top products to assess listing quality
+    products = client.search_products(brand_name=brand["brandName"], page_size=5)
+    # Get market share to understand competitive position
+    share = client.brand_market_share(brand["brandName"])
+```
+
+### Step 3: Score Pitch Potential
+
+| Factor | Weight | Signal |
+|--------|--------|--------|
+| Revenue vs. Brand Score gap | High | Big revenue + low score = untapped potential |
+| Growth trajectory | High | Growing brands invest in optimization |
+| Has storefront | Medium | Brand owner present, can make decisions |
+| Low seller count | Medium | Founder-led, not managed by agency yet |
+| Category competition | Low | Competitive categories need better listings |
+
+### Step 4: Draft Pitch Angles
+
+For each top prospect:
+- Revenue they're generating despite weak listings (imagine with optimization)
+- Specific listing gaps (A+ content, image quality, keyword coverage)
+- Competitor comparison (brands in same niche with better scores)
+- Estimated uplift potential
+
+### Step 5: Output and save to ~/Documents/.tmp/brand-pitches-[YYYY-MM-DD].md</pre></div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- ==================== BRAND MANAGEMENT & AGENCY ==================== -->
+<section class="ss-section container" data-category="brand">
+    <h2 class="ss-section-title">Brand Management & Agency Operations</h2>
+    <p class="ss-section-count">6 workflows for brand oversight</p>
+    <div class="ss-grid">
+
+        <!-- #20 -->
+        <div class="ss-card">
+            <span class="ss-card-number">#20</span>
+            <h3>Monitoring Unauthorized MAP Violators</h3>
+            <p>Brands using the Seller Search and brand tracking features to identify and track rogue third-party sellers violating Minimum Advertised Price (MAP) agreements.</p>
+            <div class="ss-card-tags">
+                <span class="ss-tag">Seller Search</span>
+                <span class="ss-tag">MAP</span>
+                <span class="ss-tag-api ss-tag">API Ready</span>
+            </div>
+            <button class="ss-skill-toggle" onclick="toggleSkill(this)">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+                View Claude Code Skill
+            </button>
+            <div class="ss-skill-block" id="skill-20">
+                <div class="ss-skill-header">
+                    <span>map-violation-monitor.md</span>
+                    <button class="ss-copy-btn" onclick="copySkill('skill-20-code', this)">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+                        Copy
+                    </button>
+                </div>
+                <div class="ss-skill-code"><pre id="skill-20-code">---
+description: Monitor Amazon listings for MAP (Minimum Advertised Price) violations and unauthorized sellers
+---
+
+# MAP Violation Monitor
+
+Scan your brand's Amazon listings for sellers violating MAP pricing and identify unauthorized third-party sellers.
+
+## Instructions
+
+The user will provide: $ARGUMENTS
+
+Parse:
+- **Brand name** (required) — your brand to monitor
+- **MAP prices** (optional) — JSON or CSV of ASIN:MAP_price pairs
+- **Alert threshold** (optional) — % below MAP to flag (default: 5%)
+
+### Step 1: Pull Brand Seller and Product Data
+
+```python
+import sys, os, json
+sys.path.insert(0, os.path.expanduser("~/Documents/aspi/tools"))
+from smartscout.client import SmartScoutClient
+
+client = SmartScoutClient()
+
+# Get all sellers on the brand
+sellers = client.brand_sellers(brand_name)
+
+# Get all products
+products = client.search_products(brand_name=brand_name, page_size=50)
+records = products.get("data", products.get("records", []))
+
+# Check offers on each product
+for product in records:
+    offers = client.product_offers(product["asin"])
+```
+
+### Step 2: Identify Violations
+
+For each product with MAP pricing defined:
+- Compare current Buy Box price against MAP
+- Flag all offers below MAP threshold
+- Identify the violating seller(s)
+- Check if the seller is authorized (compare against authorized seller list if provided)
+
+### Step 3: Classify Sellers
+
+- **Authorized** — on your approved reseller list
+- **Unauthorized** — selling your brand without authorization
+- **MAP Compliant** — pricing at or above MAP
+- **MAP Violator** — pricing below MAP threshold
+
+### Step 4: Output violation report: ASIN, Title, MAP Price, Current Price, Violation %, Seller, Status.
+
+### Step 5: Save to ~/Documents/.tmp/map-violations-[brand]-[YYYY-MM-DD].md</pre></div>
+            </div>
+        </div>
+
+        <!-- #21 -->
+        <div class="ss-card">
+            <span class="ss-card-number">#21</span>
+            <h3>Analyzing 1P vs. 3P Revenue Splits</h3>
+            <p>Reviewing historical seller revenue share to determine exactly how much of a brand's volume is driven by independent resellers versus direct-to-Amazon (Vendor Central) sales.</p>
+            <div class="ss-card-tags">
+                <span class="ss-tag">Revenue Split</span>
+                <span class="ss-tag">Vendor Central</span>
+                <span class="ss-tag-api ss-tag">API Ready</span>
+            </div>
+            <button class="ss-skill-toggle" onclick="toggleSkill(this)">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+                View Claude Code Skill
+            </button>
+            <div class="ss-skill-block" id="skill-21">
+                <div class="ss-skill-header">
+                    <span>revenue-split-analyzer.md</span>
+                    <button class="ss-copy-btn" onclick="copySkill('skill-21-code', this)">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+                        Copy
+                    </button>
+                </div>
+                <div class="ss-skill-code"><pre id="skill-21-code">---
+description: Analyze 1P (Amazon Retail) vs 3P (third-party) revenue distribution for a brand
+---
+
+# 1P vs. 3P Revenue Split Analyzer
+
+Determine how a brand's Amazon revenue is distributed between Amazon Retail (Vendor Central/1P) and third-party sellers (Seller Central/3P).
+
+## Instructions
+
+The user will provide: $ARGUMENTS
+
+Parse:
+- **Brand name** (required) — brand to analyze
+- **Months** (optional) — historical period (default: 12)
+
+### Step 1: Pull Brand and Seller Data
+
+```python
+import sys, os, json
+sys.path.insert(0, os.path.expanduser("~/Documents/aspi/tools"))
+from smartscout.client import SmartScoutClient
+
+client = SmartScoutClient()
+
+brand = client.search_brands(brand_name=brand_name, page_size=1)
+sellers = client.brand_sellers(brand_name)
+history = client.brand_history(brand_name, months=12)
+market_share = client.brand_market_share(brand_name)
+```
+
+### Step 2: Calculate Revenue Distribution
+
+- **Amazon 1P share** — revenue from Amazon Retail in-stock listings
+- **3P FBA share** — revenue from third-party FBA sellers
+- **3P FBM share** — revenue from merchant-fulfilled sellers
+- **Brand direct share** — revenue from the brand's own seller account
+
+### Step 3: Trend Analysis
+
+Track how the split has changed over time:
+- Is Amazon increasing or decreasing 1P coverage?
+- Are new 3P sellers entering or leaving?
+- Is the brand shifting from Vendor Central to Seller Central?
+
+### Step 4: Strategic Implications
+
+- **High 1P** — Amazon controls pricing and inventory. Brand has less control.
+- **High 3P** — more pricing flexibility but more unauthorized seller risk.
+- **Balanced** — healthy distribution with leverage on both channels.
+
+### Step 5: Output split percentages, trend chart, and strategic assessment.
+
+### Step 6: Save to ~/Documents/.tmp/revenue-split-[brand]-[YYYY-MM-DD].md</pre></div>
+            </div>
+        </div>
+
+        <!-- #22 -->
+        <div class="ss-card">
+            <span class="ss-card-number">#22</span>
+            <h3>Automating Competitor Intelligence Reports</h3>
+            <p>Setting up automated, recurring reports on a rival brand's sales estimates, catalog growth, and category rank shifts for ongoing executive monitoring.</p>
+            <div class="ss-card-tags">
+                <span class="ss-tag">Reports</span>
+                <span class="ss-tag">Automation</span>
+                <span class="ss-tag-api ss-tag">API Ready</span>
+            </div>
+            <button class="ss-skill-toggle" onclick="toggleSkill(this)">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+                View Claude Code Skill
+            </button>
+            <div class="ss-skill-block" id="skill-22">
+                <div class="ss-skill-header">
+                    <span>competitor-intel-report.md</span>
+                    <button class="ss-copy-btn" onclick="copySkill('skill-22-code', this)">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+                        Copy
+                    </button>
+                </div>
+                <div class="ss-skill-code"><pre id="skill-22-code">---
+description: Generate a comprehensive competitor intelligence report with sales, catalog, and ranking data from SmartScout
+---
+
+# Competitor Intelligence Report
+
+Pull a full competitive intelligence snapshot — revenue estimates, catalog size, top products, market share, ad strategy, and growth trends.
+
+## Instructions
+
+The user will provide: $ARGUMENTS
+
+Parse:
+- **Brand(s)** (required) — one or more competitor brands to report on
+- **Your brand** (optional) — for side-by-side comparison
+- **Period** (optional) — reporting period in months (default: 3)
+
+### Step 1: Pull Full Brand Profiles
+
+```python
+import sys, os, json
+sys.path.insert(0, os.path.expanduser("~/Documents/aspi/tools"))
+from smartscout.client import SmartScoutClient
+
+client = SmartScoutClient()
+
+for brand_name in brands:
+    profile = client.brand_profile(brand_name)
+    history = client.brand_history(brand_name, months=period)
+    top_products = client.brand_top_products(brand_name)
+    sellers = client.brand_sellers(brand_name)
+```
+
+### Step 2: Build Report Sections
+
+**Executive Summary**
+- Brand revenue (current + trend)
+- MoM and YoY growth rates
+- Market share in primary subcategories
+
+**Catalog Analysis**
+- Total ASINs, new launches, discontinued products
+- Top 10 products by revenue
+- Average price point and review rating
+
+**Competitive Position**
+- Market share vs. category leaders
+- Seller coverage (1P vs 3P mix)
+- Brand score (listing quality indicator)
+
+**Advertising Intelligence**
+- Top keywords they bid on
+- Estimated ad spend
+- Organic vs. paid ranking positions
+
+### Step 3: Trend Analysis
+
+Flag significant changes:
+- Revenue jumps or drops &gt; 15%
+- New product launches
+- Market share gains or losses
+- Pricing strategy shifts
+
+### Step 4: Output formatted report.
+
+### Step 5: Save to ~/Documents/.tmp/intel-report-[brand]-[YYYY-MM-DD].md
+
+Tip: Schedule this skill with Claude Code's /schedule command for weekly or monthly automated reports.</pre></div>
+            </div>
+        </div>
+
+        <!-- #23 -->
+        <div class="ss-card">
+            <span class="ss-card-number">#23</span>
+            <h3>Creating Custom Market Segments</h3>
+            <p>Grouping specific ASINs, brands, or subcategories into "Custom Segments" to track a tailored dataset that matches an agency's highly specific market thesis.</p>
+            <div class="ss-card-tags">
+                <span class="ss-tag">Custom Segments</span>
+                <span class="ss-tag">Tracking</span>
+                <span class="ss-tag-api ss-tag">API Ready</span>
+            </div>
+            <button class="ss-skill-toggle" onclick="toggleSkill(this)">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+                View Claude Code Skill
+            </button>
+            <div class="ss-skill-block" id="skill-23">
+                <div class="ss-skill-header">
+                    <span>custom-market-segment.md</span>
+                    <button class="ss-copy-btn" onclick="copySkill('skill-23-code', this)">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+                        Copy
+                    </button>
+                </div>
+                <div class="ss-skill-code"><pre id="skill-23-code">---
+description: Build and analyze a custom market segment from specific ASINs, brands, or subcategories
+---
+
+# Custom Market Segment Builder
+
+Create a tailored market segment by combining specific brands, ASINs, or subcategories — then analyze the segment as a unified dataset.
+
+## Instructions
+
+The user will provide: $ARGUMENTS
+
+Parse:
+- **Segment name** (required) — label for this custom segment
+- **Brands** (optional) — list of brand names to include
+- **ASINs** (optional) — specific ASINs to include
+- **Subcategories** (optional) — subcategory names to include
+- **Filters** (optional) — revenue min/max, price range, etc.
+
+### Step 1: Build the Segment
+
+```python
+import sys, os, json
+sys.path.insert(0, os.path.expanduser("~/Documents/aspi/tools"))
+from smartscout.client import SmartScoutClient
+
+client = SmartScoutClient()
+
+segment_data = {"brands": [], "products": []}
+
+# Pull brand data
+for brand_name in brands:
+    brand = client.search_brands(brand_name=brand_name, page_size=1)
+    products = client.search_products(brand_name=brand_name, page_size=25)
+    segment_data["brands"].append(brand)
+    segment_data["products"].extend(products.get("data", products.get("records", [])))
+
+# Pull ASIN data
+for asin in asins:
+    product = client.search_products(asin=asin, page_size=1)
+    segment_data["products"].extend(product.get("data", product.get("records", [])))
+
+# Pull subcategory data
+for subcat in subcategories:
+    products = client.search_products(subcategory=subcat, revenue_min=5000, page_size=50)
+    segment_data["products"].extend(products.get("data", products.get("records", [])))
+```
+
+### Step 2: Analyze the Segment
+
+- **Total segment revenue** — sum of all product revenues
+- **Brand distribution** — which brands dominate the segment
+- **Price distribution** — min, max, median, average
+- **Review landscape** — average reviews, average rating
+- **Growth indicators** — segment-level MoM trends
+
+### Step 3: Segment Insights
+
+- Market concentration (top 3 brands' share of segment)
+- Gaps (price points with no strong product)
+- Growth leaders vs. declining products
+- Competitive density at each price tier
+
+### Step 4: Save segment definition and analysis.
+
+### Step 5: Output report and save to ~/Documents/.tmp/segment-[name]-[YYYY-MM-DD].md</pre></div>
+            </div>
+        </div>
+
+        <!-- #24 -->
+        <div class="ss-card">
+            <span class="ss-card-number">#24</span>
+            <h3>Optimizing Logistics with the Buy Box Map</h3>
+            <p>Visualizing which geographic regions get the fastest delivery times to strategically distribute 3PL or FBA inventory, allowing a brand to win the Buy Box more frequently based on customer location.</p>
+            <div class="ss-card-tags">
+                <span class="ss-tag">Buy Box Map</span>
+                <span class="ss-tag">Logistics</span>
+                <span class="ss-tag-api ss-tag">API Ready</span>
+            </div>
+            <button class="ss-skill-toggle" onclick="toggleSkill(this)">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+                View Claude Code Skill
+            </button>
+            <div class="ss-skill-block" id="skill-24">
+                <div class="ss-skill-header">
+                    <span>buybox-logistics-optimizer.md</span>
+                    <button class="ss-copy-btn" onclick="copySkill('skill-24-code', this)">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+                        Copy
+                    </button>
+                </div>
+                <div class="ss-skill-code"><pre id="skill-24-code">---
+description: Analyze Buy Box win rates by geography and optimize FBA/3PL inventory distribution
+---
+
+# Buy Box Logistics Optimizer
+
+Analyze where you're winning and losing the Buy Box geographically, then recommend inventory distribution changes to maximize Buy Box share.
+
+## Instructions
+
+The user will provide: $ARGUMENTS
+
+Parse:
+- **Brand name** or **ASIN(s)** (required) — products to optimize
+- **Current FBA locations** (optional) — which fulfillment centers you use
+- **3PL locations** (optional) — any merchant-fulfilled warehouses
+
+### Step 1: Pull Product and Seller Data
+
+```python
+import sys, os, json
+sys.path.insert(0, os.path.expanduser("~/Documents/aspi/tools"))
+from smartscout.client import SmartScoutClient
+
+client = SmartScoutClient()
+
+products = client.search_products(brand_name=brand_name, page_size=25)
+records = products.get("data", products.get("records", []))
+
+for product in records:
+    offers = client.product_offers(product["asin"])
+    history = client.product_history(product["asin"])
+```
+
+### Step 2: Analyze Competitive Landscape by Product
+
+For each ASIN:
+- Number of competing offers
+- FBA vs. FBM split among competitors
+- Price spread between offers
+- Amazon in-stock rate (1P competition)
+
+### Step 3: Distribution Recommendations
+
+Based on seller competition patterns:
+- **High competition regions** — need faster delivery (more FBA centers)
+- **Low competition regions** — current distribution may suffice
+- **FBM opportunity zones** — areas where FBM sellers win on price
+
+### Step 4: Output logistics optimization plan with estimated Buy Box share improvement.
+
+### Step 5: Save to ~/Documents/.tmp/logistics-optimization-[brand]-[YYYY-MM-DD].md</pre></div>
+            </div>
+        </div>
+
+        <!-- #25 -->
+        <div class="ss-card">
+            <span class="ss-card-number">#25</span>
+            <h3>Managing Live Product Collections</h3>
+            <p>Saving vetted arbitrage or wholesale leads into SmartScout's live data collections, ditching static spreadsheets to track real-time fee, rank, and inventory changes.</p>
+            <div class="ss-card-tags">
+                <span class="ss-tag">Collections</span>
+                <span class="ss-tag">Live Data</span>
+                <span class="ss-tag-api ss-tag">API Ready</span>
+            </div>
+            <button class="ss-skill-toggle" onclick="toggleSkill(this)">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+                View Claude Code Skill
+            </button>
+            <div class="ss-skill-block" id="skill-25">
+                <div class="ss-skill-header">
+                    <span>live-collection-manager.md</span>
+                    <button class="ss-copy-btn" onclick="copySkill('skill-25-code', this)">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+                        Copy
+                    </button>
+                </div>
+                <div class="ss-skill-code"><pre id="skill-25-code">---
+description: Build and monitor a live product collection with real-time SmartScout data instead of static spreadsheets
+---
+
+# Live Product Collection Manager
+
+Replace static sourcing spreadsheets with a live-updating product collection — pull real-time pricing, BSR, fees, and inventory data on demand.
+
+## Instructions
+
+The user will provide: $ARGUMENTS
+
+Parse:
+- **Action** (required) — "create", "update", "report", or "alert"
+- **Collection name** (required) — label for this collection
+- **ASINs** (required for create) — products to track
+- **Alert rules** (optional) — price drops, BSR changes, new sellers
+
+### Step 1: Build or Load Collection
+
+```python
+import sys, os, json
+sys.path.insert(0, os.path.expanduser("~/Documents/aspi/tools"))
+from smartscout.client import SmartScoutClient
+
+client = SmartScoutClient()
+
+collection_path = os.path.expanduser(f"~/Documents/.tmp/collections/{collection_name}.json")
+
+if action == "create":
+    collection = {"name": collection_name, "asins": asins, "snapshots": []}
+elif os.path.exists(collection_path):
+    with open(collection_path) as f:
+        collection = json.load(f)
+```
+
+### Step 2: Pull Live Data
+
+```python
+snapshot = {"timestamp": datetime.now().isoformat(), "products": []}
+
+for asin in collection["asins"]:
+    product = client.search_products(asin=asin, page_size=1)
+    records = product.get("data", product.get("records", []))
+    if records:
+        p = records[0]
+        snapshot["products"].append({
+            "asin": asin,
+            "title": p.get("title", "")[:80],
+            "price": p.get("buyBoxPrice"),
+            "bsr": p.get("salesRank"),
+            "revenue": p.get("monthlyRevenueEstimate"),
+            "sellers": p.get("sellerCount"),
+            "rating": p.get("reviewRating"),
+            "reviews": p.get("reviewCount"),
+        })
+
+collection["snapshots"].append(snapshot)
+```
+
+### Step 3: Compare Against Previous Snapshot
+
+If previous data exists, flag:
+- Price drops &gt; 10%
+- BSR improvements &gt; 20%
+- New sellers entering
+- Revenue trend changes
+
+### Step 4: Output current collection status with change indicators.
+
+### Step 5: Save collection to ~/Documents/.tmp/collections/[name].json</pre></div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- CTA -->
+<section class="ss-cta">
+    <div class="container">
+        <h2>Want these workflows built for your business?</h2>
+        <p>We connect SmartScout, Claude Code, and your Amazon data into automated workflows that run on command. No code required on your end.</p>
+        <div class="ss-cta-buttons">
+            <a href="/ai/" class="btn-primary">See AI Services</a>
+            <a href="mailto:john@goaspi.com" class="btn-secondary-outline">Talk to John</a>
+        </div>
+    </div>
+</section>
+
+{% endblock %}
+
+{% block scripts %}
+<script>
+function filterCategory(cat, btn) {
+    document.querySelectorAll('.ss-cat-btn').forEach(function(b) { b.classList.remove('active'); });
+    btn.classList.add('active');
+    document.querySelectorAll('.ss-section').forEach(function(section) {
+        if (cat === 'all' || section.dataset.category === cat) {
+            section.style.display = '';
+        } else {
+            section.style.display = 'none';
+        }
+    });
+}
+function toggleSkill(btn) {
+    btn.classList.toggle('open');
+    btn.nextElementSibling.classList.toggle('open');
+}
+function copySkill(preId, btn) {
+    var text = document.getElementById(preId).textContent;
+    navigator.clipboard.writeText(text).then(function() {
+        btn.classList.add('copied');
+        btn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Copied';
+        setTimeout(function() {
+            btn.classList.remove('copied');
+            btn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copy';
+        }, 2000);
+    });
+}
+</script>
+{% endblock %}
