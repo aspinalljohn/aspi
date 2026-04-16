@@ -1,0 +1,837 @@
+---
+title: "Operator Intelligence Cohort — Claude Code for Business Operators"
+description: "4-week cohort. 20 seats. Weekly 2-hour group calls building Claude Code workflows for your business. Led by John Aspinall."
+permalink: /oi-cohort/
+---
+{% extends "base.njk" %}
+
+{% block head %}
+<meta name="robots" content="noindex, nofollow">
+<style>
+/* ===========================
+   Cohort Page Styles
+   =========================== */
+
+.cohort-hero {
+    padding: 10rem 0 4rem;
+    text-align: center;
+}
+
+.cohort-hero h1 {
+    font-family: var(--font-heading);
+    font-size: 3rem;
+    font-weight: 800;
+    color: var(--white);
+    line-height: 1.15;
+    max-width: 820px;
+    margin: 0 auto 1.5rem;
+}
+
+.cohort-hero h1 span {
+    background: linear-gradient(135deg, #9c30ff, #F0B429);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.cohort-hero h1 em {
+    font-style: italic;
+}
+
+.cohort-hero-sub {
+    font-size: 1.15rem;
+    color: var(--light-gray);
+    max-width: 660px;
+    margin: 0 auto 2rem;
+    line-height: 1.7;
+}
+
+.cohort-badges {
+    display: flex;
+    gap: 0.75rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 2.5rem;
+}
+
+.cohort-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    background: var(--dark-bg-card);
+    border: 1px solid var(--border-light);
+    border-radius: 100px;
+    padding: 0.5rem 1rem;
+    font-size: 0.85rem;
+    color: var(--text-gray);
+    font-weight: 600;
+}
+
+.cohort-badge--accent {
+    border-color: var(--purple-primary);
+    color: var(--purple-primary);
+}
+
+.cohort-hero-cta {
+    margin-bottom: 1rem;
+}
+
+.cohort-hero-cta .btn-primary {
+    padding: 1.2rem 3rem;
+    font-size: 1.1rem;
+}
+
+.cohort-seats-note {
+    font-size: 0.9rem;
+    color: var(--text-gray);
+}
+
+/* Problem Bridge */
+.cohort-bridge {
+    padding: 4rem 0;
+    border-top: 1px solid var(--border-light);
+}
+
+.cohort-bridge h2 {
+    font-family: var(--font-heading);
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: var(--white);
+    max-width: 700px;
+    margin: 0 auto 1.5rem;
+    text-align: center;
+}
+
+.cohort-bridge-quotes {
+    text-align: center;
+    font-size: 1.05rem;
+    color: var(--purple-primary);
+    font-style: italic;
+    margin-bottom: 1.5rem;
+    line-height: 1.8;
+}
+
+.cohort-bridge-text {
+    text-align: center;
+    color: var(--light-gray);
+    max-width: 700px;
+    margin: 0 auto;
+    font-size: 1.05rem;
+    line-height: 1.7;
+}
+
+/* Curriculum */
+.cohort-curriculum {
+    padding: 5rem 0;
+    background-color: var(--dark-bg-alt);
+}
+
+.cohort-curriculum h2 {
+    font-family: var(--font-heading);
+    font-size: 2.4rem;
+    font-weight: 800;
+    color: var(--white);
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.cohort-curriculum-sub {
+    text-align: center;
+    color: var(--text-gray);
+    margin-bottom: 3rem;
+    font-size: 1rem;
+}
+
+.cohort-weeks {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.25rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.cohort-week-card {
+    background: var(--dark-bg-card);
+    border: 1px solid var(--border-light);
+    border-top: 4px solid var(--purple-primary);
+    border-radius: 12px;
+    padding: 1.5rem;
+    transition: all 0.3s ease;
+}
+
+.cohort-week-card:hover {
+    border-color: var(--purple-primary);
+    box-shadow: 0 4px 16px rgba(156, 48, 255, 0.15);
+}
+
+.cohort-week-header {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin-bottom: 0.5rem;
+}
+
+.cohort-week-icon {
+    width: 32px;
+    height: 32px;
+    flex-shrink: 0;
+    color: var(--purple-primary);
+}
+
+.cohort-week-number {
+    font-family: var(--font-heading);
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--purple-primary);
+}
+
+.cohort-week-title {
+    font-family: var(--font-heading);
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 0.75rem;
+}
+
+.cohort-week-card ul {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 1.25rem 0;
+}
+
+.cohort-week-card li {
+    position: relative;
+    padding-left: 1.25rem;
+    margin-bottom: 0.6rem;
+    color: var(--light-gray);
+    font-size: 0.82rem;
+    line-height: 1.55;
+}
+
+.cohort-week-card li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.55em;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--purple-primary);
+}
+
+.cohort-week-takeaway {
+    background: rgba(156, 48, 255, 0.08);
+    border-radius: 8px;
+    padding: 0.6rem 0.85rem;
+    font-size: 0.8rem;
+    color: var(--white);
+    font-weight: 600;
+}
+
+.cohort-week-takeaway span {
+    color: var(--purple-primary);
+    font-weight: 700;
+}
+
+/* How It Works */
+.cohort-how {
+    padding: 5rem 0;
+    border-top: 1px solid var(--border-light);
+}
+
+.cohort-how h2 {
+    font-family: var(--font-heading);
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: var(--white);
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.cohort-steps {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.cohort-step {
+    text-align: center;
+}
+
+.cohort-step-number {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: var(--purple-primary);
+    color: var(--white);
+    font-family: var(--font-heading);
+    font-size: 1.2rem;
+    font-weight: 800;
+    margin-bottom: 1rem;
+}
+
+.cohort-step h3 {
+    font-family: var(--font-heading);
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 0.75rem;
+}
+
+.cohort-step p {
+    color: var(--light-gray);
+    font-size: 0.92rem;
+    line-height: 1.6;
+}
+
+/* Who This Is For */
+.cohort-fit {
+    padding: 5rem 0;
+    background-color: var(--dark-bg-alt);
+}
+
+.cohort-fit h2 {
+    font-family: var(--font-heading);
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: var(--white);
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.cohort-fit-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.cohort-fit-col {
+    background: var(--dark-bg-card);
+    border: 1px solid var(--border-light);
+    border-radius: 12px;
+    padding: 2rem;
+}
+
+.cohort-fit-col h3 {
+    font-family: var(--font-heading);
+    font-size: 1.15rem;
+    font-weight: 700;
+    margin-bottom: 1.25rem;
+}
+
+.cohort-fit-col.cohort-fit-yes h3 {
+    color: #4ade80;
+}
+
+.cohort-fit-col.cohort-fit-no h3 {
+    color: #f87171;
+}
+
+.cohort-fit-col ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.cohort-fit-col li {
+    position: relative;
+    padding-left: 1.5rem;
+    margin-bottom: 0.75rem;
+    color: var(--light-gray);
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+.cohort-fit-yes li::before {
+    content: '\2713';
+    position: absolute;
+    left: 0;
+    color: #4ade80;
+    font-weight: 700;
+}
+
+.cohort-fit-no li::before {
+    content: '\2717';
+    position: absolute;
+    left: 0;
+    color: #f87171;
+    font-weight: 700;
+}
+
+/* About John */
+.cohort-about {
+    padding: 5rem 0;
+    border-top: 1px solid var(--border-light);
+}
+
+.cohort-about-card {
+    display: flex;
+    align-items: center;
+    gap: 2.5rem;
+    max-width: 800px;
+    margin: 0 auto;
+    background: var(--dark-bg-card);
+    border: 1px solid var(--border-light);
+    border-radius: 16px;
+    padding: 2.5rem;
+}
+
+.cohort-about-photo {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+    border: 3px solid var(--purple-primary);
+}
+
+.cohort-about-text h3 {
+    font-family: var(--font-heading);
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 0.75rem;
+}
+
+.cohort-about-text p {
+    color: var(--light-gray);
+    font-size: 0.95rem;
+    line-height: 1.7;
+    margin-bottom: 1rem;
+}
+
+.cohort-about-badges {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+}
+
+.cohort-about-badge {
+    background: rgba(156, 48, 255, 0.1);
+    border: 1px solid rgba(156, 48, 255, 0.25);
+    border-radius: 100px;
+    padding: 0.35rem 0.85rem;
+    font-size: 0.8rem;
+    color: var(--purple-primary);
+    font-weight: 600;
+}
+
+/* FAQ */
+.cohort-faq {
+    padding: 5rem 0;
+    background-color: var(--dark-bg-alt);
+}
+
+.cohort-faq h2 {
+    font-family: var(--font-heading);
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: var(--white);
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.cohort-faq-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+/* Final CTA */
+.cohort-final-cta {
+    padding: 6rem 0;
+    text-align: center;
+    border-top: 1px solid var(--border-light);
+}
+
+.cohort-final-cta h2 {
+    font-family: var(--font-heading);
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--white);
+    margin-bottom: 1rem;
+}
+
+.cohort-final-cta-sub {
+    color: var(--light-gray);
+    font-size: 1.05rem;
+    max-width: 600px;
+    margin: 0 auto 2.5rem;
+    line-height: 1.7;
+}
+
+.cohort-final-note {
+    font-size: 0.9rem;
+    color: var(--text-gray);
+    margin-top: 1rem;
+}
+
+/* Sticky Bottom Bar */
+.cohort-sticky {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(10, 10, 10, 0.95);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-top: 1px solid var(--border-light);
+    padding: 0.75rem 0;
+    z-index: 100;
+    transform: translateY(100%);
+    transition: transform 0.3s ease;
+}
+
+.cohort-sticky.visible {
+    transform: translateY(0);
+}
+
+.cohort-sticky-inner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+}
+
+.cohort-sticky-text {
+    color: var(--light-gray);
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.cohort-sticky .btn-primary {
+    padding: 0.65rem 1.5rem;
+    font-size: 0.9rem;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .cohort-weeks {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .cohort-hero {
+        padding: 8rem 0 3rem;
+    }
+    .cohort-hero h1 {
+        font-size: 2rem;
+    }
+    .cohort-weeks {
+        grid-template-columns: 1fr;
+    }
+    .cohort-steps {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+    }
+    .cohort-fit-grid {
+        grid-template-columns: 1fr;
+    }
+    .cohort-about-card {
+        flex-direction: column;
+        text-align: center;
+    }
+    .cohort-about-badges {
+        justify-content: center;
+    }
+    .cohort-faq-grid {
+        grid-template-columns: 1fr;
+    }
+    .cohort-sticky-inner {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+    .cohort-final-cta h2 {
+        font-size: 2rem;
+    }
+}
+</style>
+{% endblock %}
+
+{% block content %}
+
+    <!-- Hero -->
+    <section class="cohort-hero">
+        <div class="container">
+            <h1>You just saw what<br>Claude Code <em>can</em> do.<br><span>Now build it into your business.</span></h1>
+            <p class="cohort-hero-sub">4 weeks. 20 operators. Weekly 2-hour group sessions where we build the exact workflows, tools, and automations you need &mdash; using the pain points you told us about when you registered.</p>
+            <div class="cohort-badges">
+                <span class="cohort-badge">4 Weekly Sessions</span>
+                <span class="cohort-badge cohort-badge--accent">20 Seats Only</span>
+                <span class="cohort-badge">Starts May 2026</span>
+            </div>
+            <div class="cohort-hero-cta">
+                <a href="#" class="btn-primary" id="cta-hero">Claim Your Seat &mdash; $1,000</a>
+            </div>
+            <p class="cohort-seats-note">Limited to 20 operators. When they're gone, they're gone.</p>
+        </div>
+    </section>
+
+    <!-- Problem Bridge -->
+    <section class="cohort-bridge">
+        <div class="container content-narrow">
+            <h2>Watching a demo is not the same as implementing it.</h2>
+            <p class="cohort-bridge-quotes">
+                "Struggling to start." &nbsp; "Don't know where to focus." &nbsp; "Too many options."<br>
+                "Not enough hours in the day." &nbsp; "Getting it to really work."
+            </p>
+            <p class="cohort-bridge-text">
+                We asked 200+ operators what's holding them back with Claude Code. Those were the answers. This cohort exists to fix every one of them &mdash; in 4 weeks, as a group, with someone who uses it every day to run his businesses.
+            </p>
+        </div>
+    </section>
+
+    <!-- Curriculum -->
+    <section class="cohort-curriculum">
+        <div class="container">
+            <h2>What You'll Build in 4 Weeks</h2>
+            <p class="cohort-curriculum-sub">Each session is 2 hours, live, and hands-on. You build during the call &mdash; not after.</p>
+            <div class="cohort-weeks">
+
+                <!-- Week 1 -->
+                <div class="cohort-week-card">
+                    <div class="cohort-week-header">
+                        <svg class="cohort-week-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/><text x="12" y="18" text-anchor="middle" fill="currentColor" stroke="none" font-size="8" font-weight="700" font-family="sans-serif">1</text></svg>
+                        <div class="cohort-week-number">Week 1</div>
+                    </div>
+                    <div class="cohort-week-title">Zero to Running</div>
+                    <ul>
+                        <li>Full Claude Code setup &mdash; terminal, VS Code, or desktop app (Mac or PC)</li>
+                        <li>How CLAUDE.md works and why it's the single most important file for getting good output</li>
+                        <li>The "What should I build?" framework &mdash; audit your operations and spot the 3-5 tasks Claude Code can take off your plate</li>
+                        <li>Live build: your first working automation &mdash; a competitor price/listing monitor</li>
+                        <li>Token management 101 &mdash; how to not blow through your credits in a day</li>
+                    </ul>
+                    <div class="cohort-week-takeaway"><span>Leave with:</span> Claude Code running, one working automation, and a prioritized list of what to build next</div>
+                </div>
+
+                <!-- Week 2 -->
+                <div class="cohort-week-card">
+                    <div class="cohort-week-header">
+                        <svg class="cohort-week-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/><text x="12" y="18" text-anchor="middle" fill="currentColor" stroke="none" font-size="8" font-weight="700" font-family="sans-serif">2</text></svg>
+                        <div class="cohort-week-number">Week 2</div>
+                    </div>
+                    <div class="cohort-week-title">Connect Your Business</div>
+                    <ul>
+                        <li>Connect Claude Code to your actual business data &mdash; CSV exports, Seller Central reports, Google Sheets, APIs</li>
+                        <li>Build a custom reporting dashboard &mdash; pull numbers, analyze trends, output formatted reports</li>
+                        <li>Live build: a "data analyst" workflow &mdash; ask plain English questions about your business data</li>
+                        <li>MCP servers explained &mdash; what they are, which ones matter for ecommerce, how to connect them</li>
+                        <li>API connections done right &mdash; credentials, common errors, and keeping data secure</li>
+                    </ul>
+                    <div class="cohort-week-takeaway"><span>Leave with:</span> 2-3 data workflows running against your real numbers, plus a connected dashboard</div>
+                </div>
+
+                <!-- Week 3 -->
+                <div class="cohort-week-card">
+                    <div class="cohort-week-header">
+                        <svg class="cohort-week-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/><text x="12" y="18" text-anchor="middle" fill="currentColor" stroke="none" font-size="8" font-weight="700" font-family="sans-serif">3</text></svg>
+                        <div class="cohort-week-number">Week 3</div>
+                    </div>
+                    <div class="cohort-week-title">Automate the Grind</div>
+                    <ul>
+                        <li>Build a listing copy system &mdash; brand voice + competitor data + keywords = optimized copy</li>
+                        <li>Live build: an automated daily ops workflow &mdash; check metrics, flag issues, draft responses in one command</li>
+                        <li>Create AI-powered SOPs your team can actually run &mdash; slash commands anyone can execute</li>
+                        <li>Automate the repetitive stuff &mdash; review responses, social content, email drafts, PPC bid recommendations</li>
+                        <li>Token efficiency deep-dive &mdash; prompt caching, context management, picking the right model</li>
+                    </ul>
+                    <div class="cohort-week-takeaway"><span>Leave with:</span> A content pipeline, at least one team-usable SOP, and an automated daily ops workflow</div>
+                </div>
+
+                <!-- Week 4 -->
+                <div class="cohort-week-card">
+                    <div class="cohort-week-header">
+                        <svg class="cohort-week-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/><text x="12" y="18" text-anchor="middle" fill="currentColor" stroke="none" font-size="8" font-weight="700" font-family="sans-serif">4</text></svg>
+                        <div class="cohort-week-number">Week 4</div>
+                    </div>
+                    <div class="cohort-week-title">Scale and Ship</div>
+                    <ul>
+                        <li>Chain multiple tools into end-to-end agentic workflows for complex multi-step processes</li>
+                        <li>Build custom slash commands and skills specific to your business operations</li>
+                        <li>Team rollout &mdash; set up Claude Code so your team can use the workflows you built</li>
+                        <li>Staying current &mdash; how to keep up as Claude Code evolves without breaking what works</li>
+                        <li>Group troubleshooting &mdash; bring your broken workflows, we debug and fix them live</li>
+                    </ul>
+                    <div class="cohort-week-takeaway"><span>Leave with:</span> A personal playbook of every workflow you built, plus a 30-day plan for what's next</div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="cohort-how">
+        <div class="container">
+            <h2>How It Works</h2>
+            <div class="cohort-steps">
+                <div class="cohort-step">
+                    <div class="cohort-step-number">1</div>
+                    <h3>Pay &amp; Join</h3>
+                    <p>Click below, complete checkout on Stripe, and you're in. You'll get a calendar invite and access to our shared workspace within 24 hours.</p>
+                </div>
+                <div class="cohort-step">
+                    <div class="cohort-step-number">2</div>
+                    <h3>Show Up Weekly</h3>
+                    <p>One 2-hour group call per week, weekday evening ET. Bring your laptop, your business problems, and your questions. We work live.</p>
+                </div>
+                <div class="cohort-step">
+                    <div class="cohort-step-number">3</div>
+                    <h3>Build &amp; Ship</h3>
+                    <p>Each session, you leave with something working. By week 4, you have a full toolkit of Claude Code workflows built for your business.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Who This Is For -->
+    <section class="cohort-fit">
+        <div class="container">
+            <h2>Is This for You?</h2>
+            <div class="cohort-fit-grid">
+                <div class="cohort-fit-col cohort-fit-yes">
+                    <h3>This is for you if:</h3>
+                    <ul>
+                        <li>You run or operate an ecommerce business and want to use AI as a real tool, not a toy</li>
+                        <li>You watched the webinar and thought "I need someone to walk me through this"</li>
+                        <li>You're willing to show up for 2 hours a week and do the work</li>
+                        <li>You want workflows built for YOUR business, not generic tutorials</li>
+                    </ul>
+                </div>
+                <div class="cohort-fit-col cohort-fit-no">
+                    <h3>This is NOT for you if:</h3>
+                    <ul>
+                        <li>You're looking for a course with recordings to watch "someday"</li>
+                        <li>You don't have a business to apply this to yet</li>
+                        <li>You want someone to do it for you (that's a different service)</li>
+                        <li>You're not willing to open a terminal</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About John -->
+    <section class="cohort-about">
+        <div class="container">
+            <div class="cohort-about-card">
+                <img src="/john-aspinall.jpg" alt="John Aspinall" class="cohort-about-photo" loading="lazy">
+                <div class="cohort-about-text">
+                    <h3>Your cohort leader: John Aspinall</h3>
+                    <p>John runs Operator Intelligence, a community of 100+ Amazon brand owners and agency operators who get daily AI news and workflows. He's the founder of Aspi (marketplace creative strategy) and uses Claude Code every day to run his businesses. This isn't theory. It's what he does.</p>
+                    <div class="cohort-about-badges">
+                        <span class="cohort-about-badge">Daily AI Digest</span>
+                        <span class="cohort-about-badge">20 Years in Ecommerce</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="cohort-faq">
+        <div class="container">
+            <h2>Questions</h2>
+            <div class="cohort-faq-grid">
+                <div class="faq-item-modern" tabindex="0" role="button" aria-expanded="false">
+                    <p class="faq-question-modern">
+                        <span class="faq-icon">+</span>
+                        What if I miss a session?
+                    </p>
+                    <p class="faq-answer-modern">Sessions are live and not recorded. The value is in doing the work together in real time. If you can't commit to 4 weekday evenings over the next month, this isn't the right time.</p>
+                </div>
+                <div class="faq-item-modern" tabindex="0" role="button" aria-expanded="false">
+                    <p class="faq-question-modern">
+                        <span class="faq-icon">+</span>
+                        Do I need to know how to code?
+                    </p>
+                    <p class="faq-answer-modern">No. Claude Code writes the code. You need to know your business, your pain points, and be willing to follow along. If you can type in a terminal, you can do this.</p>
+                </div>
+                <div class="faq-item-modern" tabindex="0" role="button" aria-expanded="false">
+                    <p class="faq-question-modern">
+                        <span class="faq-icon">+</span>
+                        What do I need set up before we start?
+                    </p>
+                    <p class="faq-answer-modern">A computer (Mac or PC), a Claude Pro or Max subscription, and Claude Code installed. We'll send setup instructions before Week 1 so you come ready to build.</p>
+                </div>
+                <div class="faq-item-modern" tabindex="0" role="button" aria-expanded="false">
+                    <p class="faq-question-modern">
+                        <span class="faq-icon">+</span>
+                        Is there a refund policy?
+                    </p>
+                    <p class="faq-answer-modern">If after Week 1 you feel this isn't delivering value, email me and I'll refund you in full. After Week 1, no refunds &mdash; you've got the material and the access.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="cohort-final-cta" id="cohort-final-cta">
+        <div class="container content-narrow">
+            <h2>20 seats. 4 weeks. One cohort.</h2>
+            <p class="cohort-final-cta-sub">The next time I run this, the price will be higher and the format may change. This is the first cohort at the founding rate.</p>
+            <div>
+                <a href="#" class="btn-primary" style="padding: 1.2rem 3rem; font-size: 1.1rem;">Join the Cohort &mdash; $1,000</a>
+            </div>
+            <p class="cohort-final-note">Only 20 seats available. When they're gone, they're gone.</p>
+        </div>
+    </section>
+
+    <!-- Sticky Bottom Bar -->
+    <div class="cohort-sticky" id="cohort-sticky">
+        <div class="container">
+            <div class="cohort-sticky-inner">
+                <span class="cohort-sticky-text">Limited to 20 operators</span>
+                <a href="#" class="btn-primary">Claim Your Seat</a>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block scripts %}
+<script>
+    // Sticky bottom bar: show after scrolling past hero, hide near final CTA
+    document.addEventListener('DOMContentLoaded', function() {
+        var sticky = document.getElementById('cohort-sticky');
+        var hero = document.querySelector('.cohort-hero');
+        var finalCta = document.getElementById('cohort-final-cta');
+        var heroVisible = true;
+        var ctaVisible = false;
+
+        function updateSticky() {
+            if (!heroVisible && !ctaVisible) {
+                sticky.classList.add('visible');
+            } else {
+                sticky.classList.remove('visible');
+            }
+        }
+
+        var observer = new IntersectionObserver(function(entries) {
+            entries.forEach(function(entry) {
+                if (entry.target === hero) {
+                    heroVisible = entry.isIntersecting;
+                } else if (entry.target === finalCta) {
+                    ctaVisible = entry.isIntersecting;
+                }
+                updateSticky();
+            });
+        }, { threshold: 0 });
+
+        if (hero) observer.observe(hero);
+        if (finalCta) observer.observe(finalCta);
+    });
+</script>
+{% endblock %}
