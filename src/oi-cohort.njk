@@ -448,6 +448,103 @@ permalink: /oi-cohort/
     margin: 0 auto;
 }
 
+/* Included / Offer Stack */
+.cohort-included {
+    padding: 5rem 0;
+    border-top: 1px solid var(--border-light);
+    background: radial-gradient(ellipse at 50% 30%, rgba(156, 48, 255, 0.06), transparent 60%);
+}
+
+.cohort-included h2 {
+    font-family: var(--font-heading);
+    font-size: 2.4rem;
+    font-weight: 800;
+    color: var(--white);
+    text-align: center;
+    margin-bottom: 0.75rem;
+}
+
+.cohort-included-sub {
+    text-align: center;
+    color: var(--text-gray);
+    margin-bottom: 3rem;
+    font-size: 1rem;
+}
+
+.cohort-included-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.cohort-included-card {
+    background: var(--dark-bg-card);
+    border: 1px solid var(--border-light);
+    border-radius: 14px;
+    padding: 2rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.cohort-included-card::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+}
+
+.cohort-included-card.bonus {
+    border-color: rgba(240, 180, 41, 0.35);
+}
+
+.cohort-included-card.bonus::before {
+    background: var(--accent-warm);
+}
+
+.cohort-included-card.guarantee {
+    border-color: rgba(156, 48, 255, 0.4);
+}
+
+.cohort-included-card.guarantee::before {
+    background: var(--purple-primary);
+}
+
+.cohort-included-label {
+    font-family: var(--font-heading);
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+}
+
+.cohort-included-card.bonus .cohort-included-label {
+    color: var(--accent-warm);
+}
+
+.cohort-included-card.guarantee .cohort-included-label {
+    color: var(--purple-primary);
+}
+
+.cohort-included-title {
+    font-family: var(--font-heading);
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: var(--white);
+    margin-bottom: 0.75rem;
+    line-height: 1.3;
+}
+
+.cohort-included-desc {
+    color: var(--light-gray);
+    font-size: 0.98rem;
+    line-height: 1.65;
+}
+
 /* Final CTA */
 .cohort-final-cta {
     padding: 6rem 0;
@@ -537,6 +634,9 @@ permalink: /oi-cohort/
         gap: 2.5rem;
     }
     .cohort-fit-grid {
+        grid-template-columns: 1fr;
+    }
+    .cohort-included-grid {
         grid-template-columns: 1fr;
     }
     .cohort-about-card {
@@ -672,6 +772,26 @@ permalink: /oi-cohort/
         </div>
     </section>
 
+    <!-- Included With Your Seat -->
+    <section class="cohort-included">
+        <div class="container">
+            <h2>Included With Your Seat</h2>
+            <p class="cohort-included-sub">Two things that make this cohort risk-free.</p>
+            <div class="cohort-included-grid">
+                <div class="cohort-included-card bonus">
+                    <div class="cohort-included-label">+ Bonus &middot; Included</div>
+                    <div class="cohort-included-title">Private 60-min 1:1 with me after the cohort</div>
+                    <p class="cohort-included-desc">We sit down after Week 4, review your actual setup, dial in what's off, and make sure you're running autonomously in your business.</p>
+                </div>
+                <div class="cohort-included-card guarantee">
+                    <div class="cohort-included-label">100% Guarantee</div>
+                    <div class="cohort-included-title">Zero-risk. Full money-back.</div>
+                    <p class="cohort-included-desc">Finish the cohort. If you don't leave 10x more capable running your business with Claude Code &mdash; full refund. Keep every workflow you built.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- How It Works -->
     <section class="cohort-how">
         <div class="container">
@@ -771,7 +891,14 @@ permalink: /oi-cohort/
                         <span class="faq-icon">+</span>
                         Is there a refund policy?
                     </p>
-                    <p class="faq-answer-modern">If after Week 1 you feel this isn't delivering value, email me and I'll refund you in full. After Week 1, no refunds &mdash; you've got the material and the access.</p>
+                    <p class="faq-answer-modern">Yes &mdash; 100% money-back guarantee. Finish the cohort. If you don't leave 10x more capable running your business with Claude Code, email me and I'll refund you in full. You keep every workflow you built.</p>
+                </div>
+                <div class="faq-item-modern" tabindex="0" role="button" aria-expanded="false">
+                    <p class="faq-question-modern">
+                        <span class="faq-icon">+</span>
+                        What's the private 1:1 call about?
+                    </p>
+                    <p class="faq-answer-modern">After Week 4 wraps, you and I book 60 minutes 1:1. We review your actual setup, look at what you built, fix anything that's off, and make sure you can run everything without me. It's included with your seat &mdash; no extra charge.</p>
                 </div>
             </div>
         </div>
