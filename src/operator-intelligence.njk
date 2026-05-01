@@ -1,0 +1,1244 @@
+---
+title: "Operator Intelligence — Claude Code, Built Into How You Run Your Business"
+description: "Operator Intelligence is the implementation system for ecommerce operators using Claude Code. Free trainings, a 30-day cohort, a working community, and 1:1 advisory."
+keywords: "Claude Code for ecommerce, operator intelligence, Amazon AI workflows, ecommerce automation, Claude Code cohort, AI for sellers"
+permalink: /operator-intelligence/
+---
+{% extends "base.njk" %}
+
+{% block head %}
+<!-- Structured Data: WebPage -->
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Operator Intelligence",
+    "url": "https://goaspi.com/operator-intelligence/",
+    "description": "Operator Intelligence is the implementation system for ecommerce operators using Claude Code. Free trainings, a 30-day cohort, community, and 1:1 advisory.",
+    "isPartOf": {
+        "@id": "https://goaspi.com/#website"
+    },
+    "about": {
+        "@type": "Thing",
+        "name": "Claude Code implementation for ecommerce operators"
+    }
+}
+</script>
+
+<!-- Structured Data: Course (Cohort) -->
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Course",
+    "name": "Operator Intelligence Cohort",
+    "description": "4-week implementation cohort for ecommerce operators. Build Claude Code workflows into your business, live, in a small group.",
+    "provider": {
+        "@type": "Organization",
+        "name": "Operator Intelligence",
+        "url": "https://goaspi.com/operator-intelligence/"
+    },
+    "url": "https://goaspi.com/oi-cohort/"
+}
+</script>
+
+<style>
+/* ===========================
+   Operator Intelligence Page
+   =========================== */
+
+/* HERO */
+.oi-hero {
+    position: relative;
+    padding: 9rem 0 5rem;
+    overflow: hidden;
+}
+
+.oi-hero::before {
+    content: '';
+    position: absolute;
+    top: -200px;
+    right: -200px;
+    width: 700px;
+    height: 700px;
+    background: radial-gradient(circle, rgba(156, 48, 255, 0.18) 0%, rgba(240, 180, 41, 0.06) 35%, transparent 65%);
+    pointer-events: none;
+    z-index: 0;
+}
+
+.oi-hero-grid {
+    display: grid;
+    grid-template-columns: 1.05fr 1fr;
+    gap: 3rem;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+}
+
+.oi-hero-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.4rem 0.9rem;
+    background: rgba(156, 48, 255, 0.1);
+    border: 1px solid rgba(156, 48, 255, 0.3);
+    border-radius: 100px;
+    color: var(--purple-primary);
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+}
+
+.oi-hero-eyebrow::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--purple-primary);
+    box-shadow: 0 0 8px var(--purple-primary);
+}
+
+.oi-hero h1 {
+    font-family: var(--font-heading);
+    font-size: 3.4rem;
+    font-weight: 800;
+    line-height: 1.08;
+    color: var(--white);
+    margin-bottom: 1.5rem;
+    letter-spacing: -0.02em;
+}
+
+.oi-hero h1 span {
+    background: linear-gradient(135deg, #9c30ff, #F0B429);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.oi-hero-sub {
+    font-size: 1.15rem;
+    color: var(--light-gray);
+    line-height: 1.7;
+    margin-bottom: 2.25rem;
+    max-width: 540px;
+}
+
+.oi-hero-ctas {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-bottom: 1.5rem;
+}
+
+.oi-hero-ctas .btn-primary {
+    padding: 1.05rem 2rem;
+    font-size: 1rem;
+}
+
+.oi-hero-ctas .btn-secondary-outline {
+    padding: 1.05rem 2rem;
+    font-size: 1rem;
+}
+
+.oi-hero-trust {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    color: var(--text-gray);
+    font-size: 0.85rem;
+}
+
+.oi-hero-trust span {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.oi-hero-trust span::before {
+    content: '✓';
+    color: var(--purple-primary);
+    font-weight: 700;
+}
+
+/* HERO VISUAL: terminal + floating workflow cards */
+.oi-hero-visual {
+    position: relative;
+    min-height: 460px;
+}
+
+.oi-terminal {
+    background: #0d0d0d;
+    border: 1px solid var(--border-light);
+    border-radius: 14px;
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(156, 48, 255, 0.15);
+    overflow: hidden;
+    font-family: 'Menlo', 'Monaco', monospace;
+    font-size: 0.82rem;
+    position: relative;
+    z-index: 1;
+}
+
+.oi-terminal-header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.7rem 1rem;
+    background: #161616;
+    border-bottom: 1px solid var(--border-light);
+}
+
+.oi-terminal-dot {
+    width: 11px;
+    height: 11px;
+    border-radius: 50%;
+    background: #333;
+}
+
+.oi-terminal-dot:nth-child(1) { background: #ff5f57; }
+.oi-terminal-dot:nth-child(2) { background: #febc2e; }
+.oi-terminal-dot:nth-child(3) { background: #28c840; }
+
+.oi-terminal-title {
+    margin-left: 0.5rem;
+    color: var(--text-gray);
+    font-size: 0.78rem;
+    font-family: var(--font-body);
+}
+
+.oi-terminal-body {
+    padding: 1.25rem 1.25rem 1.5rem;
+    color: var(--off-white);
+    line-height: 1.85;
+}
+
+.oi-terminal-line {
+    display: block;
+}
+
+.oi-prompt { color: var(--purple-primary); margin-right: 0.5rem; }
+.oi-cmd { color: var(--white); }
+.oi-flag { color: #F0B429; }
+.oi-comment { color: #6a6a6a; }
+.oi-output { color: var(--light-gray); }
+.oi-success { color: #4ade80; }
+.oi-cursor {
+    display: inline-block;
+    width: 8px;
+    height: 1em;
+    background: var(--purple-primary);
+    vertical-align: text-bottom;
+    margin-left: 2px;
+    animation: oi-blink 1s steps(2) infinite;
+}
+
+@keyframes oi-blink {
+    50% { opacity: 0; }
+}
+
+/* Floating workflow cards */
+.oi-floating-card {
+    position: absolute;
+    background: rgba(18, 18, 18, 0.95);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid var(--border-light);
+    border-left: 3px solid var(--purple-primary);
+    border-radius: 10px;
+    padding: 0.85rem 1rem;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
+    z-index: 2;
+    min-width: 200px;
+}
+
+.oi-floating-card-1 {
+    top: -20px;
+    left: -30px;
+    animation: oi-float-a 6s ease-in-out infinite;
+}
+
+.oi-floating-card-2 {
+    bottom: -10px;
+    right: -25px;
+    border-left-color: var(--accent-warm);
+    animation: oi-float-b 7s ease-in-out infinite;
+}
+
+@keyframes oi-float-a {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+}
+
+@keyframes oi-float-b {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+.oi-floating-card-label {
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--purple-primary);
+    margin-bottom: 0.25rem;
+}
+
+.oi-floating-card-2 .oi-floating-card-label {
+    color: var(--accent-warm);
+}
+
+.oi-floating-card-title {
+    font-family: var(--font-heading);
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 0.2rem;
+}
+
+.oi-floating-card-meta {
+    font-size: 0.78rem;
+    color: var(--text-gray);
+}
+
+/* SECTION: What OI Is */
+.oi-what {
+    padding: 5rem 0;
+    border-top: 1px solid var(--border-light);
+}
+
+.oi-what-grid {
+    display: grid;
+    grid-template-columns: 0.9fr 1.1fr;
+    gap: 4rem;
+    align-items: start;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.oi-what-label {
+    font-family: var(--font-heading);
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--purple-primary);
+    margin-bottom: 1rem;
+}
+
+.oi-what h2 {
+    font-family: var(--font-heading);
+    font-size: 2.4rem;
+    font-weight: 800;
+    color: var(--white);
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+}
+
+.oi-what-body p {
+    color: var(--light-gray);
+    font-size: 1.05rem;
+    line-height: 1.8;
+    margin-bottom: 1.25rem;
+}
+
+.oi-what-body p strong {
+    color: var(--white);
+}
+
+.oi-what-body .oi-foil {
+    color: var(--text-gray);
+    font-style: italic;
+}
+
+/* SECTION: Four-step path */
+.oi-path {
+    padding: 5.5rem 0;
+    background-color: var(--dark-bg-alt);
+}
+
+.oi-path h2 {
+    font-family: var(--font-heading);
+    font-size: 2.4rem;
+    font-weight: 800;
+    color: var(--white);
+    text-align: center;
+    margin-bottom: 0.75rem;
+    letter-spacing: -0.01em;
+}
+
+.oi-path-sub {
+    text-align: center;
+    color: var(--text-gray);
+    margin-bottom: 3.5rem;
+    font-size: 1rem;
+}
+
+.oi-path-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.25rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.oi-path-card {
+    background: var(--dark-bg-card);
+    border: 1px solid var(--border-light);
+    border-radius: 14px;
+    padding: 1.75rem 1.5rem;
+    position: relative;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.oi-path-card:hover {
+    border-color: var(--purple-primary);
+    transform: translateY(-3px);
+    box-shadow: 0 12px 32px rgba(156, 48, 255, 0.12);
+}
+
+.oi-path-card-num {
+    font-family: var(--font-heading);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    color: var(--purple-primary);
+    margin-bottom: 0.85rem;
+}
+
+.oi-path-card h3 {
+    font-family: var(--font-heading);
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 0.6rem;
+    line-height: 1.3;
+}
+
+.oi-path-card-price {
+    font-family: var(--font-heading);
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--accent-warm);
+    margin-bottom: 0.85rem;
+}
+
+.oi-path-card p {
+    color: var(--light-gray);
+    font-size: 0.92rem;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+    flex-grow: 1;
+}
+
+.oi-path-card-cta {
+    color: var(--purple-primary);
+    font-weight: 700;
+    font-size: 0.88rem;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    transition: gap 0.2s ease;
+}
+
+.oi-path-card-cta:hover {
+    gap: 0.7rem;
+}
+
+/* SECTION: What You'll Build */
+.oi-build {
+    padding: 5.5rem 0;
+    border-top: 1px solid var(--border-light);
+}
+
+.oi-build h2 {
+    font-family: var(--font-heading);
+    font-size: 2.4rem;
+    font-weight: 800;
+    color: var(--white);
+    text-align: center;
+    margin-bottom: 0.75rem;
+    letter-spacing: -0.01em;
+}
+
+.oi-build-sub {
+    text-align: center;
+    color: var(--text-gray);
+    margin-bottom: 3.5rem;
+    font-size: 1rem;
+    max-width: 620px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.oi-build-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.oi-build-card {
+    background: var(--dark-bg-card);
+    border: 1px solid var(--border-light);
+    border-radius: 14px;
+    padding: 1.75rem;
+}
+
+.oi-build-card-icon {
+    width: 38px;
+    height: 38px;
+    border-radius: 8px;
+    background: rgba(156, 48, 255, 0.12);
+    color: var(--purple-primary);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.1rem;
+}
+
+.oi-build-card-icon svg {
+    width: 20px;
+    height: 20px;
+}
+
+.oi-build-card h3 {
+    font-family: var(--font-heading);
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 0.5rem;
+}
+
+.oi-build-card p {
+    color: var(--light-gray);
+    font-size: 0.92rem;
+    line-height: 1.65;
+}
+
+/* SECTION: Proof */
+.oi-proof {
+    padding: 5rem 0;
+    background-color: var(--dark-bg-alt);
+}
+
+.oi-proof-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    max-width: 900px;
+    margin: 0 auto 4rem;
+    text-align: center;
+}
+
+.oi-proof-stat-num {
+    font-family: var(--font-heading);
+    font-size: 3.2rem;
+    font-weight: 800;
+    background: linear-gradient(135deg, #9c30ff, #F0B429);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1;
+    margin-bottom: 0.5rem;
+}
+
+.oi-proof-stat-label {
+    color: var(--light-gray);
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+.oi-proof-quotes-label {
+    text-align: center;
+    font-family: var(--font-heading);
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--text-gray);
+    margin-bottom: 1.5rem;
+}
+
+.oi-proof-quotes {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.oi-proof-quote {
+    background: var(--dark-bg-card);
+    border: 1px solid var(--border-light);
+    border-radius: 12px;
+    padding: 1.5rem;
+}
+
+.oi-proof-quote-text {
+    color: var(--white);
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+    font-style: italic;
+}
+
+.oi-proof-quote-attr {
+    color: var(--text-gray);
+    font-size: 0.82rem;
+}
+
+/* SECTION: Featured Cohort */
+.oi-cohort-band {
+    padding: 6rem 0;
+    border-top: 1px solid var(--border-light);
+    background: radial-gradient(ellipse at 50% 50%, rgba(156, 48, 255, 0.08), transparent 70%);
+}
+
+.oi-cohort-band-inner {
+    max-width: 880px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.oi-cohort-band-eyebrow {
+    display: inline-block;
+    padding: 0.45rem 1rem;
+    background: rgba(240, 180, 41, 0.12);
+    border: 1px solid rgba(240, 180, 41, 0.4);
+    border-radius: 100px;
+    color: var(--accent-warm);
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+}
+
+.oi-cohort-band h2 {
+    font-family: var(--font-heading);
+    font-size: 2.6rem;
+    font-weight: 800;
+    color: var(--white);
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+    margin-bottom: 1.25rem;
+}
+
+.oi-cohort-band p {
+    color: var(--light-gray);
+    font-size: 1.08rem;
+    line-height: 1.7;
+    max-width: 640px;
+    margin: 0 auto 2rem;
+}
+
+.oi-cohort-band-meta {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+    margin-bottom: 2rem;
+    color: var(--text-gray);
+    font-size: 0.92rem;
+}
+
+.oi-cohort-band-meta span {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.oi-cohort-band-meta strong {
+    color: var(--white);
+    font-weight: 700;
+}
+
+/* SECTION: 1:1 Advisory band */
+.oi-advisory {
+    padding: 5rem 0;
+    border-top: 1px solid var(--border-light);
+}
+
+.oi-advisory-card {
+    max-width: 960px;
+    margin: 0 auto;
+    background: var(--dark-bg-card);
+    border: 1px solid var(--border-light);
+    border-radius: 18px;
+    padding: 3rem;
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+}
+
+.oi-advisory-label {
+    font-family: var(--font-heading);
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--purple-primary);
+    margin-bottom: 0.85rem;
+}
+
+.oi-advisory h2 {
+    font-family: var(--font-heading);
+    font-size: 1.85rem;
+    font-weight: 800;
+    color: var(--white);
+    line-height: 1.2;
+    margin-bottom: 1rem;
+}
+
+.oi-advisory p {
+    color: var(--light-gray);
+    font-size: 1rem;
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+}
+
+.oi-advisory-cta-block {
+    text-align: center;
+    padding: 2rem;
+    background: var(--dark-bg);
+    border: 1px solid var(--border-light);
+    border-radius: 12px;
+}
+
+.oi-advisory-price {
+    font-family: var(--font-heading);
+    font-weight: 800;
+    color: var(--white);
+    margin-bottom: 0.25rem;
+    line-height: 1;
+}
+
+.oi-advisory-price-amount {
+    font-size: 2.6rem;
+}
+
+.oi-advisory-price-period {
+    font-size: 1rem;
+    color: var(--text-gray);
+    font-weight: 600;
+}
+
+.oi-advisory-price-note {
+    color: var(--text-gray);
+    font-size: 0.85rem;
+    margin-bottom: 1.5rem;
+}
+
+/* SECTION: Waitlist (Final CTA) */
+.oi-waitlist {
+    padding: 6rem 0;
+    border-top: 1px solid var(--border-light);
+    background: radial-gradient(ellipse at 50% 30%, rgba(156, 48, 255, 0.08), transparent 65%);
+    text-align: center;
+}
+
+.oi-waitlist-inner {
+    max-width: 720px;
+    margin: 0 auto;
+}
+
+.oi-waitlist h2 {
+    font-family: var(--font-heading);
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--white);
+    line-height: 1.15;
+    margin-bottom: 1rem;
+    letter-spacing: -0.01em;
+}
+
+.oi-waitlist-sub {
+    color: var(--light-gray);
+    font-size: 1.05rem;
+    line-height: 1.7;
+    margin-bottom: 2.25rem;
+}
+
+.oi-waitlist-form-wrap {
+    background: var(--dark-bg-card);
+    border: 1px solid var(--border-light);
+    border-radius: 16px;
+    padding: 1rem;
+    max-width: 520px;
+    margin: 0 auto 1rem;
+}
+
+.oi-waitlist-form-wrap iframe {
+    width: 100%;
+    height: 150px;
+    border: 0;
+    background: transparent;
+    display: block;
+    border-radius: 10px;
+}
+
+.oi-waitlist-fallback {
+    color: var(--text-gray);
+    font-size: 0.9rem;
+}
+
+.oi-waitlist-fallback a {
+    color: var(--purple-primary);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.oi-waitlist-fallback a:hover {
+    text-decoration: underline;
+}
+
+/* FAQ overrides for this page */
+.oi-faq {
+    padding: 5rem 0;
+    background-color: var(--dark-bg-alt);
+}
+
+.oi-faq h2 {
+    font-family: var(--font-heading);
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: var(--white);
+    text-align: center;
+    margin-bottom: 3rem;
+    letter-spacing: -0.01em;
+}
+
+.oi-faq-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    max-width: 980px;
+    margin: 0 auto;
+}
+
+/* RESPONSIVE */
+@media (max-width: 1024px) {
+    .oi-hero-grid {
+        grid-template-columns: 1fr;
+        gap: 4rem;
+    }
+    .oi-hero h1 {
+        font-size: 2.6rem;
+    }
+    .oi-hero-visual {
+        max-width: 520px;
+        margin: 0 auto;
+    }
+    .oi-what-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    .oi-path-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .oi-build-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .oi-advisory-card {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        padding: 2.5rem;
+    }
+    .oi-proof-quotes {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .oi-hero {
+        padding: 7rem 0 3.5rem;
+    }
+    .oi-hero h1 {
+        font-size: 2.1rem;
+    }
+    .oi-hero-ctas {
+        flex-direction: column;
+    }
+    .oi-hero-ctas .btn-primary,
+    .oi-hero-ctas .btn-secondary-outline {
+        width: 100%;
+        text-align: center;
+    }
+    .oi-floating-card {
+        display: none;
+    }
+    .oi-what h2,
+    .oi-path h2,
+    .oi-build h2,
+    .oi-cohort-band h2,
+    .oi-waitlist h2 {
+        font-size: 1.85rem;
+    }
+    .oi-path-grid {
+        grid-template-columns: 1fr;
+    }
+    .oi-build-grid {
+        grid-template-columns: 1fr;
+    }
+    .oi-proof-stats {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+    }
+    .oi-proof-stat-num {
+        font-size: 2.6rem;
+    }
+    .oi-faq-grid {
+        grid-template-columns: 1fr;
+    }
+    .oi-cohort-band-meta {
+        gap: 1rem;
+        flex-direction: column;
+    }
+}
+</style>
+{% endblock %}
+
+{% block content %}
+
+    <!-- HERO -->
+    <section class="oi-hero">
+        <div class="container">
+            <div class="oi-hero-grid">
+
+                <div class="oi-hero-content">
+                    <div class="oi-hero-eyebrow">Operator Intelligence</div>
+                    <h1>Claude Code, built into <span>how you actually run</span> your ecommerce business.</h1>
+                    <p class="oi-hero-sub">Most AI content is theater. Operator Intelligence is the implementation system &mdash; trainings, a 30-day cohort, a working community, and 1:1 advisory &mdash; built for operators who want workflows running, not slide decks watched.</p>
+                    <div class="oi-hero-ctas">
+                        <a href="#waitlist" class="btn-primary">Join the Waitlist</a>
+                        <a href="/oi-cohort/" class="btn-secondary-outline">See the Cohort</a>
+                    </div>
+                    <div class="oi-hero-trust">
+                        <span>Built by an operator, not a course creator</span>
+                        <span>100+ ecommerce operators inside</span>
+                    </div>
+                </div>
+
+                <div class="oi-hero-visual">
+                    <!-- Floating workflow card #1 -->
+                    <div class="oi-floating-card oi-floating-card-1">
+                        <div class="oi-floating-card-label">Workflow</div>
+                        <div class="oi-floating-card-title">Daily Ops Report</div>
+                        <div class="oi-floating-card-meta">runs at 7:00 AM &middot; 14 metrics</div>
+                    </div>
+
+                    <!-- Terminal -->
+                    <div class="oi-terminal">
+                        <div class="oi-terminal-header">
+                            <span class="oi-terminal-dot"></span>
+                            <span class="oi-terminal-dot"></span>
+                            <span class="oi-terminal-dot"></span>
+                            <span class="oi-terminal-title">claude-code &mdash; ~/operator</span>
+                        </div>
+                        <div class="oi-terminal-body">
+<span class="oi-terminal-line"><span class="oi-comment"># start your day</span></span>
+<span class="oi-terminal-line"><span class="oi-prompt">&gt;</span><span class="oi-cmd">/daily-ops-report</span></span>
+<span class="oi-terminal-line"><span class="oi-output">&nbsp;&nbsp;Pulling Seller Central, ad spend, returns&hellip;</span></span>
+<span class="oi-terminal-line"><span class="oi-output">&nbsp;&nbsp;Flagging 3 ASINs with CTR drop &gt;15%</span></span>
+<span class="oi-terminal-line"><span class="oi-success">&nbsp;&nbsp;&#10003; Report ready</span> <span class="oi-comment">(2.4s)</span></span>
+<span class="oi-terminal-line">&nbsp;</span>
+<span class="oi-terminal-line"><span class="oi-prompt">&gt;</span><span class="oi-cmd">/listing-monitor</span> <span class="oi-flag">--competitors</span></span>
+<span class="oi-terminal-line"><span class="oi-output">&nbsp;&nbsp;3 competitor price changes detected</span></span>
+<span class="oi-terminal-line"><span class="oi-output">&nbsp;&nbsp;Drafting response&hellip;</span></span>
+<span class="oi-terminal-line"><span class="oi-success">&nbsp;&nbsp;&#10003; Done</span></span>
+<span class="oi-terminal-line">&nbsp;</span>
+<span class="oi-terminal-line"><span class="oi-prompt">&gt;</span><span class="oi-cursor"></span></span>
+                        </div>
+                    </div>
+
+                    <!-- Floating workflow card #2 -->
+                    <div class="oi-floating-card oi-floating-card-2">
+                        <div class="oi-floating-card-label">Slash Command</div>
+                        <div class="oi-floating-card-title">/review-responder</div>
+                        <div class="oi-floating-card-meta">drafted 12 replies today</div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- WHAT OI IS -->
+    <section class="oi-what">
+        <div class="container">
+            <div class="oi-what-grid">
+                <div>
+                    <div class="oi-what-label">What this is</div>
+                    <h2>The implementation system between watching a demo and running it in your business.</h2>
+                </div>
+                <div class="oi-what-body">
+                    <p><strong>Operator Intelligence is not a course.</strong> It's not a Slack group full of screenshots. It's not a newsletter with prompt lists.</p>
+                    <p>It's the structured path operators take to install Claude Code, configure it around their actual business, and ship 3&ndash;5 working workflows in 30 days &mdash; with someone who uses it daily to run his own.</p>
+                    <p class="oi-foil">If you've watched the demos, downloaded the prompt packs, joined the Discord, and still don't have anything running &mdash; you don't have an information problem. You have an implementation problem.</p>
+                    <p>That's what this fixes.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- THE PATH -->
+    <section class="oi-path">
+        <div class="container">
+            <h2>The path operators take</h2>
+            <p class="oi-path-sub">Four steps. Each one builds on the last. Start where you are.</p>
+            <div class="oi-path-grid">
+
+                <div class="oi-path-card">
+                    <div class="oi-path-card-num">Step 01</div>
+                    <h3>Free training</h3>
+                    <div class="oi-path-card-price">Free</div>
+                    <p>Live webinars and recorded trainings showing real Claude Code workflows running on real ecommerce operations &mdash; not toy examples.</p>
+                    <a href="#waitlist" class="oi-path-card-cta">Join the waitlist &rarr;</a>
+                </div>
+
+                <div class="oi-path-card">
+                    <div class="oi-path-card-num">Step 02</div>
+                    <h3>30-day cohort</h3>
+                    <div class="oi-path-card-price">$997 &middot; 20 seats</div>
+                    <p>Four weekly 2-hour live sessions. We build your workflows together, on your real business data. You leave with everything running.</p>
+                    <a href="/oi-cohort/" class="oi-path-card-cta">See the cohort &rarr;</a>
+                </div>
+
+                <div class="oi-path-card">
+                    <div class="oi-path-card-num">Step 03</div>
+                    <h3>Operator community</h3>
+                    <div class="oi-path-card-price">Skool &middot; Free for cohort grads</div>
+                    <p>Where operators ship together &mdash; share working workflows, debug live, and stay current as Claude Code evolves week to week.</p>
+                    <!-- TODO: replace href with actual Skool URL -->
+                    <a href="#waitlist" class="oi-path-card-cta">Get notified &rarr;</a>
+                </div>
+
+                <div class="oi-path-card">
+                    <div class="oi-path-card-num">Step 04</div>
+                    <h3>1:1 advisory</h3>
+                    <div class="oi-path-card-price">$4,500/mo</div>
+                    <p>For operators who want this built into their business now, not eventually. Two 60-minute sessions a week, hands-on, working in your stack.</p>
+                    <a href="/ai/#pricing" class="oi-path-card-cta">See advisory &rarr;</a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- WHAT YOU'LL BUILD -->
+    <section class="oi-build">
+        <div class="container">
+            <h2>What operators are actually building</h2>
+            <p class="oi-build-sub">Concrete workflows running in real businesses &mdash; not demos, not "what could be." This is the shortlist.</p>
+            <div class="oi-build-grid">
+
+                <div class="oi-build-card">
+                    <div class="oi-build-card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 14l4-4 4 4 5-5"/></svg>
+                    </div>
+                    <h3>Daily ops report</h3>
+                    <p>Pulls Seller Central, ad spend, returns, and inventory every morning. Flags ASINs with abnormal CTR or CVR drops. One command, one report.</p>
+                </div>
+
+                <div class="oi-build-card">
+                    <div class="oi-build-card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                    </div>
+                    <h3>Competitor monitor</h3>
+                    <p>Watches your top competitors&rsquo; price, listing copy, image stack, and review velocity. Alerts you when something material changes &mdash; not when nothing has.</p>
+                </div>
+
+                <div class="oi-build-card">
+                    <div class="oi-build-card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="9" y1="13" x2="15" y2="13"/><line x1="9" y1="17" x2="15" y2="17"/></svg>
+                    </div>
+                    <h3>Listing copy system</h3>
+                    <p>Brand voice + competitor signals + keyword data, end to end. Drafts a full listing &mdash; title, bullets, A+ blocks &mdash; that sounds like you, not like a template.</p>
+                </div>
+
+                <div class="oi-build-card">
+                    <div class="oi-build-card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                    </div>
+                    <h3>Review responder</h3>
+                    <p>Drafts replies to every new review in your tone. You scan, edit, send. What used to take 90 minutes a week becomes 10 &mdash; without sounding like a bot.</p>
+                </div>
+
+                <div class="oi-build-card">
+                    <div class="oi-build-card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+                    </div>
+                    <h3>PPC bid sanity check</h3>
+                    <p>Reads your campaign exports, surfaces wasted spend, and recommends bid adjustments backed by your own conversion data &mdash; not generic best practices.</p>
+                </div>
+
+                <div class="oi-build-card">
+                    <div class="oi-build-card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><path d="M16 13H8"/><path d="M16 17H8"/><path d="M10 9H8"/></svg>
+                    </div>
+                    <h3>Team-runnable SOPs</h3>
+                    <p>Slash commands your team can execute without you. Onboarding, weekly reporting, escalation &mdash; codified, not hidden in your head.</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- PROOF -->
+    <section class="oi-proof">
+        <div class="container">
+            <div class="oi-proof-stats">
+                <div>
+                    <div class="oi-proof-stat-num">100+</div>
+                    <div class="oi-proof-stat-label">Ecommerce operators inside Operator Intelligence</div>
+                </div>
+                <div>
+                    <div class="oi-proof-stat-num">200+</div>
+                    <div class="oi-proof-stat-label">Operators surveyed on what's blocking their AI implementation</div>
+                </div>
+                <div>
+                    <div class="oi-proof-stat-num">20 yrs</div>
+                    <div class="oi-proof-stat-label">In ecommerce, building Claude Code into the work daily</div>
+                </div>
+            </div>
+
+            <div class="oi-proof-quotes-label">What operators told us</div>
+            <div class="oi-proof-quotes">
+                <!-- Real anonymous pain quotes from the 200+ survey (consistent with cohort page) -->
+                <div class="oi-proof-quote">
+                    <p class="oi-proof-quote-text">"Struggling to start. Don't know where to focus. Too many options."</p>
+                    <p class="oi-proof-quote-attr">&mdash; from 200+ operator survey</p>
+                </div>
+                <div class="oi-proof-quote">
+                    <p class="oi-proof-quote-text">"I've watched every demo. I still don't have anything running in my business."</p>
+                    <p class="oi-proof-quote-attr">&mdash; from 200+ operator survey</p>
+                </div>
+                <div class="oi-proof-quote">
+                    <p class="oi-proof-quote-text">"Not enough hours in the day to figure this out alone. I need someone to walk me through it."</p>
+                    <p class="oi-proof-quote-attr">&mdash; from 200+ operator survey</p>
+                </div>
+
+                <!-- TODO: replace these three with named cohort grad testimonials after May 2026 cohort -->
+            </div>
+        </div>
+    </section>
+
+    <!-- FEATURED COHORT BAND -->
+    <section class="oi-cohort-band">
+        <div class="container">
+            <div class="oi-cohort-band-inner">
+                <div class="oi-cohort-band-eyebrow">Founding Cohort &middot; Open Now</div>
+                <h2>The 30-day cohort: 20 operators. Four weeks. Everything running.</h2>
+                <p>Weekly 2-hour group sessions where we build the exact workflows your business needs &mdash; using the pain points you bring with you. By week four, you have a personal toolkit running on your real data.</p>
+                <div class="oi-cohort-band-meta">
+                    <span><strong>4</strong> weekly sessions</span>
+                    <span><strong>20</strong> seats only</span>
+                    <span>Starts <strong>May 2026</strong></span>
+                    <span><strong>$997</strong> founding rate</span>
+                </div>
+                <a href="/oi-cohort/" class="btn-primary" style="padding: 1.1rem 2.5rem; font-size: 1.05rem;">See the Full Cohort &rarr;</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 1:1 ADVISORY BAND -->
+    <section class="oi-advisory">
+        <div class="container">
+            <div class="oi-advisory-card">
+                <div>
+                    <div class="oi-advisory-label">For operators who can't wait</div>
+                    <h2>Want this built into your business now? Work with John 1:1.</h2>
+                    <p>Two 60-minute strategy calls a week. Hands-on workflow builds during sessions. Priority Slack between calls. We work in your stack, on your real business &mdash; not on hypothetical examples.</p>
+                    <p style="color: var(--text-gray); font-size: 0.92rem;">For brands doing $50K+/mo who want AI integrated into operations now, not eventually.</p>
+                </div>
+                <div class="oi-advisory-cta-block">
+                    <div class="oi-advisory-price">
+                        <span style="font-size: 1.4rem; vertical-align: top; color: var(--text-gray);">$</span><span class="oi-advisory-price-amount">4,500</span><span class="oi-advisory-price-period">/mo</span>
+                    </div>
+                    <p class="oi-advisory-price-note">Monthly. Pause or cancel any time.</p>
+                    <a href="/ai/#pricing" class="btn-primary" style="display: inline-block; padding: 1rem 1.75rem; font-size: 0.95rem;">See AI Consulting</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="oi-faq">
+        <div class="container">
+            <h2>Questions</h2>
+            <div class="oi-faq-grid">
+
+                <div class="faq-item-modern" tabindex="0" role="button" aria-expanded="false">
+                    <p class="faq-question-modern">
+                        <span class="faq-icon">+</span>
+                        How is this different from a Claude Code course?
+                    </p>
+                    <p class="faq-answer-modern">Courses sell you information. Operator Intelligence is structured implementation. The cohort is live, small, and you build on your real business data &mdash; not on toy examples. The point isn't that you watched. The point is that workflows are running when you're done.</p>
+                </div>
+
+                <div class="faq-item-modern" tabindex="0" role="button" aria-expanded="false">
+                    <p class="faq-question-modern">
+                        <span class="faq-icon">+</span>
+                        Do I need to know how to code?
+                    </p>
+                    <p class="faq-answer-modern">No. Claude Code writes the code. You need to know your business, what you want automated, and be willing to type in a terminal. If you can run a marketplace, you can do this.</p>
+                </div>
+
+                <div class="faq-item-modern" tabindex="0" role="button" aria-expanded="false">
+                    <p class="faq-question-modern">
+                        <span class="faq-icon">+</span>
+                        Where do I start?
+                    </p>
+                    <p class="faq-answer-modern">Start with the waitlist. The next free training is the lowest-friction entry point and shows you exactly what running Claude Code in an ecommerce business looks like. From there, the cohort is the fastest path to having it in yours.</p>
+                </div>
+
+                <div class="faq-item-modern" tabindex="0" role="button" aria-expanded="false">
+                    <p class="faq-question-modern">
+                        <span class="faq-icon">+</span>
+                        Is this only for Amazon sellers?
+                    </p>
+                    <p class="faq-answer-modern">No. Most operators inside are on Amazon, Walmart, or TikTok Shop, but the workflows apply to any ecommerce operation: data analysis, listing copy, review handling, ops reporting, team SOPs. If your business has repetitive operator work, this fits.</p>
+                </div>
+
+                <div class="faq-item-modern" tabindex="0" role="button" aria-expanded="false">
+                    <p class="faq-question-modern">
+                        <span class="faq-icon">+</span>
+                        Will there be more cohorts after May?
+                    </p>
+                    <p class="faq-answer-modern">Yes. May 2026 is the founding cohort at $997 and capped at 20 seats. After that the price goes up and the format may change. The waitlist is also how you'll hear about future cohorts first.</p>
+                </div>
+
+                <div class="faq-item-modern" tabindex="0" role="button" aria-expanded="false">
+                    <p class="faq-question-modern">
+                        <span class="faq-icon">+</span>
+                        Who runs this?
+                    </p>
+                    <p class="faq-answer-modern">John Aspinall &mdash; 20 years in ecommerce, founder of Aspi (marketplace creative strategy), and someone who runs his businesses on Claude Code every day. This is built from real use, not from teaching about AI.</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- WAITLIST -->
+    <section class="oi-waitlist" id="waitlist">
+        <div class="container">
+            <div class="oi-waitlist-inner">
+                <h2>Join the waitlist.</h2>
+                <p class="oi-waitlist-sub">Be first to hear about the next free training, the next cohort, and the operator community when it opens. No fluff. Just the work.</p>
+
+                <div class="oi-waitlist-form-wrap">
+                    <!-- Substack embed: pulls signups into johnaspinallsr.substack.com -->
+                    <iframe src="https://johnaspinallsr.substack.com/embed" frameborder="0" scrolling="no"></iframe>
+                </div>
+                <p class="oi-waitlist-fallback">Form not loading? <a href="mailto:john@goaspi.com?subject=OI%20Waitlist&body=Add%20me%20to%20the%20Operator%20Intelligence%20waitlist.">Email John directly &rarr;</a></p>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}
